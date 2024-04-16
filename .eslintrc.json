@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "parserOptions": {
+    "project": true,
+    "tsconfigRootDir": "."
+  },
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base"
+  ],
+  "rules": {
+    "no-console": "off",
+    "import/prefer-default-export": "off"
+  }
+}

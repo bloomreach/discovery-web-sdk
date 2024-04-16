@@ -10,5 +10,7 @@ export default defineConfig({
       formats: ['es'],
     },
   },
-  plugins: [dts({ rollupTypes: true })],
+  plugins: [
+    dts({ rollupTypes: true }),
+  ],
 });
