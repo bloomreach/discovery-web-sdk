@@ -1,0 +1,29 @@
+{
+  "name": "discovery-web-sdk",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "type-check": "tsc --noEmit",
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "3.8.3"
+  },
+  "engines": {
+    "node": ">=21",
+    "pnpm": ">=9"
+  },
+  "volta": {
+    "node": "21.7.3",
+    "pnpm": "9.0.1"
+  }
+}
