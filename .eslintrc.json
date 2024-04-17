@@ -4,6 +4,7 @@
     "project": true,
     "tsconfigRootDir": "."
   },
+  "ignorePatterns": ["/vite.config.ts"],
   "extends": [
     "airbnb-base",
     "airbnb-typescript/base"
