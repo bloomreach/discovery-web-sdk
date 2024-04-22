@@ -4,13 +4,14 @@
     "project": true,
     "tsconfigRootDir": "."
   },
-  "ignorePatterns": ["/vite.config.ts"],
+  "ignorePatterns": ["/vite.config.ts", "/dist"],
   "extends": [
     "airbnb-base",
     "airbnb-typescript/base"
   ],
   "rules": {
     "no-console": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "arrow-body-style": "off"
   }
 }
