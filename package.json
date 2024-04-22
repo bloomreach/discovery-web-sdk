@@ -28,6 +28,7 @@
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "18.0.0",
     "husky": "9.0.11",
+    "msw": "2.2.14",
     "prettier": "3.2.5",
     "typescript": "5.4.5",
     "typescript-eslint": "7.7.0",
