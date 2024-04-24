@@ -1,21 +1,25 @@
-import { describe, expect, test } from 'vitest';
-import { http, HttpResponse } from 'msw';
-import { setupServer } from 'msw/node';
+import { SetupServerApi } from 'msw/node';
+import { afterAll, beforeAll, describe, expect, test } from 'vitest';
+import { startWorker } from './mocks/mockServer';
+import { SearchResponse } from './types/search-response.type';
+import { endpointProductSearchApi } from './utils/constants';
 
-const handlers = [
-  http.get('https://core.dxpapi.com/api/v1/core/', () => {
-    return HttpResponse.json({
-      id: 'Hello world',
-    });
-  }),
-];
+describe('Product Search & Category API', () => {
+  let server: SetupServerApi;
 
-const server = setupServer(...handlers);
-server.listen();
+  beforeAll(() => {
+    server = startWorker();
+  });
 
-describe('my test suite', () => {
-  test('say hello world', async () => {
-    const response = await fetch('https://core.dxpapi.com/api/v1/core/').then((data) => data.json());
-    expect(response).toEqual({ id: 'Hello world' });
+  test('Call API to get result', async () => {
+    const response: SearchResponse = await fetch(endpointProductSearchApi).then((data) =>
+      data.json(),
+    );
+
+    expect(response.response?.docs?.at(0)?.description).toBeDefined();
+  });
+
+  afterAll(() => {
+    server.close();
   });
 });
