@@ -1,4 +1,4 @@
-export interface SearchResponseFacetCountsFacetFieldsCategory {
+interface SearchResponseFacetCountsFacetFieldsCategory {
   count?: number;
   crumb?: string;
   parent?: string;
@@ -7,11 +7,12 @@ export interface SearchResponseFacetCountsFacetFieldsCategory {
   tree_path?: string;
 }
 
-export interface SearchResponseFacetCountsFacetFieldsGeneral {
+interface SearchResponseFacetCountsFacetFieldsGeneral {
   count: number;
   name: string;
 }
-export type SearchResponseFacetCountsFacetFields = {
+
+type SearchResponseFacetCountsFacetFields = {
   category?: SearchResponseFacetCountsFacetFieldsCategory[];
 } & {
   [key: string]: SearchResponseFacetCountsFacetFieldsGeneral[];
@@ -23,17 +24,17 @@ interface SearchResponseFacetCountsFacetRangesPrice {
   end: number;
 }
 
-export interface SearchResponseFacetCountsFacetRanges {
+interface SearchResponseFacetCountsFacetRanges {
   price?: SearchResponseFacetCountsFacetRangesPrice[];
 }
 
-export interface SearchResponseFacetCounts {
+interface SearchResponseFacetCounts {
   facet_ranges?: SearchResponseFacetCountsFacetRanges;
   facet_fields?: SearchResponseFacetCountsFacetFields;
   facet_queries?: object;
 }
 
-export interface Variant {
+interface Variant {
   skuid?: string;
   sku_color_group: string;
   sku_swatch_images: string[];
@@ -42,7 +43,7 @@ export interface Variant {
   sku_price?: number;
 }
 
-export interface SearchResponseDoc {
+interface SearchResponseDoc {
   sale_price: number;
   price: number;
   description: string;
@@ -58,42 +59,42 @@ export interface SearchResponseDoc {
   score?: number;
 }
 
-export interface SearchResponseResponse {
+interface SearchResponseResponse {
   numFound?: number;
   start?: number;
   docs?: SearchResponseDoc[];
   maxScore?: number;
 }
 
-export interface SearchResponseGroupResponseGroupListGroup {
+interface SearchResponseGroupResponseGroupListGroup {
   groupValue: string;
   doclist?: SearchResponseResponse;
 }
 
-export interface SearchResponseGroupResponseGroupList {
+interface SearchResponseGroupResponseGroupList {
   matches: number;
   groups: SearchResponseGroupResponseGroupListGroup[];
 }
 
-export interface SearchResponseGroupResponse {
+interface SearchResponseGroupResponse {
   [groupName: string]: SearchResponseGroupResponseGroupList;
 }
 
-export interface SearchResponseStatsStatsFieldsPrice {
+interface SearchResponseStatsStatsFieldsPrice {
   max: number;
   min: number;
 }
 
-export interface SearchResponseStatsStatsFields {
+interface SearchResponseStatsStatsFields {
   price?: SearchResponseStatsStatsFieldsPrice;
   sale_price?: SearchResponseStatsStatsFieldsPrice;
 }
 
-export interface SearchResponseStats {
+interface SearchResponseStats {
   stats_fields: SearchResponseStatsStatsFields;
 }
 
-export interface SearchResponseKeywords {
+interface SearchResponseKeywords {
   'original query': string;
   'redirected query': string;
   'redirected url': string;
@@ -109,4 +110,3 @@ export interface SearchResponse {
   autoCorrectQuery?: string;
   keywordRedirect?: SearchResponseKeywords;
 }
-
