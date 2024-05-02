@@ -1,4 +1,4 @@
-interface IdentificationParameters {
+export interface AccountParameters {
   /**
    * Account ID
    */
@@ -8,14 +8,25 @@ interface IdentificationParameters {
    * Authentication Key
    */
   auth_key?: string;
-
-  /**
-   * Site domain ID which is provided by Bloomreach
-   */
-  domain_key: string;
 }
 
-interface QueryParameters {
+export interface CatalogParameters {
+  /**
+   * Product/Content catalog name
+   */
+  domain_key: string;
+
+  /**
+   * A unique identifier for a specific view of your product catalog.
+   * If you have multiple versions of your site, each with their own product catalog characteristics like product titles and prices,
+   * then add view_id to your call.
+   * Bloomreach uses your view_id parameter value to display the right product information for your customers based on their individual site views.
+   * You can enter any string value to identify the specific site catalog view. This string must be consistent in your pixel, API, and product catalog.
+   */
+  view_id?: string;
+}
+
+export interface QueryParameters {
   /**
    * Partial search query
    */
@@ -69,7 +80,7 @@ interface QueryParameters {
   ll?: string;
 }
 
-interface DisplayParameters {
+export interface DisplayParameters {
   /**
    * Sorts results based on the field value in ascending, descending, or another combination of orders.
    * You can sort any fl field.
@@ -83,15 +94,6 @@ interface DisplayParameters {
    * numeric attributes such as price, sale_price, length, width, reviews, etc.
    */
   'stats.field'?: string;
-
-  /**
-   * A unique identifier for a specific view of your product catalog.
-   * If you have multiple versions of your site, each with their own product catalog characteristics like product titles and prices,
-   * then add view_id to your call.
-   * Bloomreach uses your view_id parameter value to display the right product information for your customers based on their individual site views.
-   * You can enter any string value to identify the specific site catalog view. This string must be consistent in your pixel, API, and product catalog.
-   */
-  view_id?: string;
 
   /**
    * The attribute that products will be grouped by.
@@ -115,7 +117,7 @@ interface DisplayParameters {
   group_offset?: number;
 }
 
-interface CallTypeParameters {
+export interface CallTypeParameters {
   /**
    * The type of API request. Value should be search for Product & Category Search.
    * @default search
@@ -129,7 +131,7 @@ interface CallTypeParameters {
   search_type: string;
 }
 
-interface TrackParameters {
+export interface TrackingParameters {
   /**
    * First Party cookie that provides unique identifier
    */
@@ -160,14 +162,14 @@ interface TrackParameters {
   user_id?: string;
 }
 
-interface CORSParameters {
+export interface CORSParameters {
   /**
    * Indicates whether data wrapped in the function for CORS requests
    */
   callback?: string;
 }
 
-interface AlgorithmControlParameters {
+export interface AlgorithmControlParameters {
   /**
    * Search Recall Precision targets and removes the recall noise to only show relevant products for a query.
    */
@@ -209,10 +211,11 @@ interface AlgorithmControlParameters {
 }
 
 export interface SearchRequestParameters
-  extends IdentificationParameters,
+  extends AccountParameters,
+    CatalogParameters,
     QueryParameters,
     DisplayParameters,
     CallTypeParameters,
-    TrackParameters,
+    TrackingParameters,
     CORSParameters,
     AlgorithmControlParameters {}

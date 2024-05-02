@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
 
-import { SearchRequestParameters } from '../types/search-request.type'
+import { SearchRequestParameters } from '../search-request.type'
 
 /*
  * Create a request paramters mock with the option to override

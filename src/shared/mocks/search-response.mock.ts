@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
 
-import { SearchResponse } from '../types/search-response.type';
+import { SearchResponse } from '../search-response.type';
 
 /*
  * Create array of random length between 1 and 5 and map each index to a value
