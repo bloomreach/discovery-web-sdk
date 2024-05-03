@@ -19,8 +19,6 @@ describe('initializing the SDK', () => {
     fl: 'pid,title,description',
   });
 
-  console.log(searchOptions);
-
   const testRequest = async (handlers: HttpHandler[]) => {
     const server = setupServer(...handlers);
     server.listen();
