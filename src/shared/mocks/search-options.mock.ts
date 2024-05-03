@@ -1,17 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
-import { SearchRequestParameters } from '../search-request.type';
+import { SearchOptions } from '../../features/product-search/product-search';
 
 /*
  * Create mock object with the option to override any of the generated fake values
  */
-export function createSearchRequestParametersMock(
-  overrides?: Partial<SearchRequestParameters>,
-): SearchRequestParameters {
+export function createSearchOptionsMock(overrides?: Partial<SearchOptions>): SearchOptions {
   const defaults = {
-    account_id: faker.number.int(),
-    auth_key: faker.string.alphanumeric(21),
-    domain_key: faker.internet.domainWord(),
     q: faker.commerce.productName(),
     fl: [`pid`, Array.from({ length: 4 }, () => faker.database.column())].join(','),
     start: 0,
@@ -23,7 +18,6 @@ export function createSearchRequestParametersMock(
     ll: `${faker.location.latitude()},${faker.location.longitude()}`,
     sort: `${faker.database.column()}+${Math.random() ? 'asc' : 'desc'}`,
     'stats.field': Array.from({ length: 4 }, () => faker.database.column()).join(','),
-    view_id: faker.number.int(),
     groupby: faker.database.column(),
     group_limit: faker.number.int({ min: 1, max: 5 }),
     group_offset: 0,

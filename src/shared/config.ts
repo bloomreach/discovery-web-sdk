@@ -1,5 +1,7 @@
 import { AccountParameters, CatalogParameters } from './search-request.type';
 
+export const noConfigMessage = 'Configuration has not been set';
+
 export interface Configuration {
   endpoint: string;
   account_id: AccountParameters['account_id'];
@@ -16,8 +18,12 @@ export function setConfig(config: Configuration): void {
 
 export function getConfig(): Configuration {
   if (configuration === null) {
-    throw Error('Configuration not yet set');
+    throw Error(noConfigMessage);
   }
 
   return configuration;
+}
+
+export function clearConfig(): void {
+  configuration = null;
 }

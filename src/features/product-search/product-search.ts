@@ -1,6 +1,7 @@
 import { getConfig } from '../../shared/config';
 import {
   AccountParameters,
+  CallTypeParameters,
   CatalogParameters,
   SearchRequestParameters,
 } from '../../shared/search-request.type';
@@ -9,13 +10,22 @@ import { buildApiUrl } from '../../shared/url-builders';
 
 export type SearchOptions = Omit<
   SearchRequestParameters,
-  keyof AccountParameters | keyof CatalogParameters
+  keyof AccountParameters | keyof CatalogParameters | keyof CallTypeParameters
 >;
 
 export async function searchProducts(params: SearchOptions): Promise<SearchResponse> {
-  const config = getConfig();
-  const queryParams = Object.assign(config, params);
+  const { endpoint, account_id, domain_key, auth_key, view_id } = getConfig();
+  const defaults = {
+    account_id,
+    domain_key,
+    auth_key,
+    view_id,
+    request_type: 'search',
+    search_type: 'keyword',
+  };
 
-  const url = buildApiUrl(config.endpoint, queryParams);
+  const queryParams = Object.assign(defaults, params);
+
+  const url = buildApiUrl(endpoint, queryParams);
   return fetch(url).then((data) => data.json());
 }

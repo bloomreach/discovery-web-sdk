@@ -10,8 +10,7 @@ const generateArray = (fillValue: any) =>
   Array.from({ length: faker.number.int({ min: 1, max: 5 }) }, () => fillValue);
 
 /*
- * Create a response mock with the option to override
- * any of the generated fake values
+ * Create mock object with the option to override any of the generated fake values
  */
 export function createSearchResponseMock(overrides?: Partial<SearchResponse>): SearchResponse {
   const defaults = {
