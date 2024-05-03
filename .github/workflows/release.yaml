@@ -1,13 +1,9 @@
 name: Release
-on: workflow_dispatch
-permissions:
-  contents: read # for checkout
-
+on:
+  workflow_dispatch:
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/build.yaml
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
@@ -19,6 +15,33 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint source code
+        run: pnpm lint
+
+      - name: Build-time source code type check
+        run: pnpm type-check
+
+      - name: Run unit & integration test
+        run: pnpm test-run
+
+      - name: Build distribution assets
+        run: pnpm build
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: pnpm audit signatures
 
