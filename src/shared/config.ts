@@ -1,9 +1,10 @@
+import { productSearchEndpoint } from './constants';
 import { AccountParameters, CatalogParameters } from './search-request.type';
 
 export const noConfigMessage = 'Configuration has not been set';
 
 export interface Configuration {
-  endpoint: string;
+  productSearchEndpoint: string;
   account_id: AccountParameters['account_id'];
   auth_key?: AccountParameters['auth_key'];
   domain_key: CatalogParameters['domain_key'];
@@ -14,6 +15,10 @@ let configuration: Configuration | null = null;
 
 export function setConfig(config: Configuration): void {
   configuration = config;
+
+  if (config.productSearchEndpoint === null) {
+    configuration.productSearchEndpoint = productSearchEndpoint
+  }
 }
 
 export function getConfig(): Configuration {

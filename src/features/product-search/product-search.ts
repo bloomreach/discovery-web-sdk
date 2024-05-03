@@ -14,7 +14,7 @@ export type SearchOptions = Omit<
 >;
 
 export async function searchProducts(params: SearchOptions): Promise<SearchResponse> {
-  const { endpoint, account_id, domain_key, auth_key, view_id } = getConfig();
+  const { productSearchEndpoint, account_id, domain_key, auth_key, view_id } = getConfig();
   const defaults = {
     account_id,
     domain_key,
@@ -26,6 +26,6 @@ export async function searchProducts(params: SearchOptions): Promise<SearchRespo
 
   const queryParams = Object.assign(defaults, params);
 
-  const url = buildApiUrl(endpoint, queryParams);
+  const url = buildApiUrl(productSearchEndpoint, queryParams);
   return fetch(url).then((data) => data.json());
 }
