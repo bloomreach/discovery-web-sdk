@@ -1,5 +1,4 @@
 name: Build
-run-name: Build
 on:
   push:
 jobs:
@@ -24,15 +23,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - id: find_last_build
-        uses: SamhammerAG/last-successful-build-action@v4
-        with:
-          token: '${{ secrets.GH_TOKEN }}'
-          branch: '${{ env.GITHUB_REF }}'
-          workflow: 'Build'
+      - id: find_commit_shas
+        uses: nrwl/nx-set-shas@v4
 
       - name: Lint commit messages
-        run: pnpm exec commitlint --from ${{ steps.find_last_build.outputs.sha }} --verbose
+        run: pnpm exec commitlint --from ${{ steps.find_commit_shas.outputs.base }} --to ${{ steps.find_commit_shas.outputs.head }}
 
       - name: Lint source code
         run: pnpm lint

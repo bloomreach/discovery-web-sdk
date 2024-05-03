@@ -17,7 +17,7 @@
     "type-check": "tsc --noEmit",
     "lint": "pnpm exec eslint .",
     "test": "vitest",
-    "test-once": "vitest --run",
+    "test-run": "vitest --run",
     "prepare": "husky"
   },
   "devDependencies": {
