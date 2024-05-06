@@ -1,7 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
-
-import { SearchResponse } from '../search-response.type';
+import type { SearchResponse } from '../types/search-response.type';
 
 /*
  * Create array of random length between 1 and 5 and map each index to a value
@@ -13,7 +11,7 @@ const generateArray = (fillValue: any) =>
  * Create mock object with the option to override any of the generated fake values
  */
 export function createSearchResponseMock(overrides?: Partial<SearchResponse>): SearchResponse {
-  const defaults = {
+  const defaults: SearchResponse = {
     autoCorrectQuery: faker.lorem.slug(1),
     category_map: {},
     did_you_mean: generateArray(faker.lorem.slug(1)),
