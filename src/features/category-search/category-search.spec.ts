@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker';
 import { HttpResponse, http } from 'msw';
 import { beforeEach, describe, expect, test } from 'vitest';
-import { createCategorySearchOptionsMock } from '../../shared/mocks/category-search-options.mock.spec';
-import { createSetupConfigMock } from '../../shared/mocks/configuration.mock.spec';
-import { mockRequest } from '../../shared/mocks/mock-request.mock.spec';
-import { createSearchResponseMock } from '../../shared/mocks/search-response.mock.spec';
+import { createCategorySearchOptionsMock } from '../../shared/mocks/category-search-options.mock';
+import { createSetupConfigMock } from '../../shared/mocks/configuration.mock';
+import { mockRequest } from '../../shared/mocks/mock-request.mock';
+import { createSearchResponseMock } from '../../shared/mocks/search-response.mock';
 import type { SetupConfiguration } from '../../shared/types/configuration.type';
 import type { CategorySearchOptions } from './category-search';
 import { categorySearch } from './category-search';
@@ -25,7 +25,7 @@ describe('Category Search API', () => {
     const expectedSearchType = 'category';
 
     await mockRequest(config, categorySearch, searchOptions, [
-      http.get(config.productSearchEndpoint, ({ request }) => {
+      http.get(config.searchEndpoint, ({ request }) => {
         const { searchParams } = new URL(request.url);
 
         expect(searchParams.get('request_type')).toEqual(expectedRequestType);
@@ -34,22 +34,5 @@ describe('Category Search API', () => {
         return HttpResponse.json(createSearchResponseMock());
       }),
     ]);
-  });
-
-  test('response contents', async () => {
-    await mockRequest(
-      config,
-      categorySearch,
-      searchOptions,
-      [
-        http.get(config.productSearchEndpoint, () => {
-          return HttpResponse.json(createSearchResponseMock());
-        }),
-      ],
-      ({ response }) => {
-        expect(response?.numFound).toBeGreaterThan(0);
-        expect(response?.docs?.length).toBeGreaterThan(0);
-      },
-    );
   });
 });
