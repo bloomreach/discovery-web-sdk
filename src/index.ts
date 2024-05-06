@@ -1,12 +1,14 @@
+import type { CategorySearchOptions } from './features/category-search/category-search';
+import type { ProductSearchOptions } from './features/product-search/product-search';
+import type { SearchResponse } from './shared/types/search-response.type';
+import type { SetupConfiguration } from './shared/types/configuration.type';
+import { categorySearch } from './features/category-search/category-search';
+import { productSearch } from './features/product-search/product-search';
 import { setConfig } from './shared/config';
-import { searchProducts } from './features/product-search/product-search';
-import type { Configuration } from './shared/config';
-import type { SearchRequestParameters } from './shared/search-request.type';
-import type { SearchResponse } from './shared/search-response.type';
 
-function initialize(config: Configuration) {
+function initialize(config: SetupConfiguration) {
   setConfig(config);
 }
 
-export type { Configuration, SearchRequestParameters, SearchResponse };
-export { initialize, searchProducts };
+export type { SetupConfiguration, ProductSearchOptions, CategorySearchOptions, SearchResponse };
+export { initialize, productSearch, categorySearch };

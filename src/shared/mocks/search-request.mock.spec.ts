@@ -1,6 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
-import { SearchRequestParameters } from '../search-request.type';
+import type { SearchRequestParameters } from '../types/search-request.type';
 
 /*
  * Create mock object with the option to override any of the generated fake values
@@ -8,7 +7,7 @@ import { SearchRequestParameters } from '../search-request.type';
 export function createSearchRequestParametersMock(
   overrides?: Partial<SearchRequestParameters>,
 ): SearchRequestParameters {
-  const defaults = {
+  const defaults: SearchRequestParameters = {
     account_id: faker.number.int(),
     auth_key: faker.string.alphanumeric(21),
     domain_key: faker.internet.domainWord(),
@@ -16,21 +15,21 @@ export function createSearchRequestParametersMock(
     fl: [`pid`, Array.from({ length: 4 }, () => faker.database.column())].join(','),
     start: 0,
     rows: faker.number.int({ min: 1, max: 5 }),
-    'facet.version': 3.0,
+    'facet.version': '3.0',
     'facet.range': faker.database.column(),
     fq: `${faker.database.column()}: ${faker.lorem.word()}`,
     efq: `${faker.database.column()}: ${faker.lorem.word()}`,
     ll: `${faker.location.latitude()},${faker.location.longitude()}`,
     sort: `${faker.database.column()}+${Math.random() ? 'asc' : 'desc'}`,
     'stats.field': Array.from({ length: 4 }, () => faker.database.column()).join(','),
-    view_id: faker.number.int(),
+    view_id: faker.string.alphanumeric(5),
     groupby: faker.database.column(),
     group_limit: faker.number.int({ min: 1, max: 5 }),
     group_offset: 0,
     request_type: 'search',
     search_type: 'keyword',
     _br_uid_2: faker.string.uuid(),
-    request_id: faker.string.numeric(13),
+    request_id: Number(faker.string.numeric(13)),
     url: faker.internet.url(),
     ref_url: faker.internet.url(),
     user_id: faker.string.uuid(),

@@ -1,4 +1,4 @@
-import { SearchRequestParameters } from './search-request.type';
+import type { SearchRequestParameters } from './types/search-request.type';
 
 const noEncodeParameters = ['_br_uid_2', 'fq', 'sort'];
 

@@ -13,6 +13,8 @@
     "arrow-body-style": "off",
     "import/prefer-default-export": "off",
     "no-console": "off",
+    "@typescript-eslint/consistent-type-exports": "warn",
+    "@typescript-eslint/consistent-type-imports": "warn",
     "no-plusplus": "off"
   }
 }

@@ -1,27 +1,19 @@
 import { productSearchEndpoint } from './constants';
-import { AccountParameters, CatalogParameters } from './search-request.type';
+import type { SetupConfiguration } from './types/configuration.type';
 
 export const noConfigMessage = 'Configuration has not been set';
 
-export interface Configuration {
-  productSearchEndpoint: string;
-  account_id: AccountParameters['account_id'];
-  auth_key?: AccountParameters['auth_key'];
-  domain_key: CatalogParameters['domain_key'];
-  view_id?: CatalogParameters['view_id'];
-}
+let configuration: SetupConfiguration | null = null;
 
-let configuration: Configuration | null = null;
-
-export function setConfig(config: Configuration): void {
+export function setConfig(config: SetupConfiguration): void {
   configuration = config;
 
   if (config.productSearchEndpoint === null) {
-    configuration.productSearchEndpoint = productSearchEndpoint
+    configuration.productSearchEndpoint = productSearchEndpoint;
   }
 }
 
-export function getConfig(): Configuration {
+export function getConfig(): SetupConfiguration {
   if (configuration === null) {
     throw Error(noConfigMessage);
   }
