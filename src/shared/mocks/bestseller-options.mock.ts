@@ -1,11 +1,12 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
-import type { CategorySearchOptions } from '../../features/category-search/category-search';
+import type { BestsellerOptions } from '../../features/bestseller/bestseller';
 
 /*
  * Create mock object with the option to override any of the generated fake values
  */
-export function createCategorySearchOptionsMock(overrides?: Partial<CategorySearchOptions>): CategorySearchOptions {
+export function createBestsellerOptionsMock(
+  overrides?: Partial<BestsellerOptions>,
+): BestsellerOptions {
   const defaults = {
     q: faker.commerce.productName(),
     fl: [`pid`, Array.from({ length: 4 }, () => faker.database.column())].join(','),
@@ -22,7 +23,7 @@ export function createCategorySearchOptionsMock(overrides?: Partial<CategorySear
     group_limit: faker.number.int({ min: 1, max: 5 }),
     group_offset: 0,
     request_type: 'search',
-    search_type: 'category',
+    search_type: 'bestseller',
     _br_uid_2: faker.string.uuid(),
     request_id: faker.string.numeric(13),
     url: faker.internet.url(),

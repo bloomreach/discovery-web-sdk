@@ -12,18 +12,17 @@ export type ProductSearchOptions = Omit<
 >;
 
 export async function productSearch(params: ProductSearchOptions): Promise<SearchResponse> {
-  const { productSearchEndpoint, account_id, domain_key, auth_key, view_id } = getConfig();
+  const { searchEndpoint, ...config } = getConfig();
   const defaults = {
-    account_id,
-    domain_key,
-    auth_key,
-    view_id,
     request_type: 'search',
     search_type: 'keyword',
+    'facet.version': '3.0',
+    fl: 'pid',
+    start: 0,
   };
 
-  const queryParams = Object.assign(defaults, params);
+  const queryParams = Object.assign(config, defaults, params) as SearchRequestParameters;
 
-  const url = buildApiUrl(productSearchEndpoint, queryParams);
+  const url = buildApiUrl(searchEndpoint, queryParams);
   return fetch(url).then((data) => data.json());
 }

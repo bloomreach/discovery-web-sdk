@@ -6,16 +6,16 @@ import type { SearchResponse } from '../../shared/types/search-response.type';
 import { buildApiUrl } from '../../shared/url-builders';
 import { getConfig } from '../../shared/config';
 
-export type CategorySearchOptions = Omit<
+export type BestsellerOptions = Omit<
   SearchRequestParameters,
   keyof AccountParameters | keyof CatalogParameters | keyof CallTypeParameters
 >;
 
-export async function categorySearch(params: CategorySearchOptions): Promise<SearchResponse> {
+export async function bestseller(params: BestsellerOptions): Promise<SearchResponse> {
   const { searchEndpoint, ...config } = getConfig();
   const defaults = {
     request_type: 'search',
-    search_type: 'category',
+    search_type: 'bestseller',
     'facet.version': '3.0',
     fl: 'pid',
     start: 0,

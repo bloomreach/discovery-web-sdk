@@ -1,27 +1,27 @@
 import { HttpResponse, http } from 'msw';
 import { beforeEach, describe, expect, test } from 'vitest';
+import { createBestsellerOptionsMock } from '../../shared/mocks/bestseller-options.mock';
 import { createSetupConfigMock } from '../../shared/mocks/configuration.mock';
 import { mockRequest } from '../../shared/mocks/mock-request.mock';
-import { createProductSearchOptionsMock } from '../../shared/mocks/product-search-options.mock';
 import { createSearchResponseMock } from '../../shared/mocks/search-response.mock';
 import type { SetupConfiguration } from '../../shared/types/configuration.type';
-import type { ProductSearchOptions } from './product-search';
-import { productSearch } from './product-search';
+import type { BestsellerOptions } from './bestseller';
+import { bestseller } from './bestseller';
 
-describe('Product Search API', () => {
+describe('Category Search API', () => {
   let config: SetupConfiguration;
-  let searchOptions: ProductSearchOptions;
+  let searchOptions: BestsellerOptions;
 
   beforeEach(() => {
     config = createSetupConfigMock();
-    searchOptions = createProductSearchOptionsMock();
+    searchOptions = createBestsellerOptionsMock();
   });
 
   test('request and search type', async () => {
     const expectedRequestType = 'search';
-    const expectedSearchType = 'keyword';
+    const expectedSearchType = 'bestseller';
 
-    await mockRequest(config, productSearch, searchOptions, [
+    await mockRequest(config, bestseller, searchOptions, [
       http.get(config.searchEndpoint, ({ request }) => {
         const { searchParams } = new URL(request.url);
 

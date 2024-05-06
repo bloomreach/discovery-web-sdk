@@ -1,20 +1,15 @@
-import { faker } from '@faker-js/faker';
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
 import { afterEach, describe, expect, test } from 'vitest';
 import { initialize } from '.';
 import { productSearch } from './features/product-search/product-search';
 import { clearConfig, getConfig, noConfigMessage } from './shared/config';
-import { mockRequest } from './shared/mocks/mock-request.mock.spec';
-import { createProductSearchOptionsMock } from './shared/mocks/product-search-options.mock.spec';
-import { createSearchResponseMock } from './shared/mocks/search-response.mock.spec';
-import type { SetupConfiguration } from './shared/types/configuration.type';
+import { mockRequest } from './shared/mocks/mock-request.mock';
+import { createProductSearchOptionsMock } from './shared/mocks/product-search-options.mock';
+import { createSearchResponseMock } from './shared/mocks/search-response.mock';
+import { createSetupConfigMock } from './shared/mocks/configuration.mock';
 
-const config: SetupConfiguration = {
-  productSearchEndpoint: faker.internet.url(),
-  account_id: 1234,
-  domain_key: 'example_com',
-};
+const config = createSetupConfigMock();
 
 describe('initializing the SDK', () => {
   afterEach(() => {
@@ -27,7 +22,7 @@ describe('initializing the SDK', () => {
   });
 
   test('calling an API without initial config options set', async () => {
-    const handler = http.get(config.productSearchEndpoint, () => {});
+    const handler = http.get(config.searchEndpoint, () => {});
     const server = setupServer(handler);
     server.listen();
 
@@ -39,7 +34,7 @@ describe('initializing the SDK', () => {
   test('calling an API with initial config options set', async () => {
     const productSearchOptions = createProductSearchOptionsMock();
     await mockRequest(config, productSearch, productSearchOptions, [
-      http.get(config.productSearchEndpoint, ({ request }) => {
+      http.get(config.searchEndpoint, ({ request }) => {
         expect(request.url.includes(encodeURIComponent(config.domain_key))).toBe(true);
         return HttpResponse.json(createSearchResponseMock(), { status: 200 });
       }),
