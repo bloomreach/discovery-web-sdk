@@ -5,6 +5,7 @@ import type { SearchRequestParameters } from '../../shared/types/search-request.
 import type { SearchResponse } from '../../shared/types/search-response.type';
 import { buildApiUrl } from '../../shared/url-builders';
 import { getConfig } from '../../shared/config';
+import { SEARCH_ENDPOINT_PROD } from '../../shared/constants';
 
 export type CategorySearchOptions = Omit<
   SearchRequestParameters,
@@ -23,6 +24,6 @@ export async function categorySearch(params: CategorySearchOptions): Promise<Sea
 
   const queryParams = Object.assign(config, defaults, params) as SearchRequestParameters;
 
-  const url = buildApiUrl(searchEndpoint, queryParams);
+  const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
   return fetch(url).then((data) => data.json());
 }
