@@ -1,21 +1,14 @@
 import { HttpResponse, http } from 'msw';
-import { beforeEach, describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { createSetupConfigMock } from '../../shared/mocks/configuration.mock';
 import { mockRequest } from '../../shared/mocks/mock-request.mock';
 import { createProductSearchOptionsMock } from '../../shared/mocks/product-search-options.mock';
 import { createSearchResponseMock } from '../../shared/mocks/search-response.mock';
-import type { SetupConfiguration } from '../../shared/types/configuration.type';
-import type { ProductSearchOptions } from './product-search';
 import { productSearch } from './product-search';
 
 describe('Product Search API', () => {
-  let config: SetupConfiguration;
-  let searchOptions: ProductSearchOptions;
-
-  beforeEach(() => {
-    config = createSetupConfigMock();
-    searchOptions = createProductSearchOptionsMock();
-  });
+  const config = createSetupConfigMock();
+  const searchOptions = createProductSearchOptionsMock();
 
   test('request and search type', async () => {
     const expectedRequestType = 'search';

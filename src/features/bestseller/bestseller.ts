@@ -1,10 +1,11 @@
+import { getConfig } from '../../shared/config';
+import { SEARCH_ENDPOINT_PROD } from '../../shared/constants';
 import type { AccountParameters } from '../../shared/types/account-params.type';
 import type { CallTypeParameters } from '../../shared/types/calltype-params.type';
 import type { CatalogParameters } from '../../shared/types/catalog-params.type';
 import type { SearchRequestParameters } from '../../shared/types/search-request.type';
 import type { SearchResponse } from '../../shared/types/search-response.type';
 import { buildApiUrl } from '../../shared/url-builders';
-import { getConfig } from '../../shared/config';
 
 export type BestsellerOptions = Omit<
   SearchRequestParameters,
@@ -23,6 +24,6 @@ export async function bestseller(params: BestsellerOptions): Promise<SearchRespo
 
   const queryParams = Object.assign(config, defaults, params) as SearchRequestParameters;
 
-  const url = buildApiUrl(searchEndpoint, queryParams);
+  const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
   return fetch(url).then((data) => data.json());
 }

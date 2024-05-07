@@ -1,20 +1,16 @@
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
-import { afterEach, describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { initialize } from '.';
 import { productSearch } from './features/product-search/product-search';
 import { clearConfig, getConfig, noConfigMessage } from './shared/config';
+import { createSetupConfigMock } from './shared/mocks/configuration.mock';
 import { mockRequest } from './shared/mocks/mock-request.mock';
 import { createProductSearchOptionsMock } from './shared/mocks/product-search-options.mock';
 import { createSearchResponseMock } from './shared/mocks/search-response.mock';
-import { createSetupConfigMock } from './shared/mocks/configuration.mock';
-
-const config = createSetupConfigMock();
 
 describe('initializing the SDK', () => {
-  afterEach(() => {
-    clearConfig();
-  });
+  const config = createSetupConfigMock();
 
   test('setting initial configuration options for the SDK', async () => {
     initialize(config);
@@ -22,6 +18,7 @@ describe('initializing the SDK', () => {
   });
 
   test('calling an API without initial config options set', async () => {
+    clearConfig();
     const handler = http.get(config.searchEndpoint, () => {});
     const server = setupServer(handler);
     server.listen();

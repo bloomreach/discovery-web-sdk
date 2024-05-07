@@ -1,21 +1,14 @@
 import { HttpResponse, http } from 'msw';
-import { beforeEach, describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { createBestsellerOptionsMock } from '../../shared/mocks/bestseller-options.mock';
 import { createSetupConfigMock } from '../../shared/mocks/configuration.mock';
 import { mockRequest } from '../../shared/mocks/mock-request.mock';
 import { createSearchResponseMock } from '../../shared/mocks/search-response.mock';
-import type { SetupConfiguration } from '../../shared/types/configuration.type';
-import type { BestsellerOptions } from './bestseller';
 import { bestseller } from './bestseller';
 
 describe('Category Search API', () => {
-  let config: SetupConfiguration;
-  let searchOptions: BestsellerOptions;
-
-  beforeEach(() => {
-    config = createSetupConfigMock();
-    searchOptions = createBestsellerOptionsMock();
-  });
+  const config = createSetupConfigMock();
+  const searchOptions = createBestsellerOptionsMock();
 
   test('request and search type', async () => {
     const expectedRequestType = 'search';
