@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { SEARCH_ENDPOINT_PROD } from '../constants';
+import { SEARCH_ENDPOINT_PROD, SUGGEST_ENDPOINT_PROD } from '../constants';
 import type { SetupConfiguration } from '../types/configuration.type';
 
 export function createSetupConfigMock(
@@ -7,6 +7,7 @@ export function createSetupConfigMock(
 ): Required<SetupConfiguration> {
   const defaults: SetupConfiguration = {
     searchEndpoint: SEARCH_ENDPOINT_PROD,
+    suggestEndpoint: SUGGEST_ENDPOINT_PROD,
     account_id: parseFloat(faker.string.numeric(4)),
     domain_key: `${faker.string.alpha(4)}_com`,
     auth_key: faker.string.alphanumeric(13),
