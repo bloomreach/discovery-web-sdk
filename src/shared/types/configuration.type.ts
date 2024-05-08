@@ -6,5 +6,6 @@ export interface SetupConfiguration {
   domain_key: CatalogParameters['domain_key'];
   auth_key?: AccountParameters['auth_key'];
   searchEndpoint?: string;
+  suggestEndpoint?: string;
   view_id?: CatalogParameters['view_id'];
 }

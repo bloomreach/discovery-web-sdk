@@ -7,12 +7,11 @@ import type { BestsellerOptions } from '../../features/bestseller/bestseller';
 export function createBestsellerOptionsMock(
   overrides?: Partial<BestsellerOptions>,
 ): BestsellerOptions {
-  const defaults = {
+  const defaults: BestsellerOptions = {
     q: faker.commerce.productName(),
     fl: [`pid`, Array.from({ length: 4 }, () => faker.database.column())].join(','),
     start: 0,
     rows: faker.number.int({ min: 1, max: 5 }),
-    'facet.version': 3.0,
     'facet.range': faker.database.column(),
     fq: `${faker.database.column()}: ${faker.lorem.word()}`,
     efq: `${faker.database.column()}: ${faker.lorem.word()}`,
@@ -22,10 +21,8 @@ export function createBestsellerOptionsMock(
     groupby: faker.database.column(),
     group_limit: faker.number.int({ min: 1, max: 5 }),
     group_offset: 0,
-    request_type: 'search',
-    search_type: 'bestseller',
     _br_uid_2: faker.string.uuid(),
-    request_id: faker.string.numeric(13),
+    request_id: Number(faker.string.numeric(13)),
     url: faker.internet.url(),
     ref_url: faker.internet.url(),
     user_id: faker.string.uuid(),
