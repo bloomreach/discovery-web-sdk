@@ -6,7 +6,7 @@ import { mockRequest } from '../../shared/mocks/mock-request.mock';
 import { createSearchResponseMock } from '../../shared/mocks/search-response.mock';
 import { bestseller } from './bestseller';
 
-describe('Category Search API', () => {
+describe('Bestseller API', () => {
   const config = createSetupConfigMock();
   const searchOptions = createBestsellerOptionsMock();
 
