@@ -18,7 +18,7 @@ export async function contentSearch(params: ContentSearchOptions): Promise<Searc
     request_type: 'search',
     search_type: 'keyword',
     'facet.version': '3.0',
-    fl: 'pid',
+    fl: 'item_id',
     start: 0,
   };
 
