@@ -24,6 +24,7 @@ initialize(config);
 
 Now we can utilize the exposed methods to retrieve data from the Bloomreach Discovery platform:
 
+### Product Search API
 ```typescript
 import type { ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
 import { productSearch } from '@bloomreach/discovery-web-sdk';
@@ -31,16 +32,68 @@ import { productSearch } from '@bloomreach/discovery-web-sdk';
 // Set up the search parameters
 const searchOptions: ProductSearchOptions = {
   q: 'Generic Metal Pants',
-  fl: 'pid,title,description',
-  start: 0,
-  rows: 3,
 };
 
 // Retrieve the product data with a search using the provided search parameters
 const data = await productSearch(searchOptions);
+```
 
-// Log out all the matched product documents
-console.log(data.response.docs);
+### Category API
+```typescript
+import type { CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
+import { categorySearch } from '@bloomreach/discovery-web-sdk';
+
+// Set up the search parameters
+const searchOptions: ProductSearchOptions = {
+  q: 'cat92082',
+};
+
+// Retrieve the product data with a search using the provided search parameters
+const data = await categorySearch(searchOptions);
+```
+
+### Bestseller API
+```typescript
+import type { BestsellerOptions } from '@bloomreach/discovery-web-sdk';
+import { bestseller } from '@bloomreach/discovery-web-sdk';
+
+// Set up the search parameters
+const searchOptions: BestsellerOptions = {
+  q: 'Bolts',
+};
+
+// Retrieve the product data with a search using the provided search parameters
+const data = await bestseller(searchOptions);
+```
+
+### Content Search API
+```typescript
+import type { ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
+import { contentSearch } from '@bloomreach/discovery-web-sdk';
+
+// Set up the search parameters
+const searchOptions: ContentSearchOptions = {
+  catalog_name: 'Flowers',
+  q: 'Roses',
+};
+
+// Retrieve the Content data with a search using the provided search parameters
+const data = await contentSearch(searchOptions);
+```
+
+### Autosuggest API
+```typescript
+import type { AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
+import { autosuggest } from '@bloomreach/discovery-web-sdk';
+
+// Set up the search parameters
+const searchOptions: AutosuggestOptions = {
+  catalog_views: 'product:store1,store2|recipe:premium|articles',
+  q: 'Roses',
+};
+
+// Retrieve the suggestions with a search using the provided search parameters
+const data = await autosuggest(searchOptions);
 ```
 
 ## Contributing
