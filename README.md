@@ -38,7 +38,7 @@ const searchOptions: ProductSearchOptions = {
 const data = await productSearch(searchOptions);
 ```
 
-### Category API
+### Category Search API
 ```typescript
 import type { CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
 import { categorySearch } from '@bloomreach/discovery-web-sdk';
