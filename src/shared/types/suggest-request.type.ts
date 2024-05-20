@@ -1,19 +1,18 @@
 import type { AccountParameters } from './account-params.type';
-import type { CallTypeParameters } from './calltype-params.type';
 import type { CORSParameters } from './cors-params.type';
-import type { DisplayParameters } from './display-params.type';
-import type { QueryParameters } from './query-params.type';
+import type { q, request_type, sort } from './parameters';
 import type { TrackingParameters } from './tracking-params.type';
 
 export interface SuggestRequestParameters
   extends AccountParameters,
     CORSParameters,
     TrackingParameters {
-  request_type: CallTypeParameters['request_type'];
+  request_type: request_type;
 
-  q: QueryParameters['q'];
+  q: q;
 
-  sort?: DisplayParameters['sort'];
+  sort?: sort;
+
   /**
    * A list of catalog views that you want to see in your suggestions. You must specify the catalog
    * name within the catalog view. For Product catalogs, the catalog name is the same value as your

@@ -1,11 +1,10 @@
-import type { AccountParameters } from './account-params.type';
-import type { CatalogParameters } from './catalog-params.type';
+import type { account_id, auth_key, domain_key, view_id } from './parameters';
 
 export interface SetupConfiguration {
-  account_id: AccountParameters['account_id'];
-  domain_key: CatalogParameters['domain_key'];
-  auth_key?: AccountParameters['auth_key'];
+  account_id: account_id;
+  domain_key: domain_key;
+  auth_key?: auth_key;
   searchEndpoint?: string;
   suggestEndpoint?: string;
-  view_id?: CatalogParameters['view_id'];
+  view_id?: view_id;
 }
