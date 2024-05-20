@@ -1,15 +1,8 @@
-export interface CallTypeParameters {
-  /**
-   * The type of API request. Value should be search for Product & Category Search.
-   * @default search
-   */
-  request_type: 'search' | 'suggest';
+import type { request_type, search_type } from './parameters';
 
-  /**
-   * The type of search. Value should be "keyword" for Product Search requests, category for "Category" requests.
-   * @default keyword
-   */
-  search_type: 'keyword' | 'category' | 'bestseller';
+export interface CallTypeParameters {
+  request_type: request_type;
+  search_type: search_type;
 }
 
 

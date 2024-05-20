@@ -1,13 +1,7 @@
+import type { account_id, auth_key } from './parameters';
+
 export interface AccountParameters {
-  /**
-   * Account ID
-   */
-  account_id: number;
-
-  /**
-   * Authentication Key
-   */
-  auth_key?: string;
+  account_id: account_id;
+  auth_key?: auth_key;
 }
-
 
