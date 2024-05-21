@@ -1,4 +1,4 @@
-import type { SetupConfiguration } from './types/configuration.type';
+import type { SetupConfiguration } from '../initialize/configuration.type';
 
 export const noConfigMessage = 'Configuration has not been set';
 

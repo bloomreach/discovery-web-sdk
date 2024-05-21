@@ -1,13 +1,12 @@
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
 import { describe, expect, test } from 'vitest';
-import { initialize } from '.';
-import { productSearch } from './features/product-search/product-search';
+import { initialize, productSearch } from '.';
+import { createProductSearchOptionsMock } from './features/search/product-search/product-search-options.mock';
+import { createSearchResponseMock } from './features/search/search-response.mock';
+import { createSetupConfigMock } from './initialize/configuration.mock';
 import { clearConfig, getConfig, noConfigMessage } from './shared/config';
-import { createSetupConfigMock } from './shared/mocks/configuration.mock';
-import { mockRequest } from './shared/mocks/mock-request.mock';
-import { createProductSearchOptionsMock } from './shared/mocks/product-search-options.mock';
-import { createSearchResponseMock } from './shared/mocks/search-response.mock';
+import { mockRequest } from './shared/mock-request.mock';
 
 describe('initializing the SDK', () => {
   const config = createSetupConfigMock();

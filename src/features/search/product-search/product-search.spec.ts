@@ -1,20 +1,20 @@
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
-import { createSetupConfigMock } from '../../shared/mocks/configuration.mock';
-import { createContentSearchOptionsMock } from '../../shared/mocks/content-search-options.mock';
-import { mockRequest } from '../../shared/mocks/mock-request.mock';
-import { createSearchResponseMock } from '../../shared/mocks/search-response.mock';
-import { contentSearch } from './content-search';
+import { createSetupConfigMock } from '../../../initialize/configuration.mock';
+import { mockRequest } from '../../../shared/mock-request.mock';
+import { createSearchResponseMock } from '../search-response.mock';
+import { productSearch } from './product-search';
+import { createProductSearchOptionsMock } from './product-search-options.mock';
 
-describe('Content Search API', () => {
+describe('Product Search API', () => {
   const config = createSetupConfigMock();
-  const searchOptions = createContentSearchOptionsMock();
+  const searchOptions = createProductSearchOptionsMock();
 
   test('request and search type', async () => {
     const expectedRequestType = 'search';
     const expectedSearchType = 'keyword';
 
-    await mockRequest(config, contentSearch, searchOptions, [
+    await mockRequest(config, productSearch, searchOptions, [
       http.get(config.searchEndpoint, ({ request }) => {
         const { searchParams } = new URL(request.url);
 

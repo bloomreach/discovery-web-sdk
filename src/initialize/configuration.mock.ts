@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { SEARCH_ENDPOINT_PROD, SUGGEST_ENDPOINT_PROD } from '../constants';
-import type { SetupConfiguration } from '../types/configuration.type';
+import type { SetupConfiguration } from './configuration.type';
+import { SEARCH_ENDPOINT_PROD, SUGGEST_ENDPOINT_PROD } from '../shared/constants';
 
 export function createSetupConfigMock(
   overrides?: Partial<SetupConfiguration>,

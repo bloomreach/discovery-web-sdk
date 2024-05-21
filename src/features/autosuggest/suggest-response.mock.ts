@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { SuggestResponse } from '../types/suggest-response.type';
+import type { SuggestResponse } from './suggest-response.type';
 
 /*
  * Create array of random length between 1 and 5 and map each index to a value

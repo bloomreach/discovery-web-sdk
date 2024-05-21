@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { SearchResponse } from '../types/search-response.type';
+import type { SearchResponse } from './search-response.type';
 
 /*
  * Create array of random length between 1 and 5 and map each index to a value

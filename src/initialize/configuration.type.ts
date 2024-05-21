@@ -1,4 +1,4 @@
-import type { account_id, auth_key, domain_key, view_id } from './parameters';
+import type { account_id, auth_key, domain_key, view_id } from '../shared/parameters.type';
 
 export interface SetupConfiguration {
   account_id: account_id;
