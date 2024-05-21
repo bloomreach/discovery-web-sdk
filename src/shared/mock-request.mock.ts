@@ -1,7 +1,7 @@
 import type { HttpHandler } from 'msw';
 import { setupServer } from 'msw/node';
-import { initialize } from '../../index';
-import type { SetupConfiguration } from '../types/configuration.type';
+import type { SetupConfiguration } from '../initialize/configuration.type';
+import { initialize } from '../initialize/initialize';
 
 export async function mockRequest<
   T extends (arg: Parameters<T>[0]) => Promise<Awaited<ReturnType<T>>>,

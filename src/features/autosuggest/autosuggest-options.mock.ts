@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { AutosuggestOptions } from '../../features/autosuggest/autosuggest';
+import type { AutosuggestOptions } from './autosuggest';
 
 /*
  * Create mock object with the option to override any of the generated fake values
@@ -8,6 +8,8 @@ export function createAutosuggestOptionsMock(
   overrides?: Partial<AutosuggestOptions>,
 ): AutosuggestOptions {
   const defaults: AutosuggestOptions = {
+    account_id: faker.number.int(),
+    request_type: 'suggest',
     catalog_views: 'product:store1,store2|recipe:premium|articles',
     q: faker.commerce.productName(),
     sort: `${faker.database.column()}+${Math.random() ? 'asc' : 'desc'}`,

@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { SearchRequestParameters } from '../types/search-request.type';
+import type { SearchRequestParameters } from './search-request.type';
 
 /*
  * Create mock object with the option to override any of the generated fake values

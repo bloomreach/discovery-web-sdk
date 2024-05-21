@@ -1,13 +1,13 @@
 import { faker } from '@faker-js/faker';
-import type { ProductSearchOptions } from '../../features/product-search/product-search';
+import type { CategorySearchOptions } from './category-search';
 
 /*
  * Create mock object with the option to override any of the generated fake values
  */
-export function createProductSearchOptionsMock(
-  overrides?: Partial<ProductSearchOptions>,
-): ProductSearchOptions {
-  const defaults: ProductSearchOptions = {
+export function createCategorySearchOptionsMock(
+  overrides?: Partial<CategorySearchOptions>,
+): CategorySearchOptions {
+  const defaults: CategorySearchOptions = {
     q: faker.commerce.productName(),
     fl: [`pid`, Array.from({ length: 4 }, () => faker.database.column())].join(','),
     start: 0,

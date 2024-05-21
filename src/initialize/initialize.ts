@@ -1,5 +1,5 @@
 import { setConfig } from '../shared/config';
-import type { SetupConfiguration } from '../shared/types/configuration.type';
+import type { SetupConfiguration } from './configuration.type';
 
 export function initialize(config: SetupConfiguration) {
   setConfig(config);

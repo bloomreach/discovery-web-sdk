@@ -1,11 +1,11 @@
 import { faker } from '@faker-js/faker';
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
-import { createCategorySearchOptionsMock } from '../../shared/mocks/category-search-options.mock';
-import { createSetupConfigMock } from '../../shared/mocks/configuration.mock';
-import { mockRequest } from '../../shared/mocks/mock-request.mock';
-import { createSearchResponseMock } from '../../shared/mocks/search-response.mock';
+import { createSetupConfigMock } from '../../../initialize/configuration.mock';
+import { mockRequest } from '../../../shared/mock-request.mock';
+import { createSearchResponseMock } from '../search-response.mock';
 import { categorySearch } from './category-search';
+import { createCategorySearchOptionsMock } from './category-search-options.mock';
 
 describe('Category Search API', () => {
   const config = createSetupConfigMock();

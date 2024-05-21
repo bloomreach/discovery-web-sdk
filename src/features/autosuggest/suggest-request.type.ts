@@ -1,17 +1,27 @@
-import type { AccountParameters } from './account-params.type';
-import type { CORSParameters } from './cors-params.type';
-import type { q, request_type, sort } from './parameters';
-import type { TrackingParameters } from './tracking-params.type';
+import type {
+  _br_uid_2,
+  account_id,
+  callback,
+  q,
+  ref_url,
+  request_id,
+  request_type,
+  sort,
+  url,
+  user_id,
+} from '../../shared/parameters.type';
 
-export interface SuggestRequestParameters
-  extends AccountParameters,
-    CORSParameters,
-    TrackingParameters {
-  request_type: request_type;
-
+export interface SuggestRequestParameters {
+  _br_uid_2: _br_uid_2;
+  account_id: account_id;
+  callback?: callback;
   q: q;
-
+  ref_url?: ref_url;
+  request_id?: request_id;
+  request_type: request_type;
   sort?: sort;
+  url: url;
+  user_id?: user_id;
 
   /**
    * A list of catalog views that you want to see in your suggestions. You must specify the catalog

@@ -1,5 +1,5 @@
-import type { SearchRequestParameters } from './types/search-request.type';
-import type { SuggestRequestParameters } from './types/suggest-request.type';
+import type { SuggestRequestParameters } from '../features/autosuggest/suggest-request.type';
+import type { SearchRequestParameters } from '../features/search/search-request.type';
 
 const shouldNotBeEncoded = ['_br_uid_2', 'fq', 'sort'];
 

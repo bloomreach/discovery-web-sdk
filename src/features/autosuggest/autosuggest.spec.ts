@@ -1,10 +1,10 @@
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
-import { createAutosuggestOptionsMock } from '../../shared/mocks/autosuggest-options.mock';
-import { createSetupConfigMock } from '../../shared/mocks/configuration.mock';
-import { mockRequest } from '../../shared/mocks/mock-request.mock';
-import { createSuggestResponseMock } from '../../shared/mocks/suggest-response.mock';
 import { autoSuggest } from './autosuggest';
+import { createSetupConfigMock } from '../../initialize/configuration.mock';
+import { createAutosuggestOptionsMock } from './autosuggest-options.mock';
+import { mockRequest } from '../../shared/mock-request.mock';
+import { createSuggestResponseMock } from './suggest-response.mock';
 
 describe('Autosuggest API', () => {
   const config = createSetupConfigMock();
