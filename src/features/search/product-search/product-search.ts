@@ -17,5 +17,6 @@ export async function productSearch(params: ProductSearchOptions): Promise<Searc
   const queryParams = Object.assign(config, defaults, params);
 
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
-  return fetch(url).then((data) => data.json());
+  const data = await fetch(url);
+  return data.json();
 }

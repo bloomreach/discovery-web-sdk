@@ -18,7 +18,8 @@ export async function getGlobalWidget(id: string, params: GlobalWidgetOptions): 
   const queryParams = Object.assign(config, defaults, params);
 
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/global/${id}`, queryParams);
-  return fetch(url).then((data) => data.json());
+  const data = await fetch(url);
+  return data.json();
 }
 
 export async function getCategoryWidget(
@@ -31,7 +32,8 @@ export async function getCategoryWidget(
   const queryParams = Object.assign(config, defaults, params);
 
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/category/${id}`, queryParams);
-  return fetch(url).then((data) => data.json());
+  const data = await fetch(url);
+  return data.json();
 }
 
 export async function getKeywordWidget(id: string, params: KeywordWidgetOptions): Promise<WidgetResponse> {
@@ -41,7 +43,8 @@ export async function getKeywordWidget(id: string, params: KeywordWidgetOptions)
   const queryParams = Object.assign(config, defaults, params);
 
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/keyword/${id}`, queryParams);
-  return fetch(url).then((data) => data.json());
+  const data = await fetch(url);
+  return data.json();
 }
 
 export async function getItemWidget(id: string, params: ItemWidgetOptions): Promise<WidgetResponse> {
@@ -51,7 +54,8 @@ export async function getItemWidget(id: string, params: ItemWidgetOptions): Prom
   const queryParams = Object.assign(config, defaults, params);
 
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/item/${id}`, queryParams);
-  return fetch(url).then((data) => data.json());
+  const data = await fetch(url);
+  return data.json();
 }
 
 export async function getPersonalizedWidget(
@@ -67,7 +71,8 @@ export async function getPersonalizedWidget(
     `${widgetEndpoint || WIDGET_ENDPOINT_PROD}/personalized/${id}`,
     queryParams,
   );
-  return fetch(url).then((data) => data.json());
+  const data = await fetch(url);
+  return data.json();
 }
 
 export async function getRecentlyViewedWidget(
@@ -83,5 +88,6 @@ export async function getRecentlyViewedWidget(
     `${widgetEndpoint || WIDGET_ENDPOINT_PROD}/recentlyviewed/${id}`,
     queryParams,
   );
-  return fetch(url).then((data) => data.json());
+  const data = await fetch(url);
+  return data.json();
 }
