@@ -39,30 +39,28 @@ export interface WidgetRequest {
   filter?: filter;
 }
 
-export type WidgetTypes = 'category' | 'keyword' | 'item' | 'personalized' | 'global';
-
 export interface GlobalWidgetRequest extends WidgetRequest {}
 
 export interface CategoryWidgetRequest extends WidgetRequest {
   cat_id: cat_id;
-  facet: facet;
+  facet?: facet;
 }
 
 export interface KeywordWidgetRequest extends WidgetRequest {
   query: query;
-  facet: facet;
+  facet?: facet;
 }
 
 export interface PersonalizedWidgetRequest extends WidgetRequest {
   query: query;
   user_id: user_id;
-  facet: facet;
+  facet?: facet;
 }
 
 export interface RecentlyViewedWidgetRequest extends WidgetRequest {
   query: query;
   user_id?: user_id;
-  facet: facet;
+  facet?: facet;
 }
 
 export interface ItemWidgetRequest extends WidgetRequest {
