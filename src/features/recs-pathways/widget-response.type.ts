@@ -27,14 +27,14 @@ export interface WidgetResponseDoc {
   title: string
 }
 
-export interface WidgetResponse {
+export interface WidgetResponseResponse {
   numFound: number
   start: number
   docs: WidgetResponseDoc[]
 }
 
-export interface RecommendationWidgetsResponse {
-  response: WidgetResponse
+export interface WidgetResponse {
+  response: WidgetResponseResponse
   metadata: Metadata
 }
 
