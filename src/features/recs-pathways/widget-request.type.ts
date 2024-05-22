@@ -14,7 +14,6 @@ import type {
 } from '../../shared/parameters.type';
 import type {
   cat_id,
-  cdp_segments,
   facet,
   fields,
   filter,
@@ -23,7 +22,7 @@ import type {
   segment,
 } from './widget-parameters.type';
 
-interface WidgetRequest {
+export interface WidgetRequest {
   _br_uid_2: _br_uid_2;
   account_id: account_id;
   auth_key?: auth_key;
@@ -38,7 +37,6 @@ interface WidgetRequest {
   segment?: segment;
   fields?: fields;
   filter?: filter;
-  cdp_segments?: cdp_segments;
 }
 
 export type WidgetTypes = 'category' | 'keyword' | 'item' | 'personalized' | 'global';
@@ -61,7 +59,7 @@ export interface PersonalizedWidgetRequest extends WidgetRequest {
   facet: facet;
 }
 
-export interface RecentlyViewedPersonalizedWidgetRequest extends WidgetRequest {
+export interface RecentlyViewedWidgetRequest extends WidgetRequest {
   query: query;
   user_id?: user_id;
   facet: facet;

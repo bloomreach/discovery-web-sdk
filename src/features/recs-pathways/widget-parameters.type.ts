@@ -40,5 +40,4 @@ export type item_ids = string[];
  */
 export type query = string;
 
-export type cdp_segments = string;
 export type segment = string;
