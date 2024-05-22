@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { AutosuggestOptions } from './autosuggest';
+import type { AutosuggestOptions } from './autosuggest-options.type';
 
 /*
  * Create mock object with the option to override any of the generated fake values

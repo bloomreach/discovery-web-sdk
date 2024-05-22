@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { ProductSearchOptions } from './product-search';
+import type { ProductSearchOptions } from './product-search-options.type';
 
 /*
  * Create mock object with the option to override any of the generated fake values
