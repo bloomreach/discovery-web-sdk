@@ -8,8 +8,6 @@ export function createAutosuggestOptionsMock(
   overrides?: Partial<AutosuggestOptions>,
 ): AutosuggestOptions {
   const defaults: AutosuggestOptions = {
-    account_id: faker.number.int(),
-    request_type: 'suggest',
     catalog_views: 'product:store1,store2|recipe:premium|articles',
     q: faker.commerce.productName(),
     sort: `${faker.database.column()}+${Math.random() ? 'asc' : 'desc'}`,
