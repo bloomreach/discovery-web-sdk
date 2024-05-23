@@ -13,14 +13,19 @@ describe('Autosuggest API', () => {
   test('request and search type', async () => {
     const expectedRequestType = 'suggest';
 
-    await mockRequest(config, autoSuggest, searchOptions, [
-      http.get(config.suggestEndpoint, ({ request }) => {
-        const { searchParams } = new URL(request.url);
+    await mockRequest(
+      config,
+      autoSuggest,
+      [searchOptions],
+      [
+        http.get(config.suggestEndpoint, ({ request }) => {
+          const { searchParams } = new URL(request.url);
 
-        expect(searchParams.get('request_type')).toEqual(expectedRequestType);
+          expect(searchParams.get('request_type')).toEqual(expectedRequestType);
 
-        return HttpResponse.json(createSuggestResponseMock());
-      }),
-    ]);
+          return HttpResponse.json(createSuggestResponseMock());
+        }),
+      ],
+    );
   });
 });

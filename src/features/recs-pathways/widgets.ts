@@ -17,7 +17,7 @@ export async function getGlobalWidget(id: string, params: GlobalWidgetOptions): 
 
   const queryParams = Object.assign(config, defaults, params);
 
-  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/global/${id}`, queryParams);
+  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}global/${id}`, queryParams);
   const data = await fetch(url);
   return data.json();
 }
@@ -31,7 +31,7 @@ export async function getCategoryWidget(
 
   const queryParams = Object.assign(config, defaults, params);
 
-  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/category/${id}`, queryParams);
+  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}category/${id}`, queryParams);
   const data = await fetch(url);
   return data.json();
 }
@@ -42,7 +42,7 @@ export async function getKeywordWidget(id: string, params: KeywordWidgetOptions)
 
   const queryParams = Object.assign(config, defaults, params);
 
-  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/keyword/${id}`, queryParams);
+  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}keyword/${id}`, queryParams);
   const data = await fetch(url);
   return data.json();
 }
@@ -53,7 +53,7 @@ export async function getItemWidget(id: string, params: ItemWidgetOptions): Prom
 
   const queryParams = Object.assign(config, defaults, params);
 
-  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}/item/${id}`, queryParams);
+  const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}item/${id}`, queryParams);
   const data = await fetch(url);
   return data.json();
 }
@@ -68,7 +68,7 @@ export async function getPersonalizedWidget(
   const queryParams = Object.assign(config, defaults, params);
 
   const url = buildApiUrl(
-    `${widgetEndpoint || WIDGET_ENDPOINT_PROD}/personalized/${id}`,
+    `${widgetEndpoint || WIDGET_ENDPOINT_PROD}personalized/${id}`,
     queryParams,
   );
   const data = await fetch(url);
@@ -85,7 +85,7 @@ export async function getRecentlyViewedWidget(
   const queryParams = Object.assign(config, defaults, params);
 
   const url = buildApiUrl(
-    `${widgetEndpoint || WIDGET_ENDPOINT_PROD}/recentlyviewed/${id}`,
+    `${widgetEndpoint || WIDGET_ENDPOINT_PROD}recentlyviewed/${id}`,
     queryParams,
   );
   const data = await fetch(url);

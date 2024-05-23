@@ -17,15 +17,20 @@ describe('Category Search API', () => {
     const expectedRequestType = 'search';
     const expectedSearchType = 'category';
 
-    await mockRequest(config, categorySearch, searchOptions, [
-      http.get(config.searchEndpoint, ({ request }) => {
-        const { searchParams } = new URL(request.url);
+    await mockRequest(
+      config,
+      categorySearch,
+      [searchOptions],
+      [
+        http.get(config.searchEndpoint, ({ request }) => {
+          const { searchParams } = new URL(request.url);
 
-        expect(searchParams.get('request_type')).toEqual(expectedRequestType);
-        expect(searchParams.get('search_type')).toEqual(expectedSearchType);
+          expect(searchParams.get('request_type')).toEqual(expectedRequestType);
+          expect(searchParams.get('search_type')).toEqual(expectedSearchType);
 
-        return HttpResponse.json(createSearchResponseMock());
-      }),
-    ]);
+          return HttpResponse.json(createSearchResponseMock());
+        }),
+      ],
+    );
   });
 });
