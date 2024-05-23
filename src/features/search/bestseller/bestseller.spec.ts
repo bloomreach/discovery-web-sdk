@@ -8,21 +8,29 @@ import { createSearchResponseMock } from '../search-response.mock';
 
 describe('Bestseller API', () => {
   const config = createSetupConfigMock();
-  const searchOptions = createBestsellerOptionsMock();
+  const searchOptions = createBestsellerOptionsMock({
+    q: 'testQuery',
+  });
 
   test('request and search type', async () => {
     const expectedRequestType = 'search';
     const expectedSearchType = 'bestseller';
 
-    await mockRequest(config, bestseller, searchOptions, [
-      http.get(config.searchEndpoint, ({ request }) => {
-        const { searchParams } = new URL(request.url);
+    await mockRequest(
+      config,
+      bestseller,
+      [searchOptions],
+      [
+        http.get(config.searchEndpoint, ({ request }) => {
+          const { searchParams } = new URL(request.url);
 
-        expect(searchParams.get('request_type')).toEqual(expectedRequestType);
-        expect(searchParams.get('search_type')).toEqual(expectedSearchType);
+          expect(searchParams.get('q')).toBe('testQuery');
+          expect(searchParams.get('request_type')).toEqual(expectedRequestType);
+          expect(searchParams.get('search_type')).toEqual(expectedSearchType);
 
-        return HttpResponse.json(createSearchResponseMock());
-      }),
-    ]);
+          return HttpResponse.json(createSearchResponseMock());
+        }),
+      ],
+    );
   });
 });

@@ -29,7 +29,7 @@ describe('initializing the SDK', () => {
 
   test('calling an API with initial config options set', async () => {
     const productSearchOptions = createProductSearchOptionsMock();
-    await mockRequest(config, productSearch, productSearchOptions, [
+    await mockRequest(config, productSearch, [productSearchOptions], [
       http.get(config.searchEndpoint, ({ request }) => {
         expect(request.url.includes(encodeURIComponent(config.domain_key))).toBe(true);
         return HttpResponse.json(createSearchResponseMock(), { status: 200 });
