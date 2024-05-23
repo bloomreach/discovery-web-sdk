@@ -64,5 +64,5 @@ export interface RecentlyViewedWidgetRequest extends WidgetRequest {
 }
 
 export interface ItemWidgetRequest extends WidgetRequest {
-  item_ids: item_ids[];
+  item_ids: item_ids;
 }
