@@ -10,11 +10,11 @@ First initialize the SDK by providing a set of account and product catalog speci
 
 ### Product Search API
 ```typescript
-import type { ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
+import type { Configuration, ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
 import { productSearch } from '@bloomreach/discovery-web-sdk';
 
 // Set the account and catalog configuration
-const config: SetupConfiguration = {
+const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };
@@ -30,11 +30,11 @@ const data = await productSearch(config, searchOptions);
 
 ### Category Search API
 ```typescript
-import type { CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
+import type { Configuration, CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
 import { categorySearch } from '@bloomreach/discovery-web-sdk';
 
 // Set the account and catalog configuration
-const config: SetupConfiguration = {
+const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };
@@ -50,11 +50,11 @@ const data = await categorySearch(config, searchOptions);
 
 ### Bestseller API
 ```typescript
-import type { BestsellerOptions } from '@bloomreach/discovery-web-sdk';
+import type { Configuration, BestsellerOptions } from '@bloomreach/discovery-web-sdk';
 import { bestseller } from '@bloomreach/discovery-web-sdk';
 
 // Set the account and catalog configuration
-const config: SetupConfiguration = {
+const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };
@@ -70,11 +70,11 @@ const data = await bestseller(config, searchOptions);
 
 ### Content Search API
 ```typescript
-import type { ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
+import type { Configuration, ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
 import { contentSearch } from '@bloomreach/discovery-web-sdk';
 
 // Set the account and catalog configuration
-const config: SetupConfiguration = {
+const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };
@@ -91,11 +91,11 @@ const data = await contentSearch(config, searchOptions);
 
 ### Autosuggest API
 ```typescript
-import type { AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
+import type { Configuration, AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
 import { autosuggest } from '@bloomreach/discovery-web-sdk';
 
 // Set the account and catalog configuration
-const config: SetupConfiguration = {
+const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };

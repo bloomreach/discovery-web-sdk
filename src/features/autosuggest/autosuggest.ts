@@ -1,4 +1,4 @@
-import type { Configuration } from '../../initialize/configuration.type';
+import type { Configuration } from '../../shared/configuration.type';
 import { SUGGEST_ENDPOINT_PROD } from '../../shared/constants';
 import { buildApiUrl } from '../../shared/url-builders';
 import type { AutosuggestOptions } from './autosuggest-options.type';

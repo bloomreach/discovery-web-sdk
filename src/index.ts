@@ -5,11 +5,10 @@ export type { CategorySearchOptions } from './features/search/category-search/ca
 export type { ContentSearchOptions } from './features/search/content-search/content-search-options.type';
 export type { ProductSearchOptions } from './features/search/product-search/product-search-options.type';
 export type { SearchResponse } from './features/search/search-response.type';
-export type { Configuration as SetupConfiguration } from './initialize/configuration.type';
+export type { Configuration } from './shared/configuration.type';
 
 export { autoSuggest } from './features/autosuggest/autosuggest';
 export { bestseller } from './features/search/bestseller/bestseller';
 export { categorySearch } from './features/search/category-search/category-search';
 export { contentSearch } from './features/search/content-search/content-search';
 export { productSearch } from './features/search/product-search/product-search';
-export { initialize } from './initialize/initialize';

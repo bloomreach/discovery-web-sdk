@@ -2,9 +2,9 @@ import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
 import { createBestsellerOptionsMock } from './bestseller-options.mock';
 import { bestseller } from './bestseller';
-import { createSetupConfigMock } from '../../../initialize/configuration.mock';
 import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
+import { createSetupConfigMock } from '../../../shared/configuration.mock';
 
 describe('Bestseller API', () => {
   const config = createSetupConfigMock();

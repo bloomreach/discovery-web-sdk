@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
-import { createSetupConfigMock } from '../../initialize/configuration.mock';
+import { createSetupConfigMock } from '../../shared/configuration.mock';
 import { mockRequest } from '../../shared/mock-request.mock';
 import {
   createCategoryWidgetOptionsMock,
@@ -12,7 +12,14 @@ import {
   createRecentlyViewedWidgetOptionsMock,
 } from './widget-options.mock';
 import { createWidgetResponseMock } from './widget-response.mock';
-import { getCategoryWidget, getGlobalWidget, getItemWidget, getKeywordWidget, getPersonalizedWidget, getRecentlyViewedWidget } from './widgets';
+import {
+  getCategoryWidget,
+  getGlobalWidget,
+  getItemWidget,
+  getKeywordWidget,
+  getPersonalizedWidget,
+  getRecentlyViewedWidget,
+} from './widgets';
 
 describe('GlobalWidget API', () => {
   const config = createSetupConfigMock();

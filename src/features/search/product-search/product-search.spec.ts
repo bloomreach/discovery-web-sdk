@@ -1,10 +1,10 @@
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
-import { createSetupConfigMock } from '../../../initialize/configuration.mock';
 import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
 import { productSearch } from './product-search';
 import { createProductSearchOptionsMock } from './product-search-options.mock';
+import { createSetupConfigMock } from '../../../shared/configuration.mock';
 
 describe('Product Search API', () => {
   const config = createSetupConfigMock();
