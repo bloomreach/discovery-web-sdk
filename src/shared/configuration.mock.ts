@@ -1,10 +1,12 @@
 import { faker } from '@faker-js/faker';
 import type { Configuration } from './configuration.type';
-import { SEARCH_ENDPOINT_PROD, SUGGEST_ENDPOINT_PROD, WIDGET_ENDPOINT_PROD } from '../shared/constants';
+import {
+  SEARCH_ENDPOINT_PROD,
+  SUGGEST_ENDPOINT_PROD,
+  WIDGET_ENDPOINT_PROD,
+} from "./constants";
 
-export function createSetupConfigMock(
-  overrides?: Partial<Configuration>,
-): Required<Configuration> {
+export function createSetupConfigMock(overrides?: Partial<Configuration>): Required<Configuration> {
   const defaults: Configuration = {
     searchEndpoint: SEARCH_ENDPOINT_PROD,
     suggestEndpoint: SUGGEST_ENDPOINT_PROD,
