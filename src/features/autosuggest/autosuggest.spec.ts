@@ -14,9 +14,8 @@ describe('Autosuggest API', () => {
     const expectedRequestType = 'suggest';
 
     await mockRequest(
-      config,
       autoSuggest,
-      [searchOptions],
+      [config, searchOptions],
       [
         http.get(config.suggestEndpoint, ({ request }) => {
           const { searchParams } = new URL(request.url);

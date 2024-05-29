@@ -17,9 +17,8 @@ describe('Bestseller API', () => {
     const expectedSearchType = 'bestseller';
 
     await mockRequest(
-      config,
       bestseller,
-      [searchOptions],
+      [config, searchOptions],
       [
         http.get(config.searchEndpoint, ({ request }) => {
           const { searchParams } = new URL(request.url);

@@ -15,9 +15,8 @@ describe('Content Search API', () => {
     const expectedSearchType = 'keyword';
 
     await mockRequest(
-      config,
       contentSearch,
-      [searchOptions],
+      [config, searchOptions],
       [
         http.get(config.searchEndpoint, ({ request }) => {
           const { searchParams } = new URL(request.url);

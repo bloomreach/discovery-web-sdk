@@ -1,14 +1,14 @@
-import type { SetupConfiguration } from '../initialize/configuration.type';
+import type { Configuration } from '../initialize/configuration.type';
 
 export const noConfigMessage = 'Configuration has not been set';
 
-let configuration: SetupConfiguration | null = null;
+let configuration: Configuration | null = null;
 
-export function setConfig(config: SetupConfiguration): void {
+export function setConfig(config: Configuration): void {
   configuration = config;
 }
 
-export function getConfig(): SetupConfiguration {
+export function getConfig(): Configuration {
   if (configuration === null) {
     throw Error(noConfigMessage);
   }

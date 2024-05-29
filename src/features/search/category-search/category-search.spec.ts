@@ -18,9 +18,8 @@ describe('Category Search API', () => {
     const expectedSearchType = 'category';
 
     await mockRequest(
-      config,
       categorySearch,
-      [searchOptions],
+      [config, searchOptions],
       [
         http.get(config.searchEndpoint, ({ request }) => {
           const { searchParams } = new URL(request.url);

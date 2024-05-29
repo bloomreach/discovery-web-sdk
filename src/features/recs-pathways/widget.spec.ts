@@ -21,9 +21,8 @@ describe('GlobalWidget API', () => {
 
   test('required parameters', async () => {
     await mockRequest(
-      config,
       getGlobalWidget,
-      [widgetId, params],
+      [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}global/${widgetId}`, () => {
           return HttpResponse.json(createWidgetResponseMock());
@@ -43,9 +42,8 @@ describe('CategoryWidget API', () => {
 
   test('required parameters', async () => {
     await mockRequest(
-      config,
       getCategoryWidget,
-      [widgetId, params],
+      [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}category/${widgetId}`, ({ request }) => {
           const { searchParams } = new URL(request.url);
@@ -67,9 +65,8 @@ describe('KeywordWidget API', () => {
 
   test('required parameters', async () => {
     await mockRequest(
-      config,
       getKeywordWidget,
-      [widgetId, params],
+      [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}keyword/${widgetId}`, ({ request }) => {
           const { searchParams } = new URL(request.url);
@@ -91,9 +88,8 @@ describe('ItemWidget API', () => {
 
   test('required parameters', async () => {
     await mockRequest(
-      config,
       getItemWidget,
-      [widgetId, params],
+      [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}item/${widgetId}`, ({ request }) => {
           const { searchParams } = new URL(request.url);
@@ -117,9 +113,8 @@ describe('PersonalizedWidget API', () => {
 
   test('required parameters', async () => {
     await mockRequest(
-      config,
       getPersonalizedWidget,
-      [widgetId, params],
+      [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}personalized/${widgetId}`, ({ request }) => {
           const { searchParams } = new URL(request.url);
@@ -142,9 +137,8 @@ describe('RecentlyViewedWidget API', () => {
 
   test('required parameters', async () => {
     await mockRequest(
-      config,
       getRecentlyViewedWidget,
-      [widgetId, params],
+      [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}recentlyviewed/${widgetId}`, ({ request }) => {
           const { searchParams } = new URL(request.url);

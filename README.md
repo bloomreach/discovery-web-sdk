@@ -8,9 +8,10 @@ data in your applications.
 
 First initialize the SDK by providing a set of account and product catalog specific options
 
+### Product Search API
 ```typescript
-import type { SetupConfiguration } from '@bloomreach/discovery-web-sdk';
-import { initialize } from '@bloomreach/discovery-web-sdk';
+import type { ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
+import { productSearch } from '@bloomreach/discovery-web-sdk';
 
 // Set the account and catalog configuration
 const config: SetupConfiguration = {
@@ -18,24 +19,13 @@ const config: SetupConfiguration = {
   domain_key: 'example_com',
 };
 
-// Initialize the SDK with the provided configuration
-initialize(config);
-```
-
-Now we can utilize the exposed methods to retrieve data from the Bloomreach Discovery platform:
-
-### Product Search API
-```typescript
-import type { ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
-import { productSearch } from '@bloomreach/discovery-web-sdk';
-
 // Set up the search parameters
 const searchOptions: ProductSearchOptions = {
   q: 'Generic Metal Pants',
 };
 
 // Retrieve the product data with a search using the provided search parameters
-const data = await productSearch(searchOptions);
+const data = await productSearch(config, searchOptions);
 ```
 
 ### Category Search API
@@ -43,13 +33,19 @@ const data = await productSearch(searchOptions);
 import type { CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
 import { categorySearch } from '@bloomreach/discovery-web-sdk';
 
+// Set the account and catalog configuration
+const config: SetupConfiguration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
+
 // Set up the search parameters
 const searchOptions: ProductSearchOptions = {
   q: 'cat92082',
 };
 
 // Retrieve the product data with a search using the provided search parameters
-const data = await categorySearch(searchOptions);
+const data = await categorySearch(config, searchOptions);
 ```
 
 ### Bestseller API
@@ -57,19 +53,31 @@ const data = await categorySearch(searchOptions);
 import type { BestsellerOptions } from '@bloomreach/discovery-web-sdk';
 import { bestseller } from '@bloomreach/discovery-web-sdk';
 
+// Set the account and catalog configuration
+const config: SetupConfiguration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
+
 // Set up the search parameters
 const searchOptions: BestsellerOptions = {
   q: 'Bolts',
 };
 
 // Retrieve the product data with a search using the provided search parameters
-const data = await bestseller(searchOptions);
+const data = await bestseller(config, searchOptions);
 ```
 
 ### Content Search API
 ```typescript
 import type { ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
 import { contentSearch } from '@bloomreach/discovery-web-sdk';
+
+// Set the account and catalog configuration
+const config: SetupConfiguration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
 
 // Set up the search parameters
 const searchOptions: ContentSearchOptions = {
@@ -78,13 +86,19 @@ const searchOptions: ContentSearchOptions = {
 };
 
 // Retrieve the Content data with a search using the provided search parameters
-const data = await contentSearch(searchOptions);
+const data = await contentSearch(config, searchOptions);
 ```
 
 ### Autosuggest API
 ```typescript
 import type { AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
 import { autosuggest } from '@bloomreach/discovery-web-sdk';
+
+// Set the account and catalog configuration
+const config: SetupConfiguration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
 
 // Set up the search parameters
 const searchOptions: AutosuggestOptions = {
@@ -93,7 +107,7 @@ const searchOptions: AutosuggestOptions = {
 };
 
 // Retrieve the suggestions with a search using the provided search parameters
-const data = await autosuggest(searchOptions);
+const data = await autosuggest(config, searchOptions);
 ```
 
 ## Contributing
