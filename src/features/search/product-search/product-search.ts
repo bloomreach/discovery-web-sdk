@@ -1,12 +1,15 @@
-import { getConfig } from '../../../shared/config';
+import type { Configuration } from '../../../initialize/configuration.type';
 import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
 import { buildApiUrl } from '../../../shared/url-builders';
 import type { SearchRequestParameters } from '../search-request.type';
 import type { SearchResponse } from '../search-response.type';
 import type { ProductSearchOptions } from './product-search-options.type';
 
-export async function productSearch(params: ProductSearchOptions): Promise<SearchResponse> {
-  const { searchEndpoint, ...config } = getConfig();
+export async function productSearch(
+  configuration: Configuration,
+  options: ProductSearchOptions,
+): Promise<SearchResponse> {
+  const { searchEndpoint, ...config } = configuration;
   const defaults: Partial<SearchRequestParameters> = {
     request_type: 'search',
     search_type: 'keyword',
@@ -15,7 +18,7 @@ export async function productSearch(params: ProductSearchOptions): Promise<Searc
     start: 0,
   };
 
-  const queryParams = Object.assign(config, defaults, params);
+  const queryParams = Object.assign(config, defaults, options);
 
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
   const data = await fetch(url);
