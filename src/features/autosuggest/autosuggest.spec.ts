@@ -1,9 +1,9 @@
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
-import { autoSuggest } from './autosuggest';
-import { createSetupConfigMock } from '../../initialize/configuration.mock';
-import { createAutosuggestOptionsMock } from './autosuggest-options.mock';
+import { createSetupConfigMock } from '../../shared/configuration.mock';
 import { mockRequest } from '../../shared/mock-request.mock';
+import { autoSuggest } from './autosuggest';
+import { createAutosuggestOptionsMock } from './autosuggest-options.mock';
 import { createSuggestResponseMock } from './suggest-response.mock';
 
 describe('Autosuggest API', () => {
