@@ -9,6 +9,7 @@ data in your applications.
 First initialize the SDK by providing a set of account and product catalog specific options
 
 ### Product Search API
+
 ```typescript
 import type { Configuration, ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
 import { productSearch } from '@bloomreach/discovery-web-sdk';
@@ -29,6 +30,7 @@ const data = await productSearch(config, searchOptions);
 ```
 
 ### Category Search API
+
 ```typescript
 import type { Configuration, CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
 import { categorySearch } from '@bloomreach/discovery-web-sdk';
@@ -49,6 +51,7 @@ const data = await categorySearch(config, searchOptions);
 ```
 
 ### Bestseller API
+
 ```typescript
 import type { Configuration, BestsellerOptions } from '@bloomreach/discovery-web-sdk';
 import { bestseller } from '@bloomreach/discovery-web-sdk';
@@ -69,6 +72,7 @@ const data = await bestseller(config, searchOptions);
 ```
 
 ### Content Search API
+
 ```typescript
 import type { Configuration, ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
 import { contentSearch } from '@bloomreach/discovery-web-sdk';
@@ -90,6 +94,7 @@ const data = await contentSearch(config, searchOptions);
 ```
 
 ### Autosuggest API
+
 ```typescript
 import type { Configuration, AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
 import { autosuggest } from '@bloomreach/discovery-web-sdk';
@@ -110,9 +115,41 @@ const searchOptions: AutosuggestOptions = {
 const data = await autosuggest(config, searchOptions);
 ```
 
-## Contributing
+### Recommendations & Pathways API
 
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) before getting started.
+```typescript
+import {
+  CategoryWidgetOptions,
+  Configuration,
+  WidgetResponse,
+  getCategoryWidget,
+} from '@bloomreach/discovery-web-sdk';
+
+// Set the account and catalog configuration
+const config: Configuration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
+
+// Set up the search parameters
+const searchOptions: CategoryWidgetOptions = {
+  _br_uid_2: 'test',
+  start: 0,
+  rows: 10,
+  url: 'http://example.com',
+  ref_url: 'http://google.com',
+  request_id: 1234,
+  cat_id: 'cat123959',
+};
+
+const widgetId = 'my_widget_id';
+
+// Retrieve the widget using the widgetId and parameters
+const widget = getCategoryWidget(widgetId, config, searchOptions);
+```
+
+Similar functions and types are exposed for all widget types: Global, Item, Category, Keyword, Personalized
+and RecentlyViewed.
 
 ## License
 
