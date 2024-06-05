@@ -10,6 +10,9 @@ The SDK currently requires:
 
 - [Node.js 22+](https://nodejs.org)
 
+## Contribution & Development
+See [./CONTRIBUTING.md].
+
 ## Getting Started
 
 ### Installation
