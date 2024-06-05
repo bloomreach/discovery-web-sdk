@@ -6,16 +6,35 @@ data in your applications.
 
 ## Requirements
 
-The project currently requires:
+The SDK currently requires:
 
-- Node.js 22+
-- PNPM 9+
+- [Node.js 22+](https://nodejs.org)
 
 ## Getting Started
 
-First initialize the SDK by providing a set of account and product catalog specific options
+### Installation
 
-### Product Search API
+NPM:
+
+```sh
+npm add @bloomreach/discovery-web-sdk
+```
+
+PNPM:
+
+```sh
+pnpm add @bloomreach/discovery-web-sdk
+```
+
+Yarn:
+
+```sh
+yarn add @bloomreach/discovery-web-sdk
+```
+
+### Usage examples
+
+#### Product Search API
 
 ```typescript
 import type { Configuration, ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
@@ -30,13 +49,18 @@ const config: Configuration = {
 // Set up the search parameters
 const searchOptions: ProductSearchOptions = {
   q: 'Generic Metal Pants',
+  fl: 'pid,title,description,brand,price,thumb_image',
+  start: 0,
+  rows: 10,
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
 };
 
 // Retrieve the product data with a search using the provided search parameters
 const data = await productSearch(config, searchOptions);
 ```
 
-### Category Search API
+#### Category Search API
 
 ```typescript
 import type { Configuration, CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
@@ -49,15 +73,20 @@ const config: Configuration = {
 };
 
 // Set up the search parameters
-const searchOptions: ProductSearchOptions = {
+const searchOptions: CategorySearchOptions = {
   q: 'cat92082',
+  fl: 'pid,title,description,brand,price,thumb_image',
+  start: 0,
+  rows: 10,
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
 };
 
 // Retrieve the product data with a search using the provided search parameters
 const data = await categorySearch(config, searchOptions);
 ```
 
-### Bestseller API
+#### Bestseller API
 
 ```typescript
 import type { Configuration, BestsellerOptions } from '@bloomreach/discovery-web-sdk';
@@ -72,13 +101,18 @@ const config: Configuration = {
 // Set up the search parameters
 const searchOptions: BestsellerOptions = {
   q: 'Bolts',
+  fl: 'pid,title,description,brand,price,thumb_image',
+  start: 0,
+  rows: 10,
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
 };
 
 // Retrieve the product data with a search using the provided search parameters
 const data = await bestseller(config, searchOptions);
 ```
 
-### Content Search API
+#### Content Search API
 
 ```typescript
 import type { Configuration, ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
@@ -94,13 +128,18 @@ const config: Configuration = {
 const searchOptions: ContentSearchOptions = {
   catalog_name: 'Flowers',
   q: 'Roses',
+  fl: 'pid,title,description,brand,price,thumb_image',
+  start: 0,
+  rows: 10,
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
 };
 
 // Retrieve the Content data with a search using the provided search parameters
 const data = await contentSearch(config, searchOptions);
 ```
 
-### Autosuggest API
+#### Autosuggest API
 
 ```typescript
 import type { Configuration, AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
@@ -116,13 +155,15 @@ const config: Configuration = {
 const searchOptions: AutosuggestOptions = {
   catalog_views: 'product:store1,store2|recipe:premium|articles',
   q: 'Roses',
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
 };
 
 // Retrieve the suggestions with a search using the provided search parameters
 const data = await autosuggest(config, searchOptions);
 ```
 
-### Recommendations & Pathways API
+#### Recommendations & Pathways API
 
 ```typescript
 import {
@@ -140,13 +181,13 @@ const config: Configuration = {
 
 // Set up the search parameters
 const searchOptions: CategoryWidgetOptions = {
-  _br_uid_2: 'test',
+  cat_id: 'cat123959',
   start: 0,
   rows: 10,
   url: 'http://example.com',
   ref_url: 'http://google.com',
   request_id: 1234,
-  cat_id: 'cat123959',
+  _br_uid_2: 'test',
 };
 
 const widgetId = 'my_widget_id';
@@ -155,8 +196,13 @@ const widgetId = 'my_widget_id';
 const widget = getCategoryWidget(widgetId, config, searchOptions);
 ```
 
-Similar functions and types are exposed for all widget types: Global, Item, Category, Keyword, Personalized
-and RecentlyViewed.
+Similar functions and types are exposed for all widget types:
+- `getGlobalWidget`
+- `getKeywordWidget`
+- `getCategoryWidget`
+- `getItemWidget`
+- `getPersonalizedWidget`
+- `getRecentlyViewedWidget`
 
 ## License
 
