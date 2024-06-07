@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bloomreach/discovery-web-sdk"
+    "url": "git+https://github.com/bloomreach/discovery-web-sdk.git"
   },
   "type": "module",
   "exports": {
