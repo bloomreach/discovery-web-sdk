@@ -1,5 +1,5 @@
 name: Deploy TSDoc
-run-name: ${{github.workflow}} (${{github.event_name}} on ${{ github.ref_name}}:${{github.head_ref}}) - ${{github.run_id}}
+run-name: ${{github.workflow}} (${{github.event_name}} on ${{ github.ref_name}}:${{github.ref}})
 
 on:
   push:
