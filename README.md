@@ -35,6 +35,9 @@ Yarn:
 yarn add @bloomreach/discovery-web-sdk
 ```
 
+### Type documentation
+The TSDoc for the SDK is available [here](https://bloomreach.github.io/discovery-web-sdk).
+
 ### Usage examples
 
 #### Product Search API
