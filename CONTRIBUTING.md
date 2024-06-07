@@ -40,7 +40,7 @@
 
 Runtime & package manager:
 
-- Node.js 22+, because it supports the ‘fetch’ API and ESM natively is the latest LTS.
+- Node.js 20+, because it supports the ‘fetch’ API and ESM natively
 - PNPM 9+, if you have [Corepack](https://nodejs.org/api/corepack.html) enabled this should be
   automatically picked up.
 

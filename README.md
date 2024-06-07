@@ -8,7 +8,7 @@ data in your applications.
 
 The SDK currently requires:
 
-- [Node.js 22+](https://nodejs.org)
+- [Node.js 20+](https://nodejs.org)
 
 ## Contribution & Development
 See our [Contribution Guide](./CONTRIBUTING.md).
