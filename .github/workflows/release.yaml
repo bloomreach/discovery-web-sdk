@@ -3,6 +3,12 @@ run-name: ${{github.workflow}} (${{github.event_name}} on ${{ github.ref_name}})
 
 on:
   workflow_dispatch:
+    inputs:
+      dry-run:
+        type: boolean
+        default: false
+        description: Do a dry-run of the release
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -44,11 +50,13 @@ jobs:
       - name: Build distribution assets
         run: pnpm build
 
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+      - name:
+          Verify the integrity of provenance attestations and registry signatures for installed
+          dependencies
         run: pnpm audit signatures
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm exec semantic-release
+        run: pnpm exec semantic-release -d ${{ github.event.inputs.dry-run }}
