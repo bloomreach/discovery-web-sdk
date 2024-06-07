@@ -1,5 +1,6 @@
 name: Release
-run-name: ${{github.workflow}} (${{github.event_name}} on ${{ github.ref_name}}:${{github.ref}})
+run-name: ${{github.workflow}} (${{github.event_name}} on ${{ github.ref_name}})
+
 on:
   workflow_dispatch:
 jobs:
