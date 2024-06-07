@@ -12,6 +12,11 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      GIT_AUTHOR_NAME: Joeri de Gooijer
+      GIT_AUTHOR_EMAIL: joeri.degooijer@bloomreach.com.com
+      GIT_COMMITER_NAME: Joeri de Gooijer
+      GIT_COMMITER_EMAIL: joeri.degooijer@bloomreach.com.com
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
