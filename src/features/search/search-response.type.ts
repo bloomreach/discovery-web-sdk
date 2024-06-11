@@ -1,3 +1,6 @@
+/**
+ * Category facet fields in the search response.
+ */
 interface SearchResponseFacetCountsFacetFieldsCategory {
   count?: number;
   crumb?: string;
@@ -7,6 +10,9 @@ interface SearchResponseFacetCountsFacetFieldsCategory {
   tree_path?: string;
 }
 
+/**
+ * Represents the general facet fields in the search response.
+ */
 interface SearchResponseFacetCountsFacetFieldsGeneral {
   count: number;
   name: string;
@@ -18,22 +24,37 @@ type SearchResponseFacetCountsFacetFields = {
   [key: string]: SearchResponseFacetCountsFacetFieldsGeneral[];
 };
 
+/**
+ * Represents the price range facet counts in the search response.
+ */
 interface SearchResponseFacetCountsFacetRangesPrice {
   count: number;
   start: number;
   end: number;
 }
 
+/**
+ * Represents the facet ranges in the search response.
+ */
 interface SearchResponseFacetCountsFacetRanges {
   price?: SearchResponseFacetCountsFacetRangesPrice[];
 }
 
+/**
+ * Represents the facet counts in the search response.
+ */
 interface SearchResponseFacetCounts {
   facet_ranges?: SearchResponseFacetCountsFacetRanges;
   facet_fields?: SearchResponseFacetCountsFacetFields;
   facet_queries?: object;
 }
 
+/**
+ * Represents a product variant in the search response.
+ */
+/**
+ * Represents a product variant in the search response.
+ */
 interface Variant {
   skuid?: string;
   sku_color_group: string;
@@ -43,6 +64,9 @@ interface Variant {
   sku_price?: number;
 }
 
+/**
+ * Represents a document in the search response.
+ */
 interface SearchResponseDoc {
   sale_price: number;
   price: number;
@@ -59,6 +83,9 @@ interface SearchResponseDoc {
   score?: number;
 }
 
+/**
+ * Represents the response section of the search response.
+ */
 interface SearchResponseResponse {
   numFound?: number;
   start?: number;
@@ -66,40 +93,64 @@ interface SearchResponseResponse {
   maxScore?: number;
 }
 
+/**
+ * Represents a group in the group list of the search response.
+ */
 interface SearchResponseGroupResponseGroupListGroup {
   groupValue: string;
   doclist?: SearchResponseResponse;
 }
 
+/**
+ * Represents a list of groups in the group response of the search response.
+ */
 interface SearchResponseGroupResponseGroupList {
   matches: number;
   groups: SearchResponseGroupResponseGroupListGroup[];
 }
 
+/**
+ * Represents the group response in the search response.
+ */
 interface SearchResponseGroupResponse {
   [groupName: string]: SearchResponseGroupResponseGroupList;
 }
 
+/**
+ * Represents the price statistics fields in the search response.
+ */
 interface SearchResponseStatsStatsFieldsPrice {
   max: number;
   min: number;
 }
 
+/**
+ * Represents the statistics fields in the search response.
+ */
 interface SearchResponseStatsStatsFields {
   price?: SearchResponseStatsStatsFieldsPrice;
   sale_price?: SearchResponseStatsStatsFieldsPrice;
 }
 
+/**
+ * Represents the statistics in the search response.
+ */
 interface SearchResponseStats {
   stats_fields: SearchResponseStatsStatsFields;
 }
 
+/**
+ * Represents the keywords in the search response.
+ */
 interface SearchResponseKeywords {
   'original query': string;
   'redirected query': string;
   'redirected url': string;
 }
 
+/**
+ * Represents the entire search response.
+ */
 export interface SearchResponse {
   response?: SearchResponseResponse;
   group_response?: SearchResponseGroupResponse;

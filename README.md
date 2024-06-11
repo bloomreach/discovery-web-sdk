@@ -210,6 +210,10 @@ Similar functions and types are exposed for all widget types:
 - `getPersonalizedWidget`
 - `getRecentlyViewedWidget`
 
+## Documentation
+
+For more detailed documentation, visit the [Bloomreach Documentation Website](https://documentation.bloomreach.com/discovery/docs/bloomreach-discovery-sdk-1).
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

@@ -5,6 +5,9 @@ import type { ContentSearchRequestParameters } from '../search-request.type';
 import type { SearchResponse } from '../search-response.type';
 import type { ContentSearchOptions } from './content-search-options.type';
 
+/**
+ * Performs a content search using the provided configuration and options.
+ */
 export async function contentSearch(
   configuration: Configuration,
   options: ContentSearchOptions,

@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
-import type { WidgetRequest } from './widget-request.type';
+import type { Configuration } from '../../shared/configuration.type';
+import type { FixedOptions } from '../../shared/fixed-options.type';
 import type {
   CategoryWidgetOptions,
   GlobalWidgetOptions,
@@ -8,9 +9,9 @@ import type {
   PersonalizedWidgetOptions,
   RecentlyViewedWidgetOptions,
 } from './widget-options.type';
-import type { ExcludedOptions } from '../../shared/excluded-parameters.type';
+import type { WidgetRequest } from './widget-request.type';
 
-type BaseWidgetOptions = Omit<WidgetRequest, ExcludedOptions>
+type BaseWidgetOptions = Omit<WidgetRequest, keyof FixedOptions | keyof Configuration>;
 
 /*
  * Using Required<> because we want the mock to contain all possible values and type warnings should
@@ -85,7 +86,7 @@ export function createPersonalizedWidgetOptionsMock(
     ...createBaseWidgetOptionsMock(),
     facet: true,
     user_id: faker.string.alphanumeric(5),
-    query: faker.lorem.words(3)
+    query: faker.lorem.words(3),
   };
 
   return Object.assign(defaults, overrides);
@@ -98,7 +99,7 @@ export function createRecentlyViewedWidgetOptionsMock(
     ...createBaseWidgetOptionsMock(),
     facet: true,
     user_id: faker.string.alphanumeric(5),
-    query: faker.lorem.words(3)
+    query: faker.lorem.words(3),
   };
 
   return Object.assign(defaults, overrides);

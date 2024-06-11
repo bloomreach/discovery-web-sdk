@@ -5,6 +5,9 @@ import type { SearchRequestParameters } from '../search-request.type';
 import type { SearchResponse } from '../search-response.type';
 import type { CategorySearchOptions } from './category-search-options.type';
 
+/**
+ * Performs a category search using the provided configuration and options.
+ */
 export async function categorySearch(
   configuration: Configuration,
   options: CategorySearchOptions,

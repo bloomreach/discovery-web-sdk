@@ -1,9 +1,15 @@
+/**
+ * Metadata response details.
+ */
 export interface MetadataResponse {
   personalized_results: boolean
   fallback: string
   recall: string
 }
 
+/**
+ * Widget details.
+ */
 export interface Widget {
   id: string
   name: string
@@ -12,12 +18,18 @@ export interface Widget {
   rid: string
 }
 
+/**
+ * Metadata information.
+ */
 export interface Metadata {
   widget: Widget
   query: string,
   response: MetadataResponse
 }
 
+/**
+ * Document details in the widget response.
+ */
 export interface WidgetResponseDoc {
   price: number
   url: string
@@ -27,12 +39,18 @@ export interface WidgetResponseDoc {
   title: string
 }
 
+/**
+ * Response details in the widget response.
+ */
 export interface WidgetResponseResponse {
   numFound: number
   start: number
   docs: WidgetResponseDoc[]
 }
 
+/**
+ * Widget response object.
+ */
 export interface WidgetResponse {
   response: WidgetResponseResponse
   metadata: Metadata

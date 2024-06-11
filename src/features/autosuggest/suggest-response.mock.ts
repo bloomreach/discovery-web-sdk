@@ -8,9 +8,6 @@ import type {
 } from './suggest-response.type';
 import { generateArray } from '../../shared/generate-random-array.mock';
 
-/*
- * Create mock object with the option to override any of the generated fake values
- */
 export function createSuggestResponseMock(overrides?: Partial<SuggestResponse>): SuggestResponse {
   const defaults: SuggestResponse = {
     queryContext: {

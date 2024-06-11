@@ -5,6 +5,9 @@ import type { SearchRequestParameters } from '../search-request.type';
 import type { SearchResponse } from '../search-response.type';
 import type { BestsellerOptions } from './bestseller-options.type';
 
+/**
+ * Fetches the bestseller products based on the provided configuration and options.
+ */
 export async function bestseller(
   configuration: Configuration,
   options: BestsellerOptions,

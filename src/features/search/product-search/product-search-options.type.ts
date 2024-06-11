@@ -1,4 +1,11 @@
-import type { ExcludedOptions } from '../../../shared/excluded-parameters.type';
+import type { Configuration } from '../../../shared/configuration.type';
+import type { FixedOptions } from '../../../shared/fixed-options.type';
 import type { SearchRequestParameters } from '../search-request.type';
 
-export type ProductSearchOptions = Omit<SearchRequestParameters, ExcludedOptions>;
+/**
+ * Options to provide to the product search request, a subset of the {@link SearchRequestParameters}
+ */
+export type ProductSearchOptions = Omit<
+  SearchRequestParameters,
+  keyof FixedOptions | keyof Configuration
+>;
