@@ -88,6 +88,9 @@ export interface SearchRequestParameters {
    */
   rows: number;
 
+  /**
+   * Facet version, this SDK only supports version 3.0
+   */
   'facet.version'?: '3.0';
 
   /**

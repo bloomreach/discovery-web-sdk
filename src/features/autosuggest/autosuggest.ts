@@ -5,6 +5,9 @@ import type { AutosuggestOptions } from './autosuggest-options.type';
 import type { SuggestRequestParameters } from './suggest-request.type';
 import type { SuggestResponse } from './suggest-response.type';
 
+/**
+ * Retrieves suggestions for the current input using the provided configuration and options.
+ */
 export async function autoSuggest(
   configuration: Configuration,
   options: AutosuggestOptions,
