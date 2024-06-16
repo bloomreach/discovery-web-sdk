@@ -1,7 +1,8 @@
 import type { Configuration } from '../../../shared/configuration.type';
 import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
-import type { SearchFixedOptions } from '../search-fixed-options.type';
+import { logAPICall } from '../../../shared/logger';
 import { buildApiUrl } from '../../../shared/url-builders';
+import type { SearchFixedOptions } from '../search-fixed-options.type';
 import type { ContentSearchRequestParameters } from '../search-request.type';
 import type { SearchResponse } from '../search-response.type';
 import type { ContentSearchOptions } from './content-search-options.type';
@@ -13,7 +14,7 @@ export async function contentSearch(
   configuration: Configuration,
   options: ContentSearchOptions,
 ): Promise<SearchResponse> {
-  const { searchEndpoint, ...config } = configuration;
+  const { searchEndpoint, debug, ...config } = configuration;
   const fixed: SearchFixedOptions = {
     request_type: 'search',
     search_type: 'keyword',
@@ -25,8 +26,12 @@ export async function contentSearch(
   };
 
   const queryParams = Object.assign(config, fixed, defaults, options);
-
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
+
+  if (debug) {
+    logAPICall('contentSearch', configuration, options, fixed, defaults, queryParams, url);
+  }
+
   const data = await fetch(url);
   return data.json();
 }

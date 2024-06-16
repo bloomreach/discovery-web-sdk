@@ -15,6 +15,7 @@ export function createSetupConfigMock(overrides?: Partial<Configuration>): Requi
     domain_key: `${faker.string.alpha(4)}_com`,
     auth_key: faker.string.alphanumeric(13),
     view_id: faker.string.alphanumeric(5),
+    debug: false,
   };
 
   return Object.assign(defaults, overrides) as Required<Configuration>;

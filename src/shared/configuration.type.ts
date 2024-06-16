@@ -35,4 +35,9 @@ export interface Configuration {
    * You can enter any string value to identify the specific site catalog view. This string must be consistent in your pixel, API, and product catalog.
    */
   view_id?: string;
+
+  /**
+   * Enable debug log output
+   */
+  debug?: boolean
 }
