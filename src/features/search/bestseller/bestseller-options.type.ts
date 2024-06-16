@@ -1,5 +1,5 @@
 import type { Configuration } from '../../../shared/configuration.type';
-import type { FixedOptions } from '../../../shared/fixed-options.type';
+import type { SearchFixedOptions } from '../search-fixed-options.type';
 import type { SearchRequestParameters } from '../search-request.type';
 
 /**
@@ -7,5 +7,5 @@ import type { SearchRequestParameters } from '../search-request.type';
  */
 export type BestsellerOptions = Omit<
   SearchRequestParameters,
-  keyof FixedOptions | keyof Configuration
+  keyof SearchFixedOptions | keyof Configuration
 >;

@@ -27,7 +27,7 @@ export interface SearchRequestParameters {
    * The type of API request. Value should be search for Product & Category Search.
    * @default search
    */
-  request_type: 'search' | 'suggest';
+  request_type: 'search';
 
   /**
    * The type of search. Value should be "keyword" for Product Search requests, category for "Category" requests.

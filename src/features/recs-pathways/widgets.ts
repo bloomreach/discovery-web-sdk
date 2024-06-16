@@ -13,9 +13,6 @@ import type { WidgetResponse } from './widget-response.type';
 
 /**
  * Fetches the global widget data.
- * @param {string} id - The widget ID.
- * @param {Configuration} configuration - The configuration object.
- * @param {GlobalWidgetOptions} options - The options for the global widget.
  * @returns {Promise<WidgetResponse>} - The widget response.
  */
 export async function getGlobalWidget(
@@ -35,9 +32,6 @@ export async function getGlobalWidget(
 
 /**
  * Fetches the category widget data.
- * @param {string} id - The widget ID.
- * @param {Configuration} configuration - The configuration object.
- * @param {CategoryWidgetOptions} options - The options for the category widget.
  * @returns {Promise<WidgetResponse>} - The widget response.
  */
 export async function getCategoryWidget(
@@ -57,9 +51,6 @@ export async function getCategoryWidget(
 
 /**
  * Fetches the keyword widget data.
- * @param {string} id - The widget ID.
- * @param {Configuration} configuration - The configuration object.
- * @param {KeywordWidgetOptions} options - The options for the keyword widget.
  * @returns {Promise<WidgetResponse>} - The widget response.
  */
 export async function getKeywordWidget(
@@ -79,9 +70,6 @@ export async function getKeywordWidget(
 
 /**
  * Fetches the item widget data.
- * @param {string} id - The widget ID.
- * @param {Configuration} configuration - The configuration object.
- * @param {ItemWidgetOptions} options - The options for the item widget.
  * @returns {Promise<WidgetResponse>} - The widget response.
  */
 export async function getItemWidget(
@@ -101,9 +89,6 @@ export async function getItemWidget(
 
 /**
  * Fetches the personalized widget data.
- * @param {string} id - The widget ID.
- * @param {Configuration} configuration - The configuration object.
- * @param {PersonalizedWidgetOptions} options - The options for the personalized widget.
  * @returns {Promise<WidgetResponse>} - The widget response.
  */
 export async function getPersonalizedWidget(
@@ -126,9 +111,6 @@ export async function getPersonalizedWidget(
 
 /**
  * Fetches the recently viewed widget data.
- * @param {string} id - The widget ID.
- * @param {Configuration} configuration - The configuration object.
- * @param {RecentlyViewedWidgetOptions} options - The options for the recently viewed widget.
  * @returns {Promise<WidgetResponse>} - The widget response.
  */
 export async function getRecentlyViewedWidget(

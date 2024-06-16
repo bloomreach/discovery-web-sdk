@@ -1,7 +1,7 @@
 /**
  * Query parameters that are fixed by the SDK and are not set by consumers
  */
-export interface FixedOptions {
+export interface SearchFixedOptions {
   /**
    * The type of API request. Value should be search for Product & Category Search.
    */
