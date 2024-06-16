@@ -46,6 +46,7 @@ describe('CategoryWidget API', () => {
     cat_id: catId,
   });
   const widgetId = 'testWidget';
+  let searchParams: URLSearchParams;
 
   test('required parameters', async () => {
     await mockRequest(
@@ -53,11 +54,13 @@ describe('CategoryWidget API', () => {
       [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}category/${widgetId}`, ({ request }) => {
-          const { searchParams } = new URL(request.url);
-          expect(searchParams.get('cat_id')).toEqual(catId);
+          searchParams = new URL(request.url).searchParams;
           return HttpResponse.json(createWidgetResponseMock());
         }),
       ],
+      () => {
+        expect(searchParams.get('cat_id')).toEqual(catId);
+      },
     );
   });
 });
@@ -69,6 +72,7 @@ describe('KeywordWidget API', () => {
     query,
   });
   const widgetId = 'testWidget';
+  let searchParams: URLSearchParams;
 
   test('required parameters', async () => {
     await mockRequest(
@@ -76,11 +80,13 @@ describe('KeywordWidget API', () => {
       [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}keyword/${widgetId}`, ({ request }) => {
-          const { searchParams } = new URL(request.url);
-          expect(searchParams.get('query')).toEqual(query);
+          searchParams = new URL(request.url).searchParams;
           return HttpResponse.json(createWidgetResponseMock());
         }),
       ],
+      () => {
+        expect(searchParams.get('query')).toEqual(query);
+      },
     );
   });
 });
@@ -92,6 +98,7 @@ describe('ItemWidget API', () => {
     item_ids,
   });
   const widgetId = 'testWidget';
+  let searchParams: URLSearchParams;
 
   test('required parameters', async () => {
     await mockRequest(
@@ -99,11 +106,13 @@ describe('ItemWidget API', () => {
       [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}item/${widgetId}`, ({ request }) => {
-          const { searchParams } = new URL(request.url);
-          expect(searchParams.get('item_ids')).toEqual(item_ids);
+          searchParams = new URL(request.url).searchParams;
           return HttpResponse.json(createWidgetResponseMock());
         }),
       ],
+      () => {
+        expect(searchParams.get('item_ids')).toEqual(item_ids);
+      },
     );
   });
 });
@@ -117,6 +126,7 @@ describe('PersonalizedWidget API', () => {
     user_id,
   });
   const widgetId = 'testWidget';
+  let searchParams: URLSearchParams;
 
   test('required parameters', async () => {
     await mockRequest(
@@ -124,12 +134,14 @@ describe('PersonalizedWidget API', () => {
       [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}personalized/${widgetId}`, ({ request }) => {
-          const { searchParams } = new URL(request.url);
-          expect(searchParams.get('query')).toEqual(query);
-          expect(searchParams.get('user_id')).toEqual(user_id);
+          searchParams = new URL(request.url).searchParams;
           return HttpResponse.json(createWidgetResponseMock());
         }),
       ],
+      () => {
+        expect(searchParams.get('query')).toEqual(query);
+        expect(searchParams.get('user_id')).toEqual(user_id);
+      },
     );
   });
 });
@@ -141,6 +153,7 @@ describe('RecentlyViewedWidget API', () => {
     query,
   });
   const widgetId = 'testWidget';
+  let searchParams: URLSearchParams;
 
   test('required parameters', async () => {
     await mockRequest(
@@ -148,11 +161,13 @@ describe('RecentlyViewedWidget API', () => {
       [widgetId, config, params],
       [
         http.get(`${config.widgetEndpoint}recentlyviewed/${widgetId}`, ({ request }) => {
-          const { searchParams } = new URL(request.url);
-          expect(searchParams.get('query')).toEqual(query);
+          searchParams = new URL(request.url).searchParams;
           return HttpResponse.json(createWidgetResponseMock());
         }),
       ],
+      () => {
+        expect(searchParams.get('query')).toEqual(query);
+      },
     );
   });
 });

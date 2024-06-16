@@ -13,20 +13,21 @@ describe('Content Search API', () => {
   test('request and search type', async () => {
     const expectedRequestType = 'search';
     const expectedSearchType = 'keyword';
+    let searchParams: URLSearchParams;
 
     await mockRequest(
       contentSearch,
       [config, searchOptions],
       [
         http.get(config.searchEndpoint, ({ request }) => {
-          const { searchParams } = new URL(request.url);
-
-          expect(searchParams.get('request_type')).toEqual(expectedRequestType);
-          expect(searchParams.get('search_type')).toEqual(expectedSearchType);
-
+          searchParams = new URL(request.url).searchParams;
           return HttpResponse.json(createSearchResponseMock());
         }),
       ],
+      () => {
+        expect(searchParams.get('request_type')).toEqual(expectedRequestType);
+        expect(searchParams.get('search_type')).toEqual(expectedSearchType);
+      },
     );
   });
 });
