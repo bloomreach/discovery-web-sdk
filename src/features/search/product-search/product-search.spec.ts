@@ -1,5 +1,5 @@
 import { HttpResponse, http } from 'msw';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { createSetupConfigMock } from '../../../shared/configuration.mock';
 import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
@@ -29,5 +29,21 @@ describe('Product Search API', () => {
         expect(searchParams.get('search_type')).toEqual(expectedSearchType);
       },
     );
+  });
+
+  test('should log output when debug is enabled', async () => {
+    config.debug = true;
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+
+    await mockRequest(
+      productSearch,
+      [config, searchOptions],
+      [http.get(config.searchEndpoint, () => {})],
+      () => {
+        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[BR]'), expect.any(URL))
+      },
+    );
+
+    logSpy.mockRestore();
   });
 });
