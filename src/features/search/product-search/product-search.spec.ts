@@ -38,9 +38,9 @@ describe('Product Search API', () => {
     await mockRequest(
       productSearch,
       [config, searchOptions],
-      [http.get(config.searchEndpoint, () => {})],
+      [http.get(config.searchEndpoint, () => HttpResponse.json(createSearchResponseMock()))],
       () => {
-        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[BR]'), expect.any(URL))
+        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[BR]'), expect.any(String));
       },
     );
 
