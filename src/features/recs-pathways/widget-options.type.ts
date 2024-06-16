@@ -1,5 +1,5 @@
 import type { Configuration } from '../../shared/configuration.type';
-import type { FixedOptions } from '../../shared/fixed-options.type';
+import type { SearchFixedOptions } from '../search/search-fixed-options.type';
 import type {
   CategoryWidgetRequest,
   GlobalWidgetRequest,
@@ -14,7 +14,7 @@ import type {
  */
 export type GlobalWidgetOptions = Omit<
   GlobalWidgetRequest,
-  keyof FixedOptions | keyof Configuration
+  keyof SearchFixedOptions | keyof Configuration
 >;
 
 /**
@@ -22,7 +22,7 @@ export type GlobalWidgetOptions = Omit<
  */
 export type CategoryWidgetOptions = Omit<
   CategoryWidgetRequest,
-  keyof FixedOptions | keyof Configuration
+  keyof SearchFixedOptions | keyof Configuration
 >;
 
 /**
@@ -30,20 +30,20 @@ export type CategoryWidgetOptions = Omit<
  */
 export type KeywordWidgetOptions = Omit<
   KeywordWidgetRequest,
-  keyof FixedOptions | keyof Configuration
+  keyof SearchFixedOptions | keyof Configuration
 >;
 
 /**
  * Options to provide to the Item Widget request, a subset of the {@link ItemWidgetRequest}
  */
-export type ItemWidgetOptions = Omit<ItemWidgetRequest, keyof FixedOptions | keyof Configuration>;
+export type ItemWidgetOptions = Omit<ItemWidgetRequest, keyof SearchFixedOptions | keyof Configuration>;
 
 /**
  * Options to provide to the Personalized Widget request, a subset of the {@link PersonalizedWidgetRequest}
  */
 export type PersonalizedWidgetOptions = Omit<
   PersonalizedWidgetRequest,
-  keyof FixedOptions | keyof Configuration
+  keyof SearchFixedOptions | keyof Configuration
 >;
 
 /**
@@ -51,5 +51,5 @@ export type PersonalizedWidgetOptions = Omit<
  */
 export type RecentlyViewedWidgetOptions = Omit<
   RecentlyViewedWidgetRequest,
-  keyof FixedOptions | keyof Configuration
+  keyof SearchFixedOptions | keyof Configuration
 >;

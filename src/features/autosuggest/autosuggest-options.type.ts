@@ -1,5 +1,5 @@
 import type { Configuration } from '../../shared/configuration.type';
-import type { FixedOptions } from '../../shared/fixed-options.type';
+import type { SearchFixedOptions } from '../search/search-fixed-options.type';
 import type { SuggestRequestParameters } from './suggest-request.type';
 
 /**
@@ -7,5 +7,5 @@ import type { SuggestRequestParameters } from './suggest-request.type';
  */
 export type AutosuggestOptions = Omit<
   SuggestRequestParameters,
-  keyof FixedOptions | keyof Configuration
+  keyof SearchFixedOptions | keyof Configuration
 >;

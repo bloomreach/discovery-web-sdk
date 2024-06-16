@@ -33,7 +33,7 @@ export interface SuggestRequestParameters {
    * The type of API request. Value should be search for Product & Category Search.
    * @default search
    */
-  request_type: 'search' | 'suggest';
+  request_type: 'suggest';
 
   /**
    * Sorts results based on the field value in ascending, descending, or another combination of orders.

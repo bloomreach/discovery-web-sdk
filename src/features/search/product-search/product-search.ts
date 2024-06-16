@@ -1,6 +1,6 @@
 import type { Configuration } from '../../../shared/configuration.type';
 import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
-import type { FixedOptions } from '../../../shared/fixed-options.type';
+import type { SearchFixedOptions } from '../search-fixed-options.type';
 import { buildApiUrl } from '../../../shared/url-builders';
 import type { SearchResponse } from '../search-response.type';
 import type { ProductSearchOptions } from './product-search-options.type';
@@ -13,12 +13,11 @@ export async function productSearch(
   options: ProductSearchOptions,
 ): Promise<SearchResponse> {
   const { searchEndpoint, ...config } = configuration;
-  const fixed: FixedOptions = {
+  const fixed: SearchFixedOptions = {
     request_type: 'search',
     search_type: 'keyword',
     'facet.version': '3.0',
   };
-
   const defaults: Partial<ProductSearchOptions> = {
     fl: 'pid',
     start: 0,
