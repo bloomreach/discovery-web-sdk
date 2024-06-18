@@ -173,6 +173,10 @@ const widgetId = 'my_widget_id';
 const widget = getGlobalWidget(widgetId, config, searchOptions);
 ```
 
+### Debug logging
+Adding `debug: true` to the `Configuration` you pass in to the API calls will enable some minor
+debug logging with `[BR]` as prefix for your convenience.
+
 # Conclusion
 
 The Bloomreach Discovery Web SDK can significantly enhance your website's user experience, save time

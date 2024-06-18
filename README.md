@@ -38,6 +38,10 @@ yarn add @bloomreach/discovery-web-sdk
 ### Type documentation
 The TSDoc for the SDK is available [here](https://bloomreach.github.io/discovery-web-sdk).
 
+### Debug logging
+Adding `debug: true` to the `Configuration` you pass in to the API calls will enable some minor
+debug logging with `[BR]` as prefix for your convenience.
+
 ### Usage examples
 
 #### Product Search API
