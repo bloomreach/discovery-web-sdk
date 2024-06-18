@@ -24,7 +24,7 @@
     "type-check": "tsc --noEmit",
     "lint": "pnpm exec eslint .",
     "test": "vitest",
-    "test-run": "vitest --run",
+    "test-run": "vitest --run --coverage.enabled",
     "prepare": "husky",
     "typedoc": "typedoc"
   },
@@ -34,6 +34,7 @@
     "@eslint/js": "^8.57.0",
     "@faker-js/faker": "^8.4.1",
     "@semantic-release/git": "^10.0.1",
+    "@vitest/coverage-istanbul": "^1.6.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",

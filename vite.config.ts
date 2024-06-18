@@ -11,10 +11,13 @@ export default defineConfig({
     },
     sourcemap: true,
   },
-  plugins: [
-    dts({ rollupTypes: true }),
-  ],
+  plugins: [dts({ rollupTypes: true })],
   test: {
-    passWithNoTests: true
-  }
+    passWithNoTests: true,
+    coverage: {
+      enabled: false,
+      provider: 'istanbul',
+      exclude: ['**/*.mock.ts'],
+    },
+  },
 });
