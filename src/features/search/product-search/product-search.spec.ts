@@ -10,9 +10,11 @@ describe('Product Search API', () => {
   const config = createSetupConfigMock();
   const searchOptions = createProductSearchOptionsMock();
 
-  test('request and search type', async () => {
-    const expectedRequestType = 'search';
-    const expectedSearchType = 'keyword';
+  test('checks that config and searchOptions are added to the searchParams in the request URL', async () => {
+    const { account_id, domain_key, _br_uid_2, url, q, fl, start, rows } = {
+      ...config,
+      ...searchOptions,
+    };
     let searchParams: URLSearchParams;
 
     await mockRequest(
@@ -25,25 +27,64 @@ describe('Product Search API', () => {
         }),
       ],
       () => {
-        expect(searchParams.get('request_type')).toEqual(expectedRequestType);
-        expect(searchParams.get('search_type')).toEqual(expectedSearchType);
+        Object.entries({
+          account_id,
+          domain_key,
+          _br_uid_2,
+          url,
+          q,
+          fl,
+          start,
+          rows,
+          request_type: 'search',
+          search_type: 'keyword',
+        }).forEach(([key, value]) => {
+          expect(searchParams.get(key)).toEqual(String(value));
+        });
       },
     );
   });
 
-  test('should log output when debug is enabled', async () => {
-    config.debug = true;
-    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+  test('logs correct output when debug is enabled', async () => {
+    const debugConfig = { ...config, debug: true };
+    const fixedOptions = { request_type: 'search', search_type: 'keyword', 'facet.version': '3.0' };
+    vi.spyOn(console, 'log').mockImplementation(() => {});
 
     await mockRequest(
       productSearch,
-      [config, searchOptions],
-      [http.get(config.searchEndpoint, () => HttpResponse.json(createSearchResponseMock()))],
-      () => {
-        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[BR]'), expect.any(String));
-      },
+      [debugConfig, searchOptions],
+      [
+        http.get(debugConfig.searchEndpoint, () => {
+          return HttpResponse.json(createSearchResponseMock());
+        }),
+      ],
     );
 
-    logSpy.mockRestore();
+    expect(console.log).toHaveBeenCalledWith("[BR] 'productSearch' called with:");
+    expect(console.log).toHaveBeenCalledWith('[BR] Configuration:', debugConfig);
+    expect(console.log).toHaveBeenCalledWith('[BR] Options:', searchOptions);
+    expect(console.log).toHaveBeenCalledWith('[BR] Fixed options:', fixedOptions);
+    expect(console.log).toHaveBeenCalledWith('[BR] Default options:', { fl: 'pid', start: 0 });
+    expect(console.log).toHaveBeenCalledWith('[BR] Merged queryParams:', expect.anything());
+    expect(console.log).toHaveBeenCalledWith('[BR] Fetching url:', expect.anything());
+
+    vi.restoreAllMocks();
+  });
+
+  test('uses default searchEndpoint when not provided', async () => {
+    const configWithoutEndpoint = { ...config, searchEndpoint: undefined };
+
+    await mockRequest(
+      productSearch,
+      [configWithoutEndpoint, searchOptions],
+      [
+        http.get(config.searchEndpoint, () => {
+          return HttpResponse.json(createSearchResponseMock());
+        }),
+      ],
+    );
+
+    // Expectation: If the function processes without throwing errors and reaches the mock,
+    // it means the default searchEndpoint was used as intended.
   });
 });

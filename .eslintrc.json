@@ -4,7 +4,7 @@
     "project": true,
     "tsconfigRootDir": "."
   },
-  "ignorePatterns": ["/vite.config.ts", "/dist"],
+  "ignorePatterns": ["/vite.config.ts", "/dist", "/coverage"],
   "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
   "rules": {
     "@typescript-eslint/naming-convention": "off",
