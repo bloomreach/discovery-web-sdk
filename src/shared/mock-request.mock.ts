@@ -13,12 +13,10 @@ export async function mockRequest<T extends (...args: any[]) => Promise<any>>(
 ): Promise<void> {
   const server = setupServer(...handlers);
   server.listen();
-
   const result = await fn(...params);
+  server.close();
 
   if (callback) {
     callback(result);
   }
-
-  server.close();
 }
