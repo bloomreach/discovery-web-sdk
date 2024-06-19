@@ -1,4 +1,4 @@
-const shouldNotBeEncoded = ['_br_uid_2', 'fq', 'sort'];
+const shouldNotBeEncoded = ['_br_uid_2', 'fq'];
 
 export function buildApiUrl(base: string, params: Record<string, any>): URL {
   const url = new URL(base);
