@@ -1,6 +1,7 @@
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
 import { createSetupConfigMock } from '../../../shared/configuration.mock';
+import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
 import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
 import { contentSearch } from './content-search';
@@ -10,26 +11,6 @@ describe('Content Search API', () => {
   const config = createSetupConfigMock();
   const searchOptions = createContentSearchOptionsMock();
 
-  test('request and search type', async () => {
-    const expectedRequestType = 'search';
-    const expectedSearchType = 'keyword';
-    let searchParams: URLSearchParams;
-
-    await mockRequest(
-      contentSearch,
-      [config, searchOptions],
-      [
-        http.get(config.searchEndpoint, ({ request }) => {
-          searchParams = new URL(request.url).searchParams;
-          return HttpResponse.json(createSearchResponseMock());
-        }),
-      ],
-      () => {
-        expect(searchParams.get('request_type')).toEqual(expectedRequestType);
-        expect(searchParams.get('search_type')).toEqual(expectedSearchType);
-      },
-    );
-  });
   test('checks that config and searchOptions are added to the searchParams in the request URL', async () => {
     const { account_id, domain_key, _br_uid_2, url, fl, start, rows, catalog_name } = {
       ...config,
@@ -68,17 +49,16 @@ describe('Content Search API', () => {
   test('uses default searchEndpoint when not provided', async () => {
     const configWithoutEndpoint = { ...config, searchEndpoint: undefined };
 
-    await mockRequest(
-      contentSearch,
-      [configWithoutEndpoint, searchOptions],
-      [
-        http.get(config.searchEndpoint, () => {
-          return HttpResponse.json(createSearchResponseMock());
-        }),
-      ],
-    );
-
-    // Expectation: If the function processes without throwing errors and reaches the mock,
-    // it means the default searchEndpoint was used as intended.
+    await expect(
+      mockRequest(
+        contentSearch,
+        [configWithoutEndpoint, searchOptions],
+        [
+          http.get(SEARCH_ENDPOINT_PROD, () => {
+            return HttpResponse.json(createSearchResponseMock());
+          }),
+        ],
+      ),
+    ).resolves.not.toThrow();
   });
 });

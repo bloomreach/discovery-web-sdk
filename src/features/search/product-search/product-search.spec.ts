@@ -1,6 +1,7 @@
 import { HttpResponse, http } from 'msw';
 import { describe, expect, test } from 'vitest';
 import { createSetupConfigMock } from '../../../shared/configuration.mock';
+import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
 import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
 import { productSearch } from './product-search';
@@ -48,17 +49,16 @@ describe('Product Search API', () => {
   test('uses default searchEndpoint when not provided', async () => {
     const configWithoutEndpoint = { ...config, searchEndpoint: undefined };
 
-    await mockRequest(
-      productSearch,
-      [configWithoutEndpoint, searchOptions],
-      [
-        http.get(config.searchEndpoint, () => {
-          return HttpResponse.json(createSearchResponseMock());
-        }),
-      ],
-    );
-
-    // Expectation: If the function processes without throwing errors and reaches the mock,
-    // it means the default searchEndpoint was used as intended.
+    await expect(
+      mockRequest(
+        productSearch,
+        [configWithoutEndpoint, searchOptions],
+        [
+          http.get(SEARCH_ENDPOINT_PROD, () => {
+            return HttpResponse.json(createSearchResponseMock());
+          }),
+        ],
+      ),
+    ).resolves.not.toThrow();
   });
 });
