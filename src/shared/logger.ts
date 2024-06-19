@@ -1,4 +1,4 @@
-const prefix = '[BR]';
+export const prefix = '[BR]';
 
 export function log(message: string, ...args: any[]) {
   console.log(`${prefix} ${message}`, ...args);
