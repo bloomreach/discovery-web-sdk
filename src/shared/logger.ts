@@ -17,11 +17,13 @@ export function logAPICall(
   queryParams: any,
   url: URL,
 ) {
-  log(`'${name}' called with:`);
-  log('Configuration:', configuration);
-  log('Options:', options);
-  log('Fixed options:', fixed);
-  log('Default options:', defaults);
-  log('Merged queryParams:', queryParams);
-  log('Fetching url:', url.href);
+  if (configuration.debug) {
+    log(`'${name}' called with:`);
+    log('Configuration:', configuration);
+    log('Options:', options);
+    log('Fixed options:', fixed);
+    log('Default options:', defaults);
+    log('Merged queryParams:', queryParams);
+    log('Fetching url:', url.href);
+  }
 }

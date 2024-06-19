@@ -28,9 +28,7 @@ export async function contentSearch(
   const queryParams = Object.assign(config, fixed, defaults, options);
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
-  if (debug) {
-    logAPICall('contentSearch', configuration, options, fixed, defaults, queryParams, url);
-  }
+  logAPICall('contentSearch', configuration, options, fixed, defaults, queryParams, url);
 
   const data = await fetch(url);
   return data.json();

@@ -14,7 +14,7 @@ export async function bestseller(
   configuration: Configuration,
   options: BestsellerOptions,
 ): Promise<SearchResponse> {
-  const { searchEndpoint, debug, ...config } = configuration;
+  const { searchEndpoint, ...config } = configuration;
   const fixed: SearchFixedOptions = {
     request_type: 'search',
     search_type: 'bestseller',
@@ -28,9 +28,7 @@ export async function bestseller(
   const queryParams = Object.assign(config, fixed, defaults, options);
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
-  if (debug) {
-    logAPICall('bestseller', configuration, options, fixed, defaults, queryParams, url);
-  }
+  logAPICall('bestseller', configuration, options, fixed, defaults, queryParams, url);
 
   const data = await fetch(url);
   return data.json();

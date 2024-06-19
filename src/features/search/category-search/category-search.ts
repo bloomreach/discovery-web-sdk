@@ -14,7 +14,7 @@ export async function categorySearch(
   configuration: Configuration,
   options: CategorySearchOptions,
 ): Promise<SearchResponse> {
-  const { searchEndpoint, debug, ...config } = configuration;
+  const { searchEndpoint, ...config } = configuration;
   const fixed: SearchFixedOptions = {
     request_type: 'search',
     search_type: 'category',
@@ -28,9 +28,7 @@ export async function categorySearch(
   const queryParams = Object.assign(config, fixed, defaults, options);
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
-  if (debug) {
-    logAPICall('categorySearch', configuration, options, fixed, defaults, queryParams, url);
-  }
+  logAPICall('categorySearch', configuration, options, fixed, defaults, queryParams, url);
 
   const data = await fetch(url);
   return data.json();

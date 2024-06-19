@@ -14,7 +14,7 @@ export async function autoSuggest(
   configuration: Configuration,
   options: AutosuggestOptions,
 ): Promise<SuggestResponse> {
-  const { suggestEndpoint, debug, ...config } = configuration;
+  const { suggestEndpoint, ...config } = configuration;
   const fixed: SuggestFixedOptions = {
     request_type: 'suggest',
   };
@@ -22,9 +22,7 @@ export async function autoSuggest(
   const queryParams = Object.assign(config, fixed, defaults, options);
   const url = buildApiUrl(suggestEndpoint || SUGGEST_ENDPOINT_PROD, queryParams);
 
-  if (debug) {
-    logAPICall('autoSuggest', configuration, options, fixed, defaults, queryParams, url);
-  }
+  logAPICall('autoSuggest', configuration, options, fixed, defaults, queryParams, url);
 
   const data = await fetch(url);
   return data.json();
