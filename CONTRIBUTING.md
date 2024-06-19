@@ -31,8 +31,8 @@
 - `pnpm install` - Install dependencies
 - `pnpm build` - Build distribution assets
 - `pnpm dev` - Run build in watch mode
-- `pnpm test` - Start test runner in watch mode
-- `pnpm test-run` - Run tests once
+- `pnpm test` - Run tests once
+- `pnpm test:watch` - Start test runner in watch mode
 - `pnpm lint` - Lint with ESLint
 - `pnpm type-check` - Run typescript type check
 

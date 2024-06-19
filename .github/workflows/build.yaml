@@ -41,7 +41,7 @@ jobs:
         run: pnpm type-check
 
       - name: Run unit & integration test
-        run: pnpm test-run
+        run: pnpm test
 
       - name: Build distribution assets
         run: pnpm build
