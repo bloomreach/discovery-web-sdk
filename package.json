@@ -22,9 +22,9 @@
     "build": "tsc && vite build",
     "dev": "vite build --watch",
     "type-check": "tsc --noEmit",
-    "lint": "pnpm exec eslint .",
-    "test": "vitest",
-    "test-run": "vitest --run --coverage.enabled",
+    "lint": "eslint .",
+    "test": "vitest --run --coverage.enabled",
+    "test:watch": "vitest",
     "prepare": "husky",
     "typedoc": "typedoc"
   },
