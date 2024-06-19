@@ -21,13 +21,11 @@ export async function getGlobalWidget(
   configuration: Configuration,
   options: GlobalWidgetOptions,
 ): Promise<WidgetResponse> {
-  const { widgetEndpoint, debug, ...config } = configuration;
+  const { widgetEndpoint, ...config } = configuration;
   const queryParams = Object.assign(config, options);
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}global/${id}`, queryParams);
 
-  if (debug) {
-    logAPICall('getGlobalWidget', configuration, options, {}, {}, queryParams, url);
-  }
+  logAPICall('getGlobalWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
   return data.json();
@@ -42,13 +40,11 @@ export async function getCategoryWidget(
   configuration: Configuration,
   options: CategoryWidgetOptions,
 ): Promise<WidgetResponse> {
-  const { widgetEndpoint, debug, ...config } = configuration;
+  const { widgetEndpoint, ...config } = configuration;
   const queryParams = Object.assign(config, options);
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}category/${id}`, queryParams);
 
-  if (debug) {
-    logAPICall(getCategoryWidget.name, configuration, options, {}, {}, queryParams, url);
-  }
+  logAPICall(getCategoryWidget.name, configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
   return data.json();
@@ -63,13 +59,11 @@ export async function getKeywordWidget(
   configuration: Configuration,
   options: KeywordWidgetOptions,
 ): Promise<WidgetResponse> {
-  const { widgetEndpoint, debug, ...config } = configuration;
+  const { widgetEndpoint, ...config } = configuration;
   const queryParams = Object.assign(config, options);
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}keyword/${id}`, queryParams);
 
-  if (debug) {
-    logAPICall('getKeywordWidget', configuration, options, {}, {}, queryParams, url);
-  }
+  logAPICall('getKeywordWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
   return data.json();
@@ -84,13 +78,11 @@ export async function getItemWidget(
   configuration: Configuration,
   options: ItemWidgetOptions,
 ): Promise<WidgetResponse> {
-  const { widgetEndpoint, debug, ...config } = configuration;
+  const { widgetEndpoint, ...config } = configuration;
   const queryParams = Object.assign(config, options);
   const url = buildApiUrl(`${widgetEndpoint || WIDGET_ENDPOINT_PROD}item/${id}`, queryParams);
 
-  if (debug) {
-    logAPICall('getItemWidget', configuration, options, {}, {}, queryParams, url);
-  }
+  logAPICall('getItemWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
   return data.json();
@@ -105,16 +97,14 @@ export async function getPersonalizedWidget(
   configuration: Configuration,
   options: PersonalizedWidgetOptions,
 ): Promise<WidgetResponse> {
-  const { widgetEndpoint, debug, ...config } = configuration;
+  const { widgetEndpoint, ...config } = configuration;
   const queryParams = Object.assign(config, options);
   const url = buildApiUrl(
     `${widgetEndpoint || WIDGET_ENDPOINT_PROD}personalized/${id}`,
     queryParams,
   );
 
-  if (debug) {
-    logAPICall('getPersonalizedWidget', configuration, options, {}, {}, queryParams, url);
-  }
+  logAPICall('getPersonalizedWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
   return data.json();
@@ -129,16 +119,14 @@ export async function getRecentlyViewedWidget(
   configuration: Configuration,
   options: RecentlyViewedWidgetOptions,
 ): Promise<WidgetResponse> {
-  const { widgetEndpoint, debug, ...config } = configuration;
+  const { widgetEndpoint, ...config } = configuration;
   const queryParams = Object.assign(config, options);
   const url = buildApiUrl(
     `${widgetEndpoint || WIDGET_ENDPOINT_PROD}recentlyviewed/${id}`,
     queryParams,
   );
 
-  if (debug) {
-    logAPICall('getRecentlyViewedWidget', configuration, options, {}, {}, queryParams, url);
-  }
+  logAPICall('getRecentlyViewedWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
   return data.json();

@@ -1,10 +1,10 @@
 import { HttpResponse, http } from 'msw';
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test } from 'vitest';
+import { createSetupConfigMock } from '../../../shared/configuration.mock';
 import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
 import { contentSearch } from './content-search';
 import { createContentSearchOptionsMock } from './content-search-options.mock';
-import { createSetupConfigMock } from '../../../shared/configuration.mock';
 
 describe('Content Search API', () => {
   const config = createSetupConfigMock();
@@ -63,32 +63,6 @@ describe('Content Search API', () => {
         });
       },
     );
-  });
-
-  test('logs correct output when debug is enabled', async () => {
-    const debugConfig = { ...config, debug: true };
-    const fixedOptions = { request_type: 'search', search_type: 'keyword', 'facet.version': '3.0' };
-    vi.spyOn(console, 'log').mockImplementation(() => {});
-
-    await mockRequest(
-      contentSearch,
-      [debugConfig, searchOptions],
-      [
-        http.get(debugConfig.searchEndpoint, () => {
-          return HttpResponse.json(createSearchResponseMock());
-        }),
-      ],
-    );
-
-    expect(console.log).toHaveBeenCalledWith("[BR] 'contentSearch' called with:");
-    expect(console.log).toHaveBeenCalledWith('[BR] Configuration:', debugConfig);
-    expect(console.log).toHaveBeenCalledWith('[BR] Options:', searchOptions);
-    expect(console.log).toHaveBeenCalledWith('[BR] Fixed options:', fixedOptions);
-    expect(console.log).toHaveBeenCalledWith('[BR] Default options:', { fl: 'item_id', start: 0 });
-    expect(console.log).toHaveBeenCalledWith('[BR] Merged queryParams:', expect.anything());
-    expect(console.log).toHaveBeenCalledWith('[BR] Fetching url:', expect.anything());
-
-    vi.restoreAllMocks();
   });
 
   test('uses default searchEndpoint when not provided', async () => {

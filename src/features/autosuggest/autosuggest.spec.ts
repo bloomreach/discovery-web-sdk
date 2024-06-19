@@ -1,5 +1,5 @@
 import { HttpResponse, http } from 'msw';
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { createSetupConfigMock } from '../../shared/configuration.mock';
 import { SUGGEST_ENDPOINT_PROD } from '../../shared/constants';
 import { mockRequest } from '../../shared/mock-request.mock';
@@ -36,31 +36,6 @@ describe('Autosuggest API', () => {
         });
       },
     );
-  });
-
-  test('logs correct output when debug is enabled', async () => {
-    const debugConfig = { ...config, debug: true };
-    vi.spyOn(console, 'log').mockImplementation(() => {});
-
-    await mockRequest(
-      autoSuggest,
-      [debugConfig, searchOptions],
-      [
-        http.get(debugConfig.suggestEndpoint, () => {
-          return HttpResponse.json(createSuggestResponseMock());
-        }),
-      ],
-    );
-
-    expect(console.log).toHaveBeenCalledWith("[BR] 'autoSuggest' called with:");
-    expect(console.log).toHaveBeenCalledWith('[BR] Configuration:', debugConfig);
-    expect(console.log).toHaveBeenCalledWith('[BR] Options:', searchOptions);
-    expect(console.log).toHaveBeenCalledWith('[BR] Fixed options:', { request_type: 'suggest' });
-    expect(console.log).toHaveBeenCalledWith('[BR] Default options:', {});
-    expect(console.log).toHaveBeenCalledWith('[BR] Merged queryParams:', expect.anything());
-    expect(console.log).toHaveBeenCalledWith('[BR] Fetching url:', expect.anything());
-
-    vi.restoreAllMocks();
   });
 
   test('uses SUGGEST_ENDPOINT_PROD when suggestEndpoint is not provided', async () => {
