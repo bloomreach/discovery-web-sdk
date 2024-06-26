@@ -52,12 +52,12 @@ jobs:
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
-        run: npx commitlint --last --verbose
+        run: pnpm commitlint --last --verbose
 
       - name: Validate PR commits with commitlint
         if: github.event_name == 'pull_request'
         run:
-          npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{
+          pnpm commitlint --from ${{ github.event.pull_request.head.sha }}~${{
           github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }}
           --verbose
 
@@ -72,6 +72,12 @@ jobs:
 
       - name: Build distribution assets
         run: pnpm build
+
+      - name: Cache build assets
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: ${{ runner.os }}-build-${{ github.sha }}
 
   release:
     if:
@@ -98,16 +104,19 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: pnpm-lock.yaml
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build distribution assets
-        run: pnpm build
+      - name: Restore build assets
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: ${{ runner.os }}-build-${{ github.sha }}
 
       - name:
           Verify the integrity of provenance attestations and registry signatures for installed
           dependencies
         run: pnpm audit signatures
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Release
         env:
@@ -161,7 +170,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build distribution assets
+      - name: Build the TSDoc
         run: pnpm typedoc
 
       - name: Setup Pages
