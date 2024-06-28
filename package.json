@@ -19,13 +19,13 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc -b && vite build",
     "dev": "vite build --watch",
-    "type-check": "tsc --noEmit",
     "lint": "eslint .",
+    "prepare": "husky",
     "test": "vitest --run --coverage.enabled",
     "test:watch": "vitest",
-    "prepare": "husky",
+    "type-check": "tsc --noEmit",
     "typedoc": "typedoc"
   },
   "devDependencies": {
