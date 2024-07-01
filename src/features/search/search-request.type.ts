@@ -91,7 +91,7 @@ export interface SearchRequestParameters {
   /**
    * Facet version, this SDK only supports version 3.0
    */
-  'facet.version'?: '3.0';
+  'facet.version': '3.0';
 
   /**
    * Return a count of ranged facets, such as price and sale price. Use numeric attributes only.

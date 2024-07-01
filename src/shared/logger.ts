@@ -1,16 +1,18 @@
+import { Configuration } from './configuration.type';
+
 export const prefix = '[BR]';
 
-export function log(message: string, ...args: any[]) {
+export function log<T>(message: string, ...args: T[]) {
   console.log(`${prefix} ${message}`, ...args);
 }
 
-export function error(message: string, ...args: any[]) {
+export function error<T>(message: string, ...args: T[]) {
   console.error(`${prefix} ${message}`, ...args);
 }
 
 export function logAPICall(
   name: string,
-  configuration: any,
+  configuration: Configuration,
   options: any,
   fixed: any,
   defaults: any,

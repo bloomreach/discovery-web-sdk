@@ -13,7 +13,7 @@ export async function mockRequest<T extends (...args: any[]) => Promise<any>>(
 ): Promise<void> {
   const server = setupServer(...handlers);
   server.listen();
-  const result = await fn(...params);
+  const result = await fn(...params) as Awaited<ReturnType<T>>;
   server.close();
 
   if (callback) {

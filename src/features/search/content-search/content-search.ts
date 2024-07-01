@@ -14,7 +14,7 @@ export async function contentSearch(
   configuration: Configuration,
   options: ContentSearchOptions,
 ): Promise<SearchResponse> {
-  const { searchEndpoint, debug, ...config } = configuration;
+  const { searchEndpoint, ...config } = configuration;
   const fixed: SearchFixedOptions = {
     request_type: 'search',
     search_type: 'keyword',
@@ -31,5 +31,5 @@ export async function contentSearch(
   logAPICall('contentSearch', configuration, options, fixed, defaults, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<SearchResponse>;
 }

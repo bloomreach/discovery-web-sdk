@@ -28,7 +28,7 @@ export async function getGlobalWidget(
   logAPICall('getGlobalWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<WidgetResponse>;
 }
 
 /**
@@ -47,7 +47,7 @@ export async function getCategoryWidget(
   logAPICall(getCategoryWidget.name, configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<WidgetResponse>;
 }
 
 /**
@@ -66,7 +66,7 @@ export async function getKeywordWidget(
   logAPICall('getKeywordWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<WidgetResponse>;
 }
 
 /**
@@ -85,7 +85,7 @@ export async function getItemWidget(
   logAPICall('getItemWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<WidgetResponse>;
 }
 
 /**
@@ -107,7 +107,7 @@ export async function getPersonalizedWidget(
   logAPICall('getPersonalizedWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<WidgetResponse>;
 }
 
 /**
@@ -129,5 +129,5 @@ export async function getRecentlyViewedWidget(
   logAPICall('getRecentlyViewedWidget', configuration, options, {}, {}, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<WidgetResponse>;
 }

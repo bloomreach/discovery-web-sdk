@@ -4,7 +4,7 @@ import type { SearchResponse } from './search-response.type';
 /*
  * Create array of random length between 1 and 5 and map each index to a value
  */
-const generateArray = (fillValue: any) =>
+const generateArray = <T>(fillValue: T): T[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 5 }) }, () => fillValue);
 
 /*
@@ -18,6 +18,7 @@ export function createSearchResponseMock(overrides?: Partial<SearchResponse>): S
     facet_counts: {
       facet_fields: {
         category: generateArray({
+          name: faker.lorem.slug(1),
           cat_id: faker.lorem.slug(1),
           cat_name: faker.person.fullName(),
           count: faker.number.int(200),

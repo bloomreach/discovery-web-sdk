@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { error, log, logAPICall, prefix } from './logger';
+import { createSetupConfigMock } from './configuration.mock';
 
 describe('Logger', () => {
   const consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
@@ -36,7 +37,7 @@ describe('Logger', () => {
   describe('logAPICall', () => {
     it('should log API call details', () => {
       const name = 'testAPI';
-      const configuration = { config: 'configValue', debug: true };
+      const configuration = createSetupConfigMock({ debug: true });
       const options = { option: 'optionValue' };
       const fixed = { fixedOption: 'fixedValue' };
       const defaults = { defaultOption: 'defaultValue' };

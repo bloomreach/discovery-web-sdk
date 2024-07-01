@@ -25,5 +25,5 @@ export async function autoSuggest(
   logAPICall('autoSuggest', configuration, options, fixed, defaults, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<SuggestResponse>;
 }

@@ -31,5 +31,5 @@ export async function bestseller(
   logAPICall('bestseller', configuration, options, fixed, defaults, queryParams, url);
 
   const data = await fetch(url);
-  return data.json();
+  return data.json() as Promise<SearchResponse>;
 }

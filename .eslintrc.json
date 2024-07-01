@@ -1,29 +1,20 @@
 {
   "root": true,
+  "env": {
+    "es2020": true
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/strict-type-checked", "prettier"],
+  "ignorePatterns": ["/dist", "/coverage", "/node_modules"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": true,
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": ["./tsconfig.json"],
     "tsconfigRootDir": "."
   },
-  "ignorePatterns": ["/vite.config.ts", "/dist", "/coverage"],
-  "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
   "rules": {
-    "@typescript-eslint/naming-convention": "off",
-    "@typescript-eslint/no-shadow": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "arrow-body-style": "off",
-    "import/prefer-default-export": "off",
-    "no-console": "off",
-    "@typescript-eslint/consistent-type-exports": "warn",
-    "@typescript-eslint/consistent-type-imports": "warn",
-    "no-plusplus": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "**/*{.,_}{test,spec,mock}.{ts,tsx}"
-        ],
-        "optionalDependencies": false
-      }
-    ]
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
