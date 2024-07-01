@@ -14,9 +14,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.2.2
         version: 19.2.2
-      '@eslint/js':
-        specifier: ^8.57.0
-        version: 8.57.0
       '@faker-js/faker':
         specifier: ^8.4.1
         version: 8.4.1
