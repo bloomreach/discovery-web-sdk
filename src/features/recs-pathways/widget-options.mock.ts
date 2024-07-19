@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker';
 import type { Configuration } from '../../shared/configuration.type';
-import type { SearchFixedOptions } from '../search/search-fixed-options.type';
 import type {
   CategoryWidgetOptions,
   GlobalWidgetOptions,
@@ -11,7 +10,7 @@ import type {
 } from './widget-options.type';
 import type { WidgetRequest } from './widget-request.type';
 
-type BaseWidgetOptions = Omit<WidgetRequest, keyof SearchFixedOptions | keyof Configuration>;
+type BaseWidgetOptions = Omit<WidgetRequest, keyof Configuration>;
 
 /*
  * Using Required<> because we want the mock to contain all possible values and type warnings should

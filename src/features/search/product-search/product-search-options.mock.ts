@@ -36,6 +36,7 @@ export function createProductSearchOptionsMock(
     'query.relaxation': Math.random() ? 'product_type' : 'off',
     'query.spellcorrect': faker.helpers.arrayElement(['term_frequency', 'closest_match', 'off']),
     'facet.precision': Math.random() ? 'standard' : 'high',
+    'facet.version': '3.0',
     'query.numeric_precision': Math.random() ? 'standard' : 'high',
     'query.smartsort': Math.random() ? 'top_products' : 'off',
   };
