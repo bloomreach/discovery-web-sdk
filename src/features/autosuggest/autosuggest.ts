@@ -7,6 +7,16 @@ import type { SuggestFixedOptions } from './suggest-fixed-options.type';
 import type { SuggestRequestParameters } from './suggest-request.type';
 import type { SuggestResponse } from './suggest-response.type';
 
+const FIXED_OPTIONS: SuggestFixedOptions = {
+  request_type: 'suggest',
+};
+
+export function isAutosuggestOptions(options: Record<string, any>): options is AutosuggestOptions {
+  return Object.entries(FIXED_OPTIONS).every(([key, value]) => {
+    return options[key] !== undefined && options[key] === value;
+  });
+}
+
 /**
  * Retrieves suggestions for the current input using the provided configuration and options.
  */
@@ -15,14 +25,11 @@ export async function autoSuggest(
   options: AutosuggestOptions,
 ): Promise<SuggestResponse> {
   const { suggestEndpoint, ...config } = configuration;
-  const fixed: SuggestFixedOptions = {
-    request_type: 'suggest',
-  };
   const defaults: Partial<SuggestRequestParameters> = {};
-  const queryParams = Object.assign(config, fixed, defaults, options);
+  const queryParams = Object.assign(config, FIXED_OPTIONS, defaults, options);
   const url = buildApiUrl(suggestEndpoint || SUGGEST_ENDPOINT_PROD, queryParams);
 
-  logAPICall('autoSuggest', configuration, options, fixed, defaults, queryParams, url);
+  logAPICall('autoSuggest', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);
 
   const data = await fetch(url);
   return data.json() as Promise<SuggestResponse>;
