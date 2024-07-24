@@ -28,7 +28,6 @@ The Discovery Web SDK is fully Open-Sourced and open to contributions.
   </div>
 </div>
 
-
 ## Getting Started
 
 ### Requirements
