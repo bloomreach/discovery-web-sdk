@@ -1,86 +1,107 @@
 ---
-title: Bloomreach Discovery Web SDK
-category: 6234814ad2e8fd04af2a0ffc
+title: Discovery Web SDK
+category: 61b785225c1c75017a430718
 ---
 
-# Introduction
+> ⚙️ **SDK Reference**
+>
+> The detailed TSDoc and reference for the SDK are available [here](https://bloomreach.github.io/discovery-web-sdk).
 
-Welcome to the Bloomreach Discovery Web SDK. This guide is crafted to help you understand the value
-and benefits of using this tool. The Bloomreach Discovery Web SDK is a software development kit that
-allows you to integrate Bloomreach's advanced search, merchandising, and personalization
-capabilities into your website.
+The Bloomreach Discovery Web SDK is a TypeScript SDK designed to interact with the
+[Bloomreach Discovery APIs](https://documentation.bloomreach.com/discovery/reference/welcome). This SDK provides a convenient way to integrate and use the Discovery data in your website or applications.
 
-# What is an SDK?
+The SDK provides an interface to implement the following Bloomreach Discovery APIs:
 
-An SDK is a toolkit packed with tools, libraries, and documentation that developers use to create
-amazing applications. The Bloomreach Discovery Web SDK is specifically designed to work harmoniously
-with Bloomreach's Discovery APIs and features. These APIs and features are the secret sauce that
-provides powerful search and personalization features, making your website smarter and more
-intuitive.
+- [Autosuggest API](https://documentation.bloomreach.com/discovery/docs/discovery-web-sdk#autosuggest-api)
+- [Product and Category Search API](https://documentation.bloomreach.com/discovery/docs/discovery-web-sdk#product-and-category-search-api)
+- [Content Search API](https://documentation.bloomreach.com/discovery/docs/discovery-web-sdk#content-search-api)
+- [Recommendations and Pathways APIs](https://documentation.bloomreach.com/discovery/docs/discovery-web-sdk#recommendations-and-pathways-apis)
+- [Bestseller API](https://documentation.bloomreach.com/discovery/docs/discovery-web-sdk#bestseller-api)
 
-# Why Use an SDK?
+The Discovery Web SDK is fully Open-Sourced and open to contributions.
 
-## 1. Decrease Time-to-Value
+<div class="card-with-icon-wrapper">
 
-One of the primary benefits of using an SDK is the significant reduction in development time. SDKs
-provide pre-built functions, methods, and tools that developers can use to integrate complex
-features quickly. This means your development team can implement advanced functionalities without
-having to build them from scratch, leading to faster project completion and quicker time-to-value.
+  <a href="https://github.com/bloomreach/discovery-web-sdk" class="card-with-icon-item justify-content-center">
 
-## 2. Simplify Integration
+  <svg height="40" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="40" data-view-component="true" class="octicon octicon-mark-github">
+    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
 
-SDKs are designed to simplify the integration process. They come with comprehensive documentation,
-examples, and support, making it easier for developers to understand and use the provided tools.
-This reduces the learning curve and allows your team to focus on building and enhancing your
-application rather than dealing with integration complexities.
+</svg>View Repo
+    </a>
+  </div>
+</div>
 
-## 3. Ensure Consistency and Reliability
 
-Using an SDK ensures that your application integrates with external services in a consistent and
-reliable manner. SDKs are thoroughly tested and maintained by the provider, which means you can
-trust that the integration will work as expected. This reliability is crucial for maintaining a
-high-quality user experience.
+## Getting Started
 
-## 4. Leverage Advanced Features
+### Requirements
 
-SDKs often provide access to advanced features and functionalities that would be difficult and
-time-consuming to develop independently. By using an SDK, you can leverage these features to enhance
-your application, providing a richer and more engaging experience for your users.
+The SDK currently requires:
 
-## 5. Focus on Core Competencies
+- [Node.js 20+](https://nodejs.org/)
 
-By offloading the development of complex integrations to an SDK, your development team can focus on
-what they do best—building and improving your core application. This allows for better resource
-allocation and more efficient use of your team's skills and expertise.
+### Installation
 
-In the context of the Bloomreach Discovery Web SDK, these benefits translate to a faster and more
-efficient integration of Bloomreach's powerful search, merchandising, and personalization
-capabilities into your website. This means you can quickly enhance your website's user experience,
-stay competitive, and drive better results for your business.
+```shell NPM
+npm add @bloomreach/discovery-web-sdk
+```
 
-# Getting Started
+```shell PNPM
+pnpm add @bloomreach/discovery-web-sdk
+```
 
-Getting started with the Bloomreach Discovery Web SDK is a breeze. Your development team can follow
-the documentation and examples provided to integrate the SDK into your website. The SDK is designed
-to be developer-friendly, setting sane defaults and providing code completion in your IDE.
+```shell Yarn
+yarn add @bloomreach/discovery-web-sdk
+```
 
-## Technical Details and Code Examples
+#### Debug logging
 
-Here are some examples to help you understand how the SDK can be used in practice:
+Adding `debug: true` to the `Configuration` you pass into the API calls will enable some minor debug logging with `[BR]` as a prefix for your convenience.
 
-### Product Search API
+## Usage
 
-The Product Search API allows you to search for products in your catalog. Here’s how you can use it:
+Below are some usage examples that demonstrate how to call and use various Discovery APIs in your website or application using the SDK.
+
+### Autosuggest API
 
 ```typescript
-import type { Configuration, ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
-import { productSearch } from '@bloomreach/discovery-web-sdk';
+import type { Configuration, AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
+import { autosuggest } from '@bloomreach/discovery-web-sdk';
 
+// Set the account and catalog configuration
 const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };
 
+// Set up the search parameters
+const searchOptions: AutosuggestOptions = {
+  catalog_views: 'product:store1,store2|recipe:premium|articles',
+  q: 'Roses',
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
+};
+
+// Retrieve the suggestions with a search using the provided search parameters
+const data = await autosuggest(config, searchOptions);
+```
+
+### Product and Category Search API
+
+#### Product Search
+
+```typescript
+import type { Configuration, ProductSearchOptions } from '@bloomreach/discovery-web-sdk';
+import { productSearch } from '@bloomreach/discovery-web-sdk';
+
+// Set the account and catalog configuration
+const config: Configuration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
+
+// Set up the search parameters
 const searchOptions: ProductSearchOptions = {
   q: 'Generic Metal Pants',
   fl: 'pid,title,description,brand,price,thumb_image',
@@ -90,22 +111,52 @@ const searchOptions: ProductSearchOptions = {
   _br_uid_2: 'someCookieId',
 };
 
+// Retrieve the product data with a search using the provided search parameters
 const data = await productSearch(config, searchOptions);
+
+
+
 ```
 
-### Content Search API
-
-The Content Search API allows you to search for content within your catalog. Here’s an example:
+#### Category Search
 
 ```typescript
-import type { Configuration, ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
-import { contentSearch } from '@bloomreach/discovery-web-sdk';
+import type { Configuration, CategorySearchOptions } from '@bloomreach/discovery-web-sdk';
+import { categorySearch } from '@bloomreach/discovery-web-sdk';
 
+// Set the account and catalog configuration
 const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };
 
+// Set up the search parameters
+const searchOptions: CategorySearchOptions = {
+  q: 'cat92082',
+  fl: 'pid,title,description,brand,price,thumb_image',
+  start: 0,
+  rows: 10,
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
+};
+
+// Retrieve the product data with a search using the provided search parameters
+const data = await categorySearch(config, searchOptions);
+```
+
+### Content Search API
+
+```typescript
+import type { Configuration, ContentSearchOptions } from '@bloomreach/discovery-web-sdk';
+import { contentSearch } from '@bloomreach/discovery-web-sdk';
+
+// Set the account and catalog configuration
+const config: Configuration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
+
+// Set up the search parameters
 const searchOptions: ContentSearchOptions = {
   catalog_name: 'Flowers',
   q: 'Roses',
@@ -116,50 +167,29 @@ const searchOptions: ContentSearchOptions = {
   _br_uid_2: 'someCookieId',
 };
 
+// Retrieve the Content data with a search using the provided search parameters
 const data = await contentSearch(config, searchOptions);
 ```
 
-### Autosuggest API
-
-The Autosuggest API provides suggestions based on user input. Here’s how to use it:
-
-```typescript
-import type { Configuration, AutosuggestOptions } from '@bloomreach/discovery-web-sdk';
-import { autosuggest } from '@bloomreach/discovery-web-sdk';
-
-const config: Configuration = {
-  account_id: 1234,
-  domain_key: 'example_com',
-};
-
-const searchOptions: AutosuggestOptions = {
-  catalog_views: 'product:store1,store2|recipe:premium|articles',
-  q: 'Roses',
-  url: 'http://example.com',
-  _br_uid_2: 'someCookieId',
-};
-
-const data = await autosuggest(config, searchOptions);
-```
-
-### Global Widget API
-
-The Global Widget API allows you to retrieve personalized recommendations. Here’s an example:
+### Recommendations and Pathways APIs
 
 ```typescript
 import {
-  GlobalWidgetOptions,
+  CategoryWidgetOptions,
   Configuration,
   WidgetResponse,
-  getGlobalWidget,
+  getCategoryWidget,
 } from '@bloomreach/discovery-web-sdk';
 
+// Set the account and catalog configuration
 const config: Configuration = {
   account_id: 1234,
   domain_key: 'example_com',
 };
 
-const searchOptions: GlobalWidgetOptions = {
+// Set up the search parameters
+const searchOptions: CategoryWidgetOptions = {
+  cat_id: 'cat123959',
   start: 0,
   rows: 10,
   url: 'http://example.com',
@@ -170,26 +200,49 @@ const searchOptions: GlobalWidgetOptions = {
 
 const widgetId = 'my_widget_id';
 
-const widget = getGlobalWidget(widgetId, config, searchOptions);
+// Retrieve the widget using the widgetId and parameters
+const widget = getCategoryWidget(widgetId, config, searchOptions);
 ```
 
-### Debug logging
-Adding `debug: true` to the `Configuration` you pass in to the API calls will enable some minor
-debug logging with `[BR]` as prefix for your convenience.
+Similar functions and types are exposed for all widget types:
 
-# Conclusion
+- `getGlobalWidget`
+- `getKeywordWidget`
+- `getCategoryWidget`
+- `getItemWidget`
+- `getPersonalizedWidget`
+- `getRecentlyViewedWidget`
 
-The Bloomreach Discovery Web SDK can significantly enhance your website's user experience, save time
-and resources, boost conversion rates, and help you stay competitive. By leveraging this SDK, you
-can provide your visitors with a more personalized and engaging experience, ultimately driving
-better results for your business.
+### Bestseller API
 
-For more information and to get started, visit the
-[Bloomreach Discovery Web SDK documentation](https://bloomreach.github.io/discovery-web-sdk).
+```typescript
+import type { Configuration, BestsellerOptions } from '@bloomreach/discovery-web-sdk';
+import { bestseller } from '@bloomreach/discovery-web-sdk';
 
-# Additional Resources
+// Set the account and catalog configuration
+const config: Configuration = {
+  account_id: 1234,
+  domain_key: 'example_com',
+};
 
-- [Bloomreach Discovery Documentation](https://documentation.bloomreach.com)
-- [Bloomreach Discovery API Reference](https://api.bloomreach.com)
-- [Bloomreach Discovery Web SDK TSDoc](https://bloomreach.github.io/discovery-web-sdk)
+// Set up the search parameters
+const searchOptions: BestsellerOptions = {
+  q: 'Bolts',
+  fl: 'pid,title,description,brand,price,thumb_image',
+  start: 0,
+  rows: 10,
+  url: 'http://example.com',
+  _br_uid_2: 'someCookieId',
+};
 
+// Retrieve the product data with a search using the provided search parameters
+const data = await bestseller(config, searchOptions);
+```
+
+## Contribution & Development
+
+The Bloomreach Discovery SDK is Open-Source, and we welcome outside contributions. See our [Contribution Guide](https://github.com/bloomreach/discovery-web-sdk/blob/main/CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/bloomreach/discovery-web-sdk/blob/main/LICENSE) file for details.
