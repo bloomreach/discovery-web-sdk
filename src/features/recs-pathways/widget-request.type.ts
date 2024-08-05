@@ -89,7 +89,7 @@ export interface WidgetRequest {
    * To provide multiple filters, send multiple filter parameters. For example, &filter=(price:["*" TO
    * "100"])&filter=(color_groups: ("blue"))
    */
-  filter?: string;
+  filter?: string | string[];
 }
 
 export interface GlobalWidgetRequest extends WidgetRequest {}

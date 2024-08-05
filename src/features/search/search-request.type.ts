@@ -104,13 +104,13 @@ export interface SearchRequestParameters {
    * searching for products that fit your parameter values.
    * Use fq=store_lat_lon to enable filtering by distance for BOPIS.
    */
-  fq?: string;
+  fq?: string | string[];
 
   /**
    * Extends the filtered query and applies a complex boolean filter to search results to include or exclude items that fit your parameter values.
    * Any product attribute in your product feed is valid, such as brand names and sizes.
    */
-  efq?: string;
+  efq?: string | string[];
 
   /**
    * The latitude-longitude of the end-customer used for the Buy Online Pick-up In Store (BOPIS) feature.
