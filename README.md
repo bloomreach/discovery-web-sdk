@@ -4,7 +4,7 @@
 > The detailed TSDoc and reference for the SDK are available [here](https://bloomreach.github.io/discovery-web-sdk/modules.html).
 
 The Bloomreach Discovery Web SDK is a TypeScript SDK designed to interact with the
-[Bloomreach Discovery APIs](https://documentation.bloomreach.com/discovery/reference/welcome). This SDK provides a convenient way to integrate and use the Discovery data in your website or applications.
+ [Bloomreach Discovery APIs](https://documentation.bloomreach.com/discovery/reference/welcome). This SDK provides a convenient way to integrate and use the Discovery data in your website or applications.
 
 The SDK provides an interface to implement the following Bloomreach Discovery APIs:
 
