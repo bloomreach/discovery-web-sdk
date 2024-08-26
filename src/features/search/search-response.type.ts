@@ -29,8 +29,8 @@ type SearchResponseFacetCountsFacetFields = {
  */
 interface SearchResponseFacetCountsFacetRangesPrice {
   count: number;
-  start: number;
-  end: number;
+  start: number | '*';
+  end: number | '*';
 }
 
 /**
