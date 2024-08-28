@@ -249,7 +249,7 @@ describe('RecentlyViewedWidget API', () => {
       getRecentlyViewedWidget,
       [widgetId, config, searchOptions],
       [
-        http.get(`${config.widgetEndpoint}recentlyviewed/${widgetId}`, ({ request }) => {
+        http.get(`${config.widgetEndpoint}personalized/${widgetId}`, ({ request }) => {
           searchParams = new URL(request.url).searchParams;
           return HttpResponse.json(createWidgetResponseMock());
         }),
@@ -268,7 +268,7 @@ describe('RecentlyViewedWidget API', () => {
         getRecentlyViewedWidget,
         [widgetId, configWithoutEndpoint, searchOptions],
         [
-          http.get(`${WIDGET_ENDPOINT_PROD}recentlyviewed/${widgetId}`, () => {
+          http.get(`${WIDGET_ENDPOINT_PROD}personalized/${widgetId}`, () => {
             return HttpResponse.json(createWidgetResponseMock());
           }),
         ],
