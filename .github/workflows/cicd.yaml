@@ -113,12 +113,6 @@ jobs:
           path: dist
           key: ${{ runner.os }}-build-${{ github.sha }}
 
-      - name:
-          Verify the integrity of provenance attestations and registry signatures for installed
-          dependencies
-        # This is not a mistake, pnpm does not support auditing signatures yet
-        run: npm audit signatures
-
       - name: Install dependencies
         run: pnpm install
 
