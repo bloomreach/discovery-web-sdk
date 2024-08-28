@@ -122,7 +122,7 @@ export async function getRecentlyViewedWidget(
   const { widgetEndpoint, ...config } = configuration;
   const queryParams = Object.assign(config, options);
   const url = buildApiUrl(
-    `${widgetEndpoint || WIDGET_ENDPOINT_PROD}recentlyviewed/${id}`,
+    `${widgetEndpoint || WIDGET_ENDPOINT_PROD}personalized/${id}`,
     queryParams,
   );
 
