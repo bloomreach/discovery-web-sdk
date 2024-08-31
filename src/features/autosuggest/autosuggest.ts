@@ -24,7 +24,12 @@ export async function autoSuggest(
 ): Promise<SuggestResponse> {
   const { suggestEndpoint, ...config } = configuration;
   const defaults: Partial<SuggestRequestParameters> = {};
-  const queryParams = Object.assign(config, FIXED_OPTIONS, defaults, options);
+  const queryParams: SuggestRequestParameters = Object.assign(
+    config,
+    defaults,
+    options,
+    FIXED_OPTIONS,
+  );
   const url = buildApiUrl(suggestEndpoint || SUGGEST_ENDPOINT_PROD, queryParams);
 
   logAPICall('autoSuggest', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);
