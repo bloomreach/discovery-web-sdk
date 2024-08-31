@@ -20,10 +20,7 @@ export function isContentSearchOptions(
   return (
     otherRequiredProperties.every(
       (key) => key in options && Object.prototype.hasOwnProperty.call(options, key),
-    ) &&
-    Object.entries(FIXED_OPTIONS).every(
-      ([key, value]) => options[key] !== undefined && options[key] === value,
-    )
+    ) && Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value)
   );
 }
 

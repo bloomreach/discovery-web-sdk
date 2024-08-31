@@ -13,9 +13,7 @@ const FIXED_OPTIONS: BestsellerFixedOptions = {
 };
 
 export function isBestsellerOptions(options: Record<string, any>): options is BestsellerOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => {
-    return options[key] !== undefined && options[key] === value;
-  });
+  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
 }
 
 /**
