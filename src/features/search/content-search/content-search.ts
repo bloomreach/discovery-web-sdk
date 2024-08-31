@@ -38,7 +38,12 @@ export async function contentSearch(
     'facet.version': '3.0',
   };
 
-  const queryParams = Object.assign(config, FIXED_OPTIONS, defaults, options);
+  const queryParams: ContentSearchRequestParameters = Object.assign(
+    config,
+    defaults,
+    options,
+    FIXED_OPTIONS,
+  );
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
   logAPICall('contentSearch', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);

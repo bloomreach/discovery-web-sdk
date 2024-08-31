@@ -34,9 +34,9 @@ export async function productSearch(
 
   const queryParams: SearchRequestParameters = Object.assign(
     config,
-    FIXED_OPTIONS,
     defaults,
     options,
+    FIXED_OPTIONS,
   );
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
