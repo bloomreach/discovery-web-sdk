@@ -1,6 +1,7 @@
 ---
 title: Discovery Web SDK
 category: 61b785225c1c75017a430718
+parentDoc: 66b66b073736cb0060fb621e
 ---
 
 > ⚙️ **SDK Reference**
