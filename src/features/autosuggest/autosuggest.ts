@@ -12,9 +12,7 @@ const FIXED_OPTIONS: SuggestFixedOptions = {
 };
 
 export function isAutosuggestOptions(options: Record<string, any>): options is AutosuggestOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => {
-    return options[key] !== undefined && options[key] === value;
-  });
+  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
 }
 
 /**

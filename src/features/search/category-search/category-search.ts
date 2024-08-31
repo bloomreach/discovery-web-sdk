@@ -15,9 +15,7 @@ const FIXED_OPTIONS: CategorySearchFixedOptions = {
 export function isCategorySearchOptions(
   options: Record<string, any>,
 ): options is CategorySearchOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => {
-    return options[key] !== undefined && options[key] === value;
-  });
+  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
 }
 
 /**

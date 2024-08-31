@@ -15,9 +15,7 @@ const FIXED_OPTIONS: ProductSearchFixedOptions = {
 export function isProductSearchOptions(
   options: Record<string, any>,
 ): options is ProductSearchOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => {
-    return options[key] !== undefined && options[key] === value;
-  });
+  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
 }
 
 /**
