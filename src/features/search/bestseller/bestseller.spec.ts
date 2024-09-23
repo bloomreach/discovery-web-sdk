@@ -13,26 +13,6 @@ describe('Bestseller API', () => {
     q: 'testQuery',
   });
 
-  test('fetch call with correct URL', async () => {
-    const expectedUrl = new URL(config.searchEndpoint);
-    expectedUrl.searchParams.set('q', 'testQuery');
-    expectedUrl.searchParams.set('request_type', 'search');
-    expectedUrl.searchParams.set('search_type', 'bestseller');
-    expectedUrl.searchParams.set('fl', 'pid');
-    expectedUrl.searchParams.set('start', '0');
-
-    await mockRequest(
-      bestseller,
-      [config, searchOptions],
-      [
-        http.get(config.searchEndpoint, ({ request }) => {
-          expect(request.url).toBe(expectedUrl.toString());
-          return HttpResponse.json(createSearchResponseMock());
-        }),
-      ],
-    );
-  });
-
   test('checks that config and searchOptions are added to the searchParams in the request URL', async () => {
     const { account_id, domain_key, _br_uid_2, url, q, fl, start, rows } = {
       ...config,

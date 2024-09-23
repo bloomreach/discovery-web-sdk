@@ -1,6 +1,7 @@
 import type { Configuration } from '../../shared/configuration.type';
 import { SUGGEST_ENDPOINT_PROD } from '../../shared/constants';
 import { logAPICall } from '../../shared/logger';
+import { typedFetch } from '../../shared/typed-fetch';
 import { buildApiUrl } from '../../shared/url-builders';
 import type { AutosuggestOptions } from './autosuggest-options.type';
 import type { SuggestFixedOptions } from './suggest-fixed-options.type';
@@ -34,6 +35,5 @@ export async function autoSuggest(
 
   logAPICall('autoSuggest', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<SuggestResponse>;
+  return typedFetch<SuggestResponse>(url);
 }

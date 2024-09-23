@@ -1,6 +1,7 @@
 import type { Configuration } from '../../../shared/configuration.type';
 import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
 import { logAPICall } from '../../../shared/logger';
+import { typedFetch } from '../../../shared/typed-fetch';
 import { buildApiUrl } from '../../../shared/url-builders';
 import type { SearchRequestParameters } from '../search-request.type';
 import type { SearchResponse } from '../search-response.type';
@@ -40,6 +41,5 @@ export async function bestseller(
 
   logAPICall('bestseller', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<SearchResponse>;
+  return typedFetch<SearchResponse>(url);
 }

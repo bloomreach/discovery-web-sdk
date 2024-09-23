@@ -1,6 +1,7 @@
 import type { Configuration } from '../../shared/configuration.type';
 import { WIDGET_ENDPOINT_PROD } from '../../shared/constants';
 import { logAPICall } from '../../shared/logger';
+import { typedFetch } from '../../shared/typed-fetch';
 import { buildApiUrl } from '../../shared/url-builders';
 import type {
   CategoryWidgetOptions,
@@ -27,8 +28,7 @@ export async function getGlobalWidget(
 
   logAPICall('getGlobalWidget', configuration, options, {}, {}, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<WidgetResponse>;
+  return typedFetch<WidgetResponse>(url);
 }
 
 /**
@@ -46,8 +46,7 @@ export async function getCategoryWidget(
 
   logAPICall(getCategoryWidget.name, configuration, options, {}, {}, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<WidgetResponse>;
+  return typedFetch<WidgetResponse>(url);
 }
 
 /**
@@ -65,8 +64,7 @@ export async function getKeywordWidget(
 
   logAPICall('getKeywordWidget', configuration, options, {}, {}, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<WidgetResponse>;
+  return typedFetch<WidgetResponse>(url);
 }
 
 /**
@@ -84,8 +82,7 @@ export async function getItemWidget(
 
   logAPICall('getItemWidget', configuration, options, {}, {}, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<WidgetResponse>;
+  return typedFetch<WidgetResponse>(url);
 }
 
 /**
@@ -106,8 +103,7 @@ export async function getPersonalizedWidget(
 
   logAPICall('getPersonalizedWidget', configuration, options, {}, {}, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<WidgetResponse>;
+  return typedFetch<WidgetResponse>(url);
 }
 
 /**
@@ -128,6 +124,5 @@ export async function getRecentlyViewedWidget(
 
   logAPICall('getRecentlyViewedWidget', configuration, options, {}, {}, queryParams, url);
 
-  const data = await fetch(url);
-  return data.json() as Promise<WidgetResponse>;
+  return typedFetch<WidgetResponse>(url);
 }
