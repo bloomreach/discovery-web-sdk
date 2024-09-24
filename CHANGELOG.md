@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/bloomreach/discovery-web-sdk/compare/v1.3.1...v1.3.2) (2024-09-24)
+
+
+### Bug Fixes
+
+* Reject API calls that return a HTTP status that is not 2xx ([8816c14](https://github.com/bloomreach/discovery-web-sdk/commit/8816c14c7d9278a13210f154c1b08cc30ff5f883))
+
 ## [1.3.1](https://github.com/bloomreach/discovery-web-sdk/compare/v1.3.0...v1.3.1) (2024-09-10)
 
 
