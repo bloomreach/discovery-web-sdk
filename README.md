@@ -234,6 +234,12 @@ const searchOptions: BestsellerOptions = {
 const data = await bestseller(config, searchOptions);
 ```
 
+## Related resources
+
+- [Limitless Commerce UI Kit](https://bloomreach.github.io/limitless-ui-react)
+- [Web Code Samples](https://documentation.bloomreach.com/discovery/docs/discovery-web-code-samples)
+- [Sample Catalogs](https://github.com/bloomreach/sample-catalogs)
+
 ## Contribution & Development
 
 The Bloomreach Discovery SDK is Open-Source, and we welcome outside contributions. See our [Contribution Guide](https://github.com/bloomreach/discovery-web-sdk/blob/main/CONTRIBUTING.md).
