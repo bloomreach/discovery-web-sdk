@@ -7,5 +7,5 @@ import { ContentSearchFixedOptions } from './content-search-fixed-options.type';
  */
 export type ContentSearchOptions = Omit<
   ContentSearchRequestParameters,
-  keyof ContentSearchFixedOptions | keyof Configuration
+  'q' | keyof ContentSearchFixedOptions | keyof Configuration
 >;

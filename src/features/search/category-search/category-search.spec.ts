@@ -6,13 +6,15 @@ import { createSearchResponseMock } from '../search-response.mock';
 import { categorySearch } from './category-search';
 import { createCategorySearchOptionsMock } from './category-search-options.mock';
 import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
+import { faker } from '@faker-js/faker';
 
 describe('Category Search API', () => {
+  const q = faker.commerce.productName();
   const config = createSetupConfigMock();
   const searchOptions = createCategorySearchOptionsMock();
 
   test('checks that config and searchOptions are added to the searchParams in the request URL', async () => {
-    const { account_id, domain_key, _br_uid_2, url, q, fl, start, rows } = {
+    const { account_id, domain_key, _br_uid_2, url, fl, start, rows } = {
       ...config,
       ...searchOptions,
     };
@@ -20,7 +22,7 @@ describe('Category Search API', () => {
 
     await mockRequest(
       categorySearch,
-      [config, searchOptions],
+      [q, config, searchOptions],
       [
         http.get(config.searchEndpoint, ({ request }) => {
           searchParams = new URL(request.url).searchParams;
@@ -52,7 +54,7 @@ describe('Category Search API', () => {
     await expect(
       mockRequest(
         categorySearch,
-        [configWithoutEndpoint, searchOptions],
+        [q, configWithoutEndpoint, searchOptions],
         [
           http.get(SEARCH_ENDPOINT_PROD, () => {
             return HttpResponse.json(createSearchResponseMock());

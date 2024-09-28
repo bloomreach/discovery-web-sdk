@@ -16,17 +16,19 @@ const FIXED_OPTIONS: SuggestFixedOptions = {
  * Retrieves suggestions for the current input using the provided configuration and options.
  */
 export async function autoSuggest(
+  query: SuggestRequestParameters['q'],
   configuration: Configuration,
   options: AutosuggestOptions,
 ): Promise<SuggestResponse> {
   const { suggestEndpoint, ...config } = configuration;
   const defaults: Partial<SuggestRequestParameters> = {};
-  const queryParams: SuggestRequestParameters = Object.assign(
-    config,
-    defaults,
-    options,
-    FIXED_OPTIONS,
-  );
+  const queryParams: SuggestRequestParameters = {
+    q: query,
+    ...config,
+    ...defaults,
+    ...options,
+    ...FIXED_OPTIONS,
+  };
   const url = buildApiUrl(suggestEndpoint || SUGGEST_ENDPOINT_PROD, queryParams);
 
   logAPICall('autoSuggest', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);
