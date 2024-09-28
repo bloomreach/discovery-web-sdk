@@ -13,12 +13,6 @@ const FIXED_OPTIONS: ProductSearchFixedOptions = {
   search_type: 'keyword',
 };
 
-export function isProductSearchOptions(
-  options: Record<string, any>,
-): options is ProductSearchOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
-}
-
 /**
  * Performs a product search using the provided configuration and options.
  */

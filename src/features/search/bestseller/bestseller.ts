@@ -13,10 +13,6 @@ const FIXED_OPTIONS: BestsellerFixedOptions = {
   search_type: 'bestseller',
 };
 
-export function isBestsellerOptions(options: Record<string, any>): options is BestsellerOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
-}
-
 /**
  * Fetches the bestseller products based on the provided configuration and options.
  */
