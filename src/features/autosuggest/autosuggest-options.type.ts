@@ -7,5 +7,5 @@ import type { SuggestRequestParameters } from './suggest-request.type';
  */
 export type AutosuggestOptions = Omit<
   SuggestRequestParameters,
-  keyof SuggestFixedOptions | keyof Configuration
+  'q' | keyof SuggestFixedOptions | keyof Configuration
 >;

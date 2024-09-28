@@ -17,6 +17,7 @@ const FIXED_OPTIONS: ProductSearchFixedOptions = {
  * Performs a product search using the provided configuration and options.
  */
 export async function productSearch(
+  query: SearchRequestParameters['q'],
   configuration: Configuration,
   options: ProductSearchOptions,
 ): Promise<SearchResponse> {
@@ -27,12 +28,14 @@ export async function productSearch(
     'facet.version': '3.0',
   };
 
-  const queryParams: SearchRequestParameters = Object.assign(
-    config,
-    defaults,
-    options,
-    FIXED_OPTIONS,
-  );
+  const queryParams: SearchRequestParameters = {
+    q: query,
+    ...config,
+    ...defaults,
+    ...options,
+    ...FIXED_OPTIONS,
+  };
+
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
   logAPICall('productSearch', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);

@@ -3,7 +3,7 @@ import { SEARCH_ENDPOINT_PROD } from '../../../shared/constants';
 import { logAPICall } from '../../../shared/logger';
 import { typedFetch } from '../../../shared/typed-fetch';
 import { buildApiUrl } from '../../../shared/url-builders';
-import type { ContentSearchRequestParameters } from '../search-request.type';
+import type { ContentSearchRequestParameters, SearchRequestParameters } from '../search-request.type';
 import type { SearchResponse } from '../search-response.type';
 import { ContentSearchFixedOptions } from './content-search-fixed-options.type';
 import type { ContentSearchOptions } from './content-search-options.type';
@@ -17,6 +17,7 @@ const FIXED_OPTIONS: ContentSearchFixedOptions = {
  * Performs a content search using the provided configuration and options.
  */
 export async function contentSearch(
+  query: SearchRequestParameters['q'],
   configuration: Configuration,
   options: ContentSearchOptions,
 ): Promise<SearchResponse> {
@@ -27,12 +28,14 @@ export async function contentSearch(
     'facet.version': '3.0',
   };
 
-  const queryParams: ContentSearchRequestParameters = Object.assign(
-    config,
-    defaults,
-    options,
-    FIXED_OPTIONS,
-  );
+  const queryParams: ContentSearchRequestParameters = {
+    q: query,
+    ...config,
+    ...defaults,
+    ...options,
+    ...FIXED_OPTIONS,
+  };
+
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
   logAPICall('contentSearch', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);

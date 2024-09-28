@@ -6,8 +6,10 @@ import { mockRequest } from '../../shared/mock-request.mock';
 import { autoSuggest } from './autosuggest';
 import { createAutosuggestOptionsMock } from './autosuggest-options.mock';
 import { createSuggestResponseMock } from './suggest-response.mock';
+import { faker } from '@faker-js/faker';
 
 describe('Autosuggest API', () => {
+  const q = faker.commerce.productName();
   const config = createSetupConfigMock();
   const searchOptions = createAutosuggestOptionsMock();
 
@@ -16,7 +18,7 @@ describe('Autosuggest API', () => {
 
     await mockRequest(
       autoSuggest,
-      [config, searchOptions],
+      [q, config, searchOptions],
       [
         http.get(config.suggestEndpoint, ({ request }) => {
           searchParams = new URL(request.url).searchParams;
@@ -25,12 +27,15 @@ describe('Autosuggest API', () => {
       ],
       () => {
         const { account_id, domain_key } = config;
-        const { q, catalog_views, _br_uid_2, url } = searchOptions;
+        const { catalog_views, _br_uid_2, url } = searchOptions;
 
         Object.entries({
-          ...{ account_id, domain_key },
-          ...{ q, catalog_views, _br_uid_2, url },
-          request_type: 'suggest',
+          q,
+          account_id,
+          domain_key,
+          catalog_views,
+          _br_uid_2,
+          url,
         }).forEach(([key, value]) => {
           expect(searchParams.get(key)).toEqual(String(value));
         });
@@ -43,7 +48,7 @@ describe('Autosuggest API', () => {
 
     await mockRequest(
       autoSuggest,
-      [configWithoutEndpoint, searchOptions],
+      [q, configWithoutEndpoint, searchOptions],
       [
         http.get(SUGGEST_ENDPOINT_PROD, () => {
           return HttpResponse.json(createSuggestResponseMock());

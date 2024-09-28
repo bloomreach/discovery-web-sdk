@@ -17,6 +17,7 @@ const FIXED_OPTIONS: CategorySearchFixedOptions = {
  * Performs a category search using the provided configuration and options.
  */
 export async function categorySearch(
+  query: SearchRequestParameters['q'],
   configuration: Configuration,
   options: CategorySearchOptions,
 ): Promise<SearchResponse> {
@@ -27,12 +28,14 @@ export async function categorySearch(
     'facet.version': '3.0',
   };
 
-  const queryParams: SearchRequestParameters = Object.assign(
-    config,
-    defaults,
-    options,
-    FIXED_OPTIONS,
-  );
+  const queryParams: SearchRequestParameters = {
+    q: query,
+    ...config,
+    ...defaults,
+    ...options,
+    ...FIXED_OPTIONS,
+  };
+
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
   logAPICall('categorySearch', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);

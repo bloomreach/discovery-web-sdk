@@ -7,5 +7,5 @@ import { ProductSearchFixedOptions } from './product-search-fixed-options.type';
  */
 export type ProductSearchOptions = Omit<
   SearchRequestParameters,
-  keyof ProductSearchFixedOptions | keyof Configuration
+  'q' | keyof ProductSearchFixedOptions | keyof Configuration
 >;
