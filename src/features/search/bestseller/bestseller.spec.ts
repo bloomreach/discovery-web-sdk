@@ -6,15 +6,15 @@ import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
 import { bestseller } from './bestseller';
 import { createBestsellerOptionsMock } from './bestseller-options.mock';
+import { faker } from '@faker-js/faker';
 
 describe('Bestseller API', () => {
+  const q = faker.commerce.productName();
   const config = createSetupConfigMock();
-  const searchOptions = createBestsellerOptionsMock({
-    q: 'testQuery',
-  });
+  const searchOptions = createBestsellerOptionsMock();
 
   test('checks that config and searchOptions are added to the searchParams in the request URL', async () => {
-    const { account_id, domain_key, _br_uid_2, url, q, fl, start, rows } = {
+    const { account_id, domain_key, _br_uid_2, url, fl, start, rows } = {
       ...config,
       ...searchOptions,
     };
@@ -22,7 +22,7 @@ describe('Bestseller API', () => {
 
     await mockRequest(
       bestseller,
-      [config, searchOptions],
+      [q, config, searchOptions],
       [
         http.get(config.searchEndpoint, ({ request }) => {
           searchParams = new URL(request.url).searchParams;
@@ -54,7 +54,7 @@ describe('Bestseller API', () => {
     await expect(
       mockRequest(
         bestseller,
-        [configWithoutEndpoint, searchOptions],
+        [q, configWithoutEndpoint, searchOptions],
         [
           http.get(SEARCH_ENDPOINT_PROD, () => {
             return HttpResponse.json(createSearchResponseMock());
