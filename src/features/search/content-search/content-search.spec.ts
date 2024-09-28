@@ -6,8 +6,10 @@ import { mockRequest } from '../../../shared/mock-request.mock';
 import { createSearchResponseMock } from '../search-response.mock';
 import { contentSearch } from './content-search';
 import { createContentSearchOptionsMock } from './content-search-options.mock';
+import { faker } from '@faker-js/faker';
 
 describe('Content Search API', () => {
+  const q = faker.commerce.productName();
   const config = createSetupConfigMock();
   const searchOptions = createContentSearchOptionsMock();
 
@@ -20,7 +22,7 @@ describe('Content Search API', () => {
 
     await mockRequest(
       contentSearch,
-      [config, searchOptions],
+      [q, config, searchOptions],
       [
         http.get(config.searchEndpoint, ({ request }) => {
           searchParams = new URL(request.url).searchParams;
@@ -52,7 +54,7 @@ describe('Content Search API', () => {
     await expect(
       mockRequest(
         contentSearch,
-        [configWithoutEndpoint, searchOptions],
+        [q, configWithoutEndpoint, searchOptions],
         [
           http.get(SEARCH_ENDPOINT_PROD, () => {
             return HttpResponse.json(createSearchResponseMock());

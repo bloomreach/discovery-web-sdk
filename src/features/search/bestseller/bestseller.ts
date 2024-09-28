@@ -21,6 +21,7 @@ export function isBestsellerOptions(options: Record<string, any>): options is Be
  * Fetches the bestseller products based on the provided configuration and options.
  */
 export async function bestseller(
+  query: SearchRequestParameters['q'],
   configuration: Configuration,
   options: BestsellerOptions,
 ): Promise<SearchResponse> {
@@ -31,12 +32,14 @@ export async function bestseller(
     'facet.version': '3.0',
   };
 
-  const queryParams: SearchRequestParameters = Object.assign(
-    config,
-    defaults,
-    options,
-    FIXED_OPTIONS,
-  );
+  const queryParams: SearchRequestParameters = {
+    q: query,
+    ...config,
+    ...defaults,
+    ...options,
+    ...FIXED_OPTIONS,
+  };
+
   const url = buildApiUrl(searchEndpoint || SEARCH_ENDPOINT_PROD, queryParams);
 
   logAPICall('bestseller', configuration, options, FIXED_OPTIONS, defaults, queryParams, url);

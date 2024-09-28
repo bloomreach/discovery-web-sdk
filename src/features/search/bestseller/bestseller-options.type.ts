@@ -7,5 +7,5 @@ import { BestsellerFixedOptions } from './bestseller-fixed-options.type';
  */
 export type BestsellerOptions = Omit<
   SearchRequestParameters,
-  keyof BestsellerFixedOptions | keyof Configuration
+  'q' | keyof BestsellerFixedOptions | keyof Configuration
 >;
