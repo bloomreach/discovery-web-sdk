@@ -12,10 +12,6 @@ const FIXED_OPTIONS: SuggestFixedOptions = {
   request_type: 'suggest',
 };
 
-export function isAutosuggestOptions(options: Record<string, any>): options is AutosuggestOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
-}
-
 /**
  * Retrieves suggestions for the current input using the provided configuration and options.
  */

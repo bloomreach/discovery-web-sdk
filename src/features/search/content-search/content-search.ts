@@ -13,18 +13,6 @@ const FIXED_OPTIONS: ContentSearchFixedOptions = {
   search_type: 'keyword',
 };
 
-export function isContentSearchOptions(
-  options: Record<string, any>,
-): options is ContentSearchOptions {
-  const otherRequiredProperties = ['catalog_name'];
-
-  return (
-    otherRequiredProperties.every(
-      (key) => key in options && Object.prototype.hasOwnProperty.call(options, key),
-    ) && Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value)
-  );
-}
-
 /**
  * Performs a content search using the provided configuration and options.
  */
