@@ -13,12 +13,6 @@ const FIXED_OPTIONS: CategorySearchFixedOptions = {
   search_type: 'category',
 };
 
-export function isCategorySearchOptions(
-  options: Record<string, any>,
-): options is CategorySearchOptions {
-  return Object.entries(FIXED_OPTIONS).every(([key, value]) => options[key] === value);
-}
-
 /**
  * Performs a category search using the provided configuration and options.
  */
