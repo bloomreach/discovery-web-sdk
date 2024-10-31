@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/bloomreach/discovery-web-sdk/compare/v1.3.2...v2.0.0) (2024-10-31)
+
+
+* fix!: Search API functions how take query as a parameter ([07e122e](https://github.com/bloomreach/discovery-web-sdk/commit/07e122e6eecc979b4fc2e1d86bda9ad394bc70a2))
+* fix!: Remove invalid SearchOption type guard functions ([2e40d50](https://github.com/bloomreach/discovery-web-sdk/commit/2e40d505cd31f15ca708ebb21d4e892290b7db88))
+
+
+### BREAKING CHANGES
+
+* `productSearch`, `bestseller`, `contentSearch`, `categorySearch` and `autoSuggest`
+parameters have changed.
+* Removed `isBestsellerOptions`, `isAutosuggestOptions`, `isContentSearchOptions`,
+`isProductSearchOptions`, `isCategorySearchOptions` functions from the API.
+
 ## [1.3.2](https://github.com/bloomreach/discovery-web-sdk/compare/v1.3.1...v1.3.2) (2024-09-24)
 
 
