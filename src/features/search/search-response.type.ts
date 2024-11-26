@@ -1,7 +1,7 @@
 /**
  * Category facet fields in the search response.
  */
-interface SearchResponseFacetCountsFacetFieldsCategory {
+export interface SearchResponseFacetCountsFacetFieldsCategory {
   count?: number;
   crumb?: string;
   parent?: string;
@@ -13,12 +13,12 @@ interface SearchResponseFacetCountsFacetFieldsCategory {
 /**
  * Represents the general facet fields in the search response.
  */
-interface SearchResponseFacetCountsFacetFieldsGeneral {
+export interface SearchResponseFacetCountsFacetFieldsGeneral {
   count: number;
   name: string;
 }
 
-type SearchResponseFacetCountsFacetFields = {
+ export type SearchResponseFacetCountsFacetFields = {
   category?: SearchResponseFacetCountsFacetFieldsCategory[];
 } & {
   [key: string]: SearchResponseFacetCountsFacetFieldsGeneral[];
@@ -27,7 +27,7 @@ type SearchResponseFacetCountsFacetFields = {
 /**
  * Represents the price range facet counts in the search response.
  */
-interface SearchResponseFacetCountsFacetRangesPrice {
+export interface SearchResponseFacetCountsFacetRangesPrice {
   count: number;
   start: number | '*';
   end: number | '*';
@@ -36,14 +36,14 @@ interface SearchResponseFacetCountsFacetRangesPrice {
 /**
  * Represents the facet ranges in the search response.
  */
-interface SearchResponseFacetCountsFacetRanges {
+export interface SearchResponseFacetCountsFacetRanges {
   price?: SearchResponseFacetCountsFacetRangesPrice[];
 }
 
 /**
  * Represents the facet counts in the search response.
  */
-interface SearchResponseFacetCounts {
+export interface SearchResponseFacetCounts {
   facet_ranges?: SearchResponseFacetCountsFacetRanges;
   facet_fields?: SearchResponseFacetCountsFacetFields;
   facet_queries?: object;
@@ -55,7 +55,7 @@ interface SearchResponseFacetCounts {
 /**
  * Represents a product variant in the search response.
  */
-interface Variant {
+export interface Variant {
   skuid?: string;
   sku_color_group: string;
   sku_swatch_images: string[];
@@ -67,7 +67,7 @@ interface Variant {
 /**
  * Represents a document in the search response.
  */
-interface SearchResponseDoc {
+export interface SearchResponseDoc {
   sale_price: number;
   price: number;
   description: string;
@@ -86,7 +86,7 @@ interface SearchResponseDoc {
 /**
  * Represents the response section of the search response.
  */
-interface SearchResponseResponse {
+export interface SearchResponseResponse {
   numFound?: number;
   start?: number;
   docs?: SearchResponseDoc[];
@@ -96,7 +96,7 @@ interface SearchResponseResponse {
 /**
  * Represents a group in the group list of the search response.
  */
-interface SearchResponseGroupResponseGroupListGroup {
+export interface SearchResponseGroupResponseGroupListGroup {
   groupValue: string;
   doclist?: SearchResponseResponse;
 }
@@ -104,7 +104,7 @@ interface SearchResponseGroupResponseGroupListGroup {
 /**
  * Represents a list of groups in the group response of the search response.
  */
-interface SearchResponseGroupResponseGroupList {
+export interface SearchResponseGroupResponseGroupList {
   matches: number;
   groups: SearchResponseGroupResponseGroupListGroup[];
 }
@@ -112,14 +112,14 @@ interface SearchResponseGroupResponseGroupList {
 /**
  * Represents the group response in the search response.
  */
-interface SearchResponseGroupResponse {
+export interface SearchResponseGroupResponse {
   [groupName: string]: SearchResponseGroupResponseGroupList;
 }
 
 /**
  * Represents the price statistics fields in the search response.
  */
-interface SearchResponseStatsStatsFieldsPrice {
+export interface SearchResponseStatsStatsFieldsPrice {
   max: number;
   min: number;
 }
@@ -127,7 +127,7 @@ interface SearchResponseStatsStatsFieldsPrice {
 /**
  * Represents the statistics fields in the search response.
  */
-interface SearchResponseStatsStatsFields {
+export interface SearchResponseStatsStatsFields {
   price?: SearchResponseStatsStatsFieldsPrice;
   sale_price?: SearchResponseStatsStatsFieldsPrice;
 }
@@ -135,14 +135,14 @@ interface SearchResponseStatsStatsFields {
 /**
  * Represents the statistics in the search response.
  */
-interface SearchResponseStats {
+export interface SearchResponseStats {
   stats_fields: SearchResponseStatsStatsFields;
 }
 
 /**
  * Represents the keywords in the search response.
  */
-interface SearchResponseKeywords {
+export interface SearchResponseKeywords {
   'original query': string;
   'redirected query': string;
   'redirected url': string;
