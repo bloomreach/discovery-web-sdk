@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/bloomreach/discovery-web-sdk/compare/v2.0.0...v2.0.1) (2024-11-26)
+
+
+### Bug Fixes
+
+* **types:** Export all search response types ([2817d35](https://github.com/bloomreach/discovery-web-sdk/commit/2817d359c0abb07ae40f8d00c3f2a92187ad4a94))
+
 # [2.0.0](https://github.com/bloomreach/discovery-web-sdk/compare/v1.3.2...v2.0.0) (2024-10-31)
 
 
