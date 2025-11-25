@@ -18,7 +18,7 @@ export interface SearchResponseFacetCountsFacetFieldsGeneral {
   name: string;
 }
 
- export type SearchResponseFacetCountsFacetFields = {
+export type SearchResponseFacetCountsFacetFields = {
   category?: SearchResponseFacetCountsFacetFieldsCategory[];
 } & {
   [key: string]: SearchResponseFacetCountsFacetFieldsGeneral[];
@@ -41,17 +41,78 @@ export interface SearchResponseFacetCountsFacetRanges {
 }
 
 /**
+ * Facet V3: Represents the common facet in the search response.
+ */
+export interface SearchResponseFacetCountsFacetsCommonFacet {
+  name: string;
+  type: "text" | "number"
+  value: {
+    name: string;
+    count: number;
+  }[];
+}
+
+/**
+ * Facet V3: Represents the range facet in the search response.
+ */
+export interface SearchResponseFacetCountsFacetsRangeFacet {
+  name: string;
+  type: "number_range";
+  value: {
+    start: number | "*";
+    end: number | "*";
+    count: number;
+  }[];
+}
+
+/**
+ * Facet V3: Represents the stats facet in the search response.
+ */
+export interface SearchResponseFacetCountsFacetsStatsFacet {
+  name: string;
+  type: "number_stats";
+  value: {
+    start: number;
+    end: number;
+    count: number;
+  };
+}
+
+/**
+ * Facet V3: Represents the category facet in the search response.
+ */
+export type SearchResponseFacetCountsFacetsCategoryFacet = {
+  name: "category";
+  type: "text";
+  value: {
+    cat_id: string;
+    cat_name: string;
+    count: number;
+    crumb: string;
+    parent: string;
+    tree_path: string;
+  }[];
+}
+
+/**
+ * Facet V3: Represents the facets in the search response.
+ */
+export type SearchResponseFacetCountsFacets =
+  SearchResponseFacetCountsFacetsCommonFacet |
+  SearchResponseFacetCountsFacetsRangeFacet |
+  SearchResponseFacetCountsFacetsStatsFacet |
+  SearchResponseFacetCountsFacetsCategoryFacet;
+
+/**
  * Represents the facet counts in the search response.
  */
 export interface SearchResponseFacetCounts {
   facet_ranges?: SearchResponseFacetCountsFacetRanges;
   facet_fields?: SearchResponseFacetCountsFacetFields;
   facet_queries?: object;
+  facets?: SearchResponseFacetCountsFacets[];
 }
 
-/**
- * Represents a product variant in the search response.
- */
 /**
  * Represents a product variant in the search response.
  */
