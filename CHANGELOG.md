@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/bloomreach/discovery-web-sdk/compare/v2.0.1...v2.0.2) (2025-12-10)
+
+
+### Bug Fixes
+
+* Add facet v3 types to search response ([a45a04e](https://github.com/bloomreach/discovery-web-sdk/commit/a45a04edcc1362a3159b8b0cdf95d9a97fcac3a8))
+
 ## [2.0.1](https://github.com/bloomreach/discovery-web-sdk/compare/v2.0.0...v2.0.1) (2024-11-26)
 
 
