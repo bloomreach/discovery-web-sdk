@@ -1,17 +1,19 @@
 ---
 title: Discovery Web SDK
-category: 61b785225c1c75017a430718
-parentDoc: 66b66b073736cb0060fb621e
+category:
+  uri: /branches/1.0/categories/guides/Integrate%20with%20Search"
+parent:
+  uri: discovery-sdks
 ---
 
 > ⚙️ **SDK Reference**
 >
 > The detailed TSDoc and reference for the SDK are available [here](https://bloomreach.github.io/discovery-web-sdk/modules.html).
 
-The Bloomreach Discovery Web SDK is a TypeScript SDK designed to interact with the
-[Bloomreach Discovery APIs](https://documentation.bloomreach.com/discovery/reference/welcome). This SDK provides a convenient way to integrate and use the Discovery data in your website or applications.
+The Discovery Web SDK is a TypeScript SDK designed to interact with the
+[{user.search} APIs](https://documentation.bloomreach.com/discovery/reference/welcome). This SDK provides a convenient way to integrate and use the {user.search} data in your website or applications.
 
-The SDK provides an interface to implement the following Bloomreach Discovery APIs:
+The SDK provides an interface to implement the following {user.search} APIs:
 
 - [Autosuggest API](https://documentation.bloomreach.com/discovery/docs/discovery-web-sdk#autosuggest-api)
 - [Product and Category Search API](https://documentation.bloomreach.com/discovery/docs/discovery-web-sdk#product-and-category-search-api)
@@ -62,7 +64,7 @@ Adding `debug: true` to the `Configuration` you pass into the API calls will ena
 
 ## Usage
 
-Below are some usage examples that demonstrate how to call and use various Discovery APIs in your website or application using the SDK.
+Below are some usage examples that demonstrate how to call and use various {user.search} APIs in your website or application using the SDK.
 
 ### Autosuggest API
 
@@ -242,7 +244,7 @@ const data = await bestseller(config, searchOptions);
 
 ## Contribution & Development
 
-The Bloomreach Discovery SDK is Open-Source, and we welcome outside contributions. See our [Contribution Guide](https://github.com/bloomreach/discovery-web-sdk/blob/main/CONTRIBUTING.md).
+The Discovery Web SDK is Open-Source, and we welcome outside contributions. See our [Contribution Guide](https://github.com/bloomreach/discovery-web-sdk/blob/main/CONTRIBUTING.md).
 
 ## License
 
